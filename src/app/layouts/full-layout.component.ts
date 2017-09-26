@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './full-layout.component.html'
+  templateUrl: './full-layout.component.html',
+  styles: [`
+  .simple-dropdown{
+    z-index: 9999 !important;
+  }
+  `]
 })
 export class FullLayoutComponent implements OnInit {
 
