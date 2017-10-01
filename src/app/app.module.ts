@@ -1,17 +1,22 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
 import { BreadcrumbsComponent } from './shared/breadcrumb.component';
-import { HttpModule }    from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { ToastyModule } from 'ng2-toasty';
+
+import { CommonHelperModule } from './common-helper.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
+
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
@@ -27,7 +32,11 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     ChartsModule,
-    HttpModule
+    HttpModule,
+    ToastyModule.forRoot(),
+    CommonHelperModule,
+    UserModule,
+    AuthModule
   ],
   declarations: [
     AppComponent,
@@ -40,7 +49,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
   ],
   providers: [{
     provide: LocationStrategy,
-    useClass: HashLocationStrategy
+    useClass: PathLocationStrategy
   }],
   bootstrap: [ AppComponent ]
 })

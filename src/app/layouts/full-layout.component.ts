@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserTransport } from './../transport/user.transport';
+import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
+import { FlashAlert } from './../shared/flash.alert';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
   .simple-dropdown{
     z-index: 9999 !important;
   }
-  `]
+  `],
+  providers: [UserTransport,ToastyConfig]
 })
-export class FullLayoutComponent implements OnInit {
+export class FullLayoutComponent implements AfterViewInit {
+  constructor(private userTransport: UserTransport, private route: Router,
+              private toastyService: ToastyService, private toastyConfig: ToastyConfig) {}
 
   public disabled = false;
   public status: {isopen: boolean} = {isopen: false};
@@ -23,6 +30,39 @@ export class FullLayoutComponent implements OnInit {
     $event.stopPropagation();
     this.status.isopen = !this.status.isopen;
   }
+  public logout(): void {
+    this.userTransport.logout();
+    this.route.navigate(['/auth/login']);
+  }
 
-  ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    if (!this.userTransport.checkLogin()) {
+      this.route.navigate(['/auth/login']);
+    }
+    this.flashAlert();
+  }
+  flashAlert() {
+
+    var alertInfo = FlashAlert.checkFlash();
+    //console.log(alertInfo)
+    /*if (alertInfo.status ) {
+      var self = this;
+      var toastOptions: ToastOptions = {
+        title: alertInfo.title,
+        msg: alertInfo.msg,
+        showClose: true,
+        timeout: 2500,
+        theme: 'default'
+        /!*onAdd: (toast: ToastData) => {
+          console.log('Toast ' + toast.id + ' has been added!');
+        },[alertInfo.type]
+        onRemove: function(toast:ToastData) {
+          console.log('Toast ' + toast.id + ' has been removed!');
+        }*!/
+      };
+      self.toastyService.success(toastOptions);
+    }*/
+
+
+  }
 }

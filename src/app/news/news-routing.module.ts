@@ -3,34 +3,26 @@ import { Routes,
   RouterModule } from '@angular/router';
 
 import { CreateComponent } from './create/create.component';
-import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
-import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ListComponent,
     data: {
-      title: 'Danh sách tài khoản'
+      title: 'Danh sách tin tức'
     }
   }, {
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Tạo tài khoản'
+      title: 'Tạo tin'
     }
   }, {
     path: 'edit/:id',
-    component: EditComponent,
+    component: CreateComponent,
     data: {
-      title: 'Sửa thông tin tài khoản'
-    }
-  }, {
-    path: 'view/:id',
-    component: ViewComponent,
-    data: {
-      title: 'Thông tin tài khoản'
+      title: 'Sửa tin'
     }
   }
 ];
@@ -39,4 +31,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class UserRoutingModule {}
+export class NewsRoutingModule {}

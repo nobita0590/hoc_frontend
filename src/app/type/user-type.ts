@@ -6,10 +6,16 @@ export class User extends Model {
   FirstName: string;
   LastName: string;
   Phone: string;
+  Class: string;
+  School: string;
   Birthday: string;
-  CreatorId: number;
+  CreatorId: Date;
 }
 
 export class UserFilter extends Page {
   ID:  number;
+}
+
+export class UserConfig {
+  static AccessKeyName = 'access_token';
 }

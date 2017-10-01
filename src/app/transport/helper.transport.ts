@@ -2,7 +2,7 @@ import { Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 export class HelperTransport {
-  public static API_ENDPOINT = `http://localhost:8080/`;
+  public static API_ENDPOINT = `http://localhost:8080/api/`;
   public static api(url: string): string {
     return this.API_ENDPOINT + url;
   }

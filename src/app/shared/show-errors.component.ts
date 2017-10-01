@@ -12,11 +12,15 @@ import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 export class ShowErrorsComponent {
 
   private static readonly errorMessages = {
-    'required': () => 'Không thể để trống.',
-    'email': () => 'Vui lòng nhập một địa chỉ mail',
-    'minlength': (params) => `Phải có độ dài tối thiểu ${params.requiredLength} ký tự`,
-    'maxlength': (params) => `Độ dài tối đa là ${params.requiredLength}`,
-    'pattern': (params) => 'The required pattern is: ' + params.requiredPattern,
+    'required': (fname) => `${fname} không thể để trống.`,
+    'email': (fname) => `${fname} phải là địa chỉ mail hợp lệ`,
+    'minlength': (fname, params) => `${fname} phải có độ dài tối thiểu ${params.requiredLength} ký tự`,
+    'maxlength': (fname, params) => `${fname} có độ dài tối đa là ${params.requiredLength}`,
+    'pattern': (fname, params) => `The required pattern is: ${params.requiredPattern}`,
+    'server': (fname, params) => {
+      console.log(params);
+      return `Loi tu server tra ve ${params}`;
+    },
     /*'years': (params) => params.message,
     'countryCity': (params) => params.message,
     'uniqueName': (params) => params.message,
@@ -24,13 +28,13 @@ export class ShowErrorsComponent {
     'telephoneNumber': (params) => params.message*/
   };
 
-  @Input()
-  private control: AbstractControlDirective | AbstractControl;
+  @Input() control: AbstractControlDirective | AbstractControl;
+  @Input() fname: string;
 
   shouldShowErrors(): boolean {
     return this.control &&
       this.control.errors &&
-      (this.control.dirty || this.control.touched);
+      (this.control.errors.server || this.control.dirty || this.control.touched);
   }
 
   listOfErrors(): string[] {
@@ -39,8 +43,9 @@ export class ShowErrorsComponent {
   }
 
   private getMessage(type: string, params: any) {
+    // console.log(type, params)
     if (ShowErrorsComponent.errorMessages[type]) {
-      return ShowErrorsComponent.errorMessages[type](params);
+      return ShowErrorsComponent.errorMessages[type](this.fname, params);
     }
     return 'Không hợp lệ';
   }

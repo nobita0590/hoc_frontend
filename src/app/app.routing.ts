@@ -8,14 +8,14 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'admin/user/create',
     pathMatch: 'full',
   },
   {
     path: 'admin',
     component: FullLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Bảng điều khiển'
     },
     children: [
       {
@@ -24,6 +24,16 @@ export const routes: Routes = [
       }, {
         path: 'user',
         loadChildren: './user/user.module#UserModule'
+        ,
+        data: {
+          title: 'Tài khoản'
+        }
+      }, {
+        path: 'news',
+        loadChildren: './news/news.module#NewsModule',
+        data: {
+          title: 'Tin tức'
+        }
       },
     ]
   },
@@ -43,7 +53,7 @@ export const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, { useHash: true }) ],
   exports: [ RouterModule ]
 })
 export class AppRoutingModule {}
