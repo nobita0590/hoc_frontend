@@ -8,7 +8,7 @@
       "root": "src",
       "outDir": "/usr/go/src/github.com/nobita0590/web_mysql/public/dist",
       "assets": [
-        "assets",
+        "public",
         "favicon.ico"
       ],
       "index": "index.html",
