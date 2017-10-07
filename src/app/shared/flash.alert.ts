@@ -1,3 +1,8 @@
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+// import { Subject } from 'rxjs/Subject';
+
+@Injectable()
 export class FlashAlert {
   public static AlertDefault = 'default';
   public static AlertInfo = 'info';
@@ -7,27 +12,18 @@ export class FlashAlert {
   public static AlertWarning = 'warning';
   public static StoreKey = 'flash';
 
-  static flashAlert(typeAlert: string, title: string, msg: string) {
-    let message = {
+  private subject = new Subject<any>();
+
+  flashAlert(typeAlert: string, title: string, msg: string) {
+    this.subject.next({
       type: typeAlert,
       title: title,
       msg: msg
-    };
-    localStorage.setItem(this.StoreKey, JSON.stringify(message));
+    });
+    // localStorage.setItem(this.StoreKey, JSON.stringify(message));
   }
-  static checkFlash(): FlashInfo {
-    var flashInfo = new FlashInfo();
-    flashInfo.status = true;
-    var alert = JSON.parse(localStorage.getItem(this.StoreKey));
-    if (alert && alert.title) {
-      flashInfo.title = alert.title;
-      flashInfo.msg = alert.msg;
-      flashInfo.type = this.AlertDefault;
-      if ([this.AlertError, this.AlertInfo, this.AlertSuccess, this.AlertWait, this.AlertWarning].indexOf(alert.type)) {
-        flashInfo.type = alert.type;
-      }
-    }
-    return flashInfo;
+  getFlashAlert(): Observable<any> {
+    return this.subject.asObservable();
   }
 }
 

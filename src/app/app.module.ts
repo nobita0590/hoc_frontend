@@ -20,7 +20,7 @@ import { AuthModule } from './auth/auth.module';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
-
+import { FlashAlert } from './shared/flash.alert';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
@@ -47,7 +47,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     SIDEBAR_TOGGLE_DIRECTIVES,
     AsideToggleDirective
   ],
-  providers: [{
+  providers: [FlashAlert, {
     provide: LocationStrategy,
     useClass: PathLocationStrategy
   }],
