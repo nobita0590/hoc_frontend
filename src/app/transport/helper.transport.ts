@@ -2,15 +2,17 @@ import { Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 export class HelperTransport {
+  public static SERVER_URL = `http://localhost:8080`;
   public static API_ENDPOINT = `http://localhost:8080/api/`;
   public static api(url: string): string {
     return this.API_ENDPOINT + url;
   }
   public static objectToFormData(object: Object): string {
     let data = this.createUrlData(object);
-    return data.toString();
+    /*return data.toString();*/
+    return data.join('&');
   }
-  public static createUrlData(object: Object, form?: URLSearchParams, namespace?: string): URLSearchParams {
+  /*public static createUrlData(object: Object, form?: URLSearchParams, namespace?: string): URLSearchParams {
     const formData = form || new URLSearchParams();
     for (let property in object) {
       if (!object.hasOwnProperty(property) || !object[property]) {
@@ -26,7 +28,7 @@ export class HelperTransport {
       }
     }
     return formData;
-  }
+  }*/
   public static getHeader(): Headers {
     return new Headers({
       'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
@@ -51,6 +53,37 @@ export class HelperTransport {
       console.log(e);
     }
     return Promise.reject(error);
+  }
+
+  public static createUrlData(object: Object, form?: string[], namespace?: string) {
+    const formData = form || [];
+    for (const property in object) {
+      if (!object.hasOwnProperty(property) || !object[property]) {
+        continue;
+      }
+      let formKey = '';
+      if (object.constructor.name === 'Array') {
+        formKey = namespace ? `${namespace}[${property}]` : property;
+      }else {
+        formKey = namespace ? `${namespace}.${property}` : property;
+      }
+      if (object[property] instanceof Date) {
+        formData.push(`${formKey}=${object[property].toISOString()}`);
+      } else if (typeof object[property] === 'object' && !(object[property] instanceof File)) {
+        this.createUrlData(object[property], formData, formKey);
+      } else {
+        formData.push(`${formKey}=${object[property]}`);
+      }
+    }
+    return formData;
+  }
+
+  public static imageUrl(input: string): string {
+    if (input.indexOf('http') == 0) {
+      return input;
+    } else {
+      return `${this.SERVER_URL + input}`;
+    }
   }
 }
 

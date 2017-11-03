@@ -1,13 +1,18 @@
 import { Page, Model } from './app.type';
 export class Document extends Model {
-  Title: string;
-  PrettyUrl: string;
+  Name: string;
+  PathStore: string;
   Description: string;
-  Content: string;
   CreatorId: number;
-  CategoryId: number;
+  CreatorName: string;
+  ClassId: number;
+  ClassName: string;
+  SubjectId: number;
+  SubjectName: string;
+  DownloadNumber: number;
 }
 
 export class DocumentFilter extends Page {
   ID:  number;
+  IsFill: boolean;
 }

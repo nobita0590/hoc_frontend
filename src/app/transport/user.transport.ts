@@ -20,7 +20,33 @@ export class UserTransport {
     return this.http.post(HelperTransport.api(`auth/login`), data, options)
       .toPromise()
       .then(response => {
-        return response.json();
+        let _d = response.json();
+        if (_d.status) {
+          localStorage.setItem(UserConfig.AccessKeyName, _d.data.access_token);
+          localStorage.setItem('user', JSON.stringify(_d.data.user));
+        }
+        return _d;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  loginFacebook(id: string,token: string): Promise<any> {
+    let data = HelperTransport.objectToFormData({
+      id: id,
+      access_token: token
+    });
+    let options: RequestOptionsArgs = {
+      method : 'post',
+      headers : HelperTransport.getHeader(),
+    };
+    return this.http.post(HelperTransport.api(`auth/login/facebook`), data, options)
+      .toPromise()
+      .then(response => {
+        let _d = response.json();
+        if (_d.status) {
+          localStorage.setItem(UserConfig.AccessKeyName, _d.data.access_token);
+          localStorage.setItem('user', JSON.stringify(_d.data.user));
+        }
+        return _d;
       })
       .catch(HelperTransport.handleError);
   }

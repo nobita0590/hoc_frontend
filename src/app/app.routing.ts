@@ -8,7 +8,7 @@ import { FullLayoutComponent } from './layouts/full-layout.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin/setting/category',
+    redirectTo: 'admin/document/create',
     pathMatch: 'full',
   },
   {
@@ -45,6 +45,12 @@ export const routes: Routes = [
         loadChildren: './setting/setting.module#SettingModule',
         data: {
           title: 'Cấu hình'
+        }
+      }, {
+        path: 'questions',
+        loadChildren: './questions/questions.module#QuestionsModule',
+        data: {
+          title: 'Ngân hàng câu hỏi'
         }
       },
     ]

@@ -1,0 +1,81 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+          <a class="btn btn-success btn-xs pull-right" [routerLink]="['/admin/questions/create']"><i class="icon-user-follow"></i> Tạo câu hỏi</a>
+        </div>
+        <div class="card-body">
+          <div >
+            <block-ui [template]="blockTemplate">
+              <data-table id="persons-grid"
+                          headerTitle="Quản lý tài liệu"
+                          [indexColumn]="false"
+                          [items]="items"
+                          [itemCount]="itemCount"
+                          (reload)="reloadItems($event)"
+                          (rowClick)="rowClick($event)"
+                          (rowDoubleClick)="rowDoubleClick($event)"
+                          [rowTooltip]="rowTooltip"
+                          [expandableRows]="true"
+              >
+                <template #dataTableExpand let-item="item">
+                  <div [innerHTML]="item.Content" style="padding: 5px; color: gray"></div>
+                </template>
+                <data-table-column
+                  property="ClassName"
+                  header="Lớp">
+                </data-table-column>
+                <data-table-column
+                  property="SubjectName"
+                  header="Môn học">
+                </data-table-column>
+                <data-table-column
+                  property="CategoryName"
+                  header="Chuyên đề">
+                </data-table-column>
+                <data-table-column
+                  property="DifficultName"
+                  header="Độ khó">
+                </data-table-column>
+                <data-table-column
+                  property="CreatorName"
+                  header="Người tạo"
+                  [sortable]="true"
+                  [visible]="false">
+                </data-table-column>
+                <data-table-column
+                  [property]="'#'"
+                  [header]="'Quản trị'"
+                  [width]="100"
+                  [styleClass]="'table-action-cell'"
+                  [resizable]="true">
+                  <ng-template #dataTableHeader let-item="item">
+                    <span>Quản trị</span>
+                  </ng-template>
+                  <ng-template #dataTableCell let-item="item">
+                    <div class="btn-group" dropdown placement="bottom right">
+                      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                        Action <span class="caret"></span>
+                      </button>
+                      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/questions/edit/' + item.ID]">
+                          <i class="fa fa-edit fa-lg text-info"></i> Sửa </a>
+                        </li>
+                        <li class="divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item action" (click)="delete(item.ID)">
+                          <i class="fa fa-minus-square text-danger"></i> Khóa </a></li>
+                      </ul>
+                    </div>
+                  </ng-template>
+                </data-table-column>
+              </data-table>
+            </block-ui>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

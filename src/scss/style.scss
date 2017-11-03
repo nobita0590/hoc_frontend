@@ -14,6 +14,7 @@
 @import "./../../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
 
 @import "./../../node_modules/ng2-toasty/style.css";
+@import "./../../node_modules/ladda/css/ladda";
 
 // If you want you can import bootstrap scss files directly from node_modules or bower_components.
 // To do this please remove @import "bootstrap/bootstrap"; and uncomment proper line.
@@ -35,3 +36,5 @@
 
 // Custom styles
 @import "custom";
+
+

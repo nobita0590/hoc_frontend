@@ -1,0 +1,52 @@
+<div class="animated fadeIn">
+  <div class="email-app">
+    <nav>
+      <ul class="nav">
+        <li [ngClass]="{'active': (category.id === currentCategory.id)}" class="nav-item" *ngFor="let category of categories" (click)="switchCategory(category);">
+          <a class="nav-link" ><i class="fa fa-tags"></i> {{category.name}}</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="inbox">
+      <div class="card">
+        <div class="card-header">
+          Danh sách: {{currentCategory.name}}
+          <button type="button" class="btn btn-success float-right" (click)="createSelectSource()">Tạo: {{currentCategory.name}}</button>
+        </div>
+        <div class="card-body">
+          <ul class="messages">
+            <bs-sortable
+              (onChange)="changeList()"
+              [(ngModel)]="listSource"
+              [itemTemplate]="itemTemplate"
+              itemClass="sortable-item"
+              itemActiveClass="sortable-item-active"
+              placeholderItem="Drag here"
+              placeholderClass="sortable-item"
+              wrapperClass="sortable-wrapper"
+            ></bs-sortable>
+          </ul>
+        </div>
+        <div class="card-footer" style="text-align: center">
+          <button type="button" class="btn btn-success" (click)="saveOrder()" [disabled]="!isChange">Lưu sắp xếp</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<ng-template #itemTemplate let-item="item.value" let-index="index">
+  <li class="message unread">
+    <div class="header">
+      <span>{{item.Value}}</span>
+      <span class="date">
+        <button type="button" class="btn btn-light" (click)="editSource(item)">
+          <span class="fa fa-pencil"></span>
+        </button>
+        <button type="button" class="btn btn-light" (click)="deleteSource(item)">
+          <span class="fa fa-trash-o"></span>
+        </button>
+      </span>
+    </div>
+  </li>
+</ng-template>

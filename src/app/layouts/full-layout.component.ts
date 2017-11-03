@@ -37,7 +37,26 @@ export class FullLayoutComponent implements AfterViewInit {
           timeout: 2500,
           theme: 'default'
         };
-        this.toastyService.success(toastOptions);
+        switch (alertInfo.type) {
+          case 'error':
+            this.toastyService.error(toastOptions);
+            break;
+          case 'info':
+            this.toastyService.info(toastOptions);
+            break;
+          case 'success':
+            this.toastyService.success(toastOptions);
+            break;
+          case 'wait':
+            this.toastyService.wait(toastOptions);
+            break;
+          case 'warning':
+            this.toastyService.warning(toastOptions);
+            break;
+          default:
+            this.toastyService.default(toastOptions);
+        }
+
       //}
     });
   }
@@ -60,30 +79,6 @@ export class FullLayoutComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
   }
-  /*flashAlert() {
-
-    // var alertInfo = FlashAlert.checkFlash();
-    //console.log(alertInfo)
-    if (alertInfo.status ) {
-      var self = this;
-      var toastOptions: ToastOptions = {
-        title: alertInfo.title,
-        msg: alertInfo.msg,
-        showClose: true,
-        timeout: 2500,
-        theme: 'default'
-        /!*onAdd: (toast: ToastData) => {
-          console.log('Toast ' + toast.id + ' has been added!');
-        },[alertInfo.type]
-        onRemove: function(toast:ToastData) {
-          console.log('Toast ' + toast.id + ' has been removed!');
-        }*!/
-      };
-      self.toastyService.success(toastOptions);
-    }
-
-
-  }*/
   userAvatar(): string {
     if (this.user.AvatarUrl) {
       return this.user.AvatarUrl;

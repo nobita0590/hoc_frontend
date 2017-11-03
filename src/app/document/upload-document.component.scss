@@ -1,0 +1,199 @@
+.file-container .drop-container{
+  border: 2px dashed #ededed;
+  width: 100%;
+  padding: 20px;
+  background: #f6f6f6;
+  float: left;
+}
+.file-preview-container{
+  width: 100%;
+  padding: 5px 20px;
+  float: left;
+}
+.file-preview-container .file {
+  float: left;
+  width: 80px;
+  height: 80px;
+  margin: 10px;
+}
+.file-preview-container .file .file-x{
+  height: 20px;
+  opacity: .7;
+  padding-right: 3px;
+  position: relative;
+  width: 20px;
+  cursor: pointer;
+  text-align: center;
+}
+.file-preview-container .file-pdf{
+  background-image: url("http://stoakley.com/wp-content/uploads/2015/02/PDF-179x200.png?x22623");
+}
+.file-container .drop-container .choose-file-label{
+
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  font-size: 1.25em;
+  font-weight: 500;
+  padding: 10px;
+  text-transform: uppercase;
+  background: #3C9;
+  box-shadow: 3px 3px 5px #888888;
+}
+.file-container .drop-container .clear-file-label{
+  color: #FFF;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+  font-size: 1.25em;
+  font-weight: 500;
+  padding: 10px;
+  text-transform: uppercase;
+  background: red;
+  box-shadow: 3px 3px 5px #888888;
+  border-left: 1px solid #fff;
+}
+.list-thumb-img-xx {display: block; border:1px solid #eee; background-color: #fdfdfd; padding:5px;margin-bottom: 0px;float: left;width: 100%;}
+.list-thumb-img-xx li {display: inline-block; padding:5px;}
+.list-thumb-img-xx li .one-thumb {display: block; position: relative;}
+.list-thumb-img-xx li .w-thumb-img {display: block; width:86px; height: 86px; background-size: contain; background-repeat: no-repeat; background-position: center center;}
+.list-thumb-img-xx li .del-item {display: block; position: absolute; top:0; right: 0; background:rgba(0,0,0,.6); color:#aaa; cursor: pointer; padding: 1px 5px; font-size: 11px; z-index: 8;}
+.list-thumb-img-xx li .del-item:hover {background:rgba(0,0,0,.8); color:#fff;}
+.list-thumb-img-xx li .del-cancel { position: absolute; top:0; left:0; right:0; bottom: 0; background:rgba(0,0,0,.6); text-align: center; z-index: 5;}
+.list-thumb-img-xx li .del-cancel .fa {color:#ff4747; font-size: 28px; margin-top: 16px;}
+.list-thumb-img-xx li .del-cancel span {display: inline-block; color:#aaa; font-size: 15px; border-radius: 20px; padding:2px 13px; border:1px solid rgba(255,255,255,0.5); cursor: pointer; margin-top:3px;}
+.list-thumb-img-xx li .del-cancel span:hover {color:#fff; border-color:rgba(255,255,255,0.8);}
+
+.list-thumb-img-xx li .w-thumb-img-7z {
+  background-image: url(http://localhost:8080/public/img/files-type/7z.png);
+}
+.list-thumb-img-xx li .w-thumb-img-ae {
+  background-image: url(http://localhost:8080/public/img/files-type/ae.png);
+}
+.list-thumb-img-xx li .w-thumb-img-ai {
+  background-image: url(http://localhost:8080/public/img/files-type/ai.png);
+}
+.list-thumb-img-xx li .w-thumb-img-avi {
+  background-image: url(http://localhost:8080/public/img/files-type/avi.png);
+}
+.list-thumb-img-xx li .w-thumb-img-bin {
+  background-image: url(http://localhost:8080/public/img/files-type/bin.png);
+}
+.list-thumb-img-xx li .w-thumb-img-c4d {
+  background-image: url(http://localhost:8080/public/img/files-type/c4d.png);
+}
+.list-thumb-img-xx li .w-thumb-img-cdr {
+  background-image: url(http://localhost:8080/public/img/files-type/cdr.png);
+}
+.list-thumb-img-xx li .w-thumb-img-css {
+  background-image: url(http://localhost:8080/public/img/files-type/css.png);
+}
+.list-thumb-img-xx li .w-thumb-img-csv {
+  background-image: url(http://localhost:8080/public/img/files-type/csv.png);
+}
+.list-thumb-img-xx li .w-thumb-img-dll {
+  background-image: url(http://localhost:8080/public/img/files-type/dll.png);
+}
+.list-thumb-img-xx li .w-thumb-img-doc {
+  background-image: url(http://localhost:8080/public/img/files-type/doc.png);
+}
+.list-thumb-img-xx li .w-thumb-img-dw {
+  background-image: url(http://localhost:8080/public/img/files-type/dw.png);
+}
+.list-thumb-img-xx li .w-thumb-img-dwg {
+  background-image: url(http://localhost:8080/public/img/files-type/dwg.png);
+}
+.list-thumb-img-xx li .w-thumb-img-eml {
+  background-image: url(http://localhost:8080/public/img/files-type/eml.png);
+}
+.list-thumb-img-xx li .w-thumb-img-eps {
+  background-image: url(http://localhost:8080/public/img/files-type/eps.png);
+}
+.list-thumb-img-xx li .w-thumb-img-epub {
+  background-image: url(http://localhost:8080/public/img/files-type/epub.png);
+}
+.list-thumb-img-xx li .w-thumb-img-gif {
+  background-image: url(http://localhost:8080/public/img/files-type/gif.png);
+}
+.list-thumb-img-xx li .w-thumb-img-html {
+  background-image: url(http://localhost:8080/public/img/files-type/html.png);
+}
+.list-thumb-img-xx li .w-thumb-img-ico {
+  background-image: url(http://localhost:8080/public/img/files-type/ico.png);
+}
+.list-thumb-img-xx li .w-thumb-img-jar {
+  background-image: url(http://localhost:8080/public/img/files-type/jar.png);
+}
+.list-thumb-img-xx li .w-thumb-img-jpg {
+  background-image: url(http://localhost:8080/public/img/files-type/jpg.png);
+}
+.list-thumb-img-xx li .w-thumb-img-js {
+  background-image: url(http://localhost:8080/public/img/files-type/js.png);
+}
+.list-thumb-img-xx li .w-thumb-img-m3u {
+  background-image: url(http://localhost:8080/public/img/files-type/m3u.png);
+}
+.list-thumb-img-xx li .w-thumb-img-mp4 {
+  background-image: url(http://localhost:8080/public/img/files-type/mp4.png);
+}
+.list-thumb-img-xx li .w-thumb-img-mpeg {
+  background-image: url(http://localhost:8080/public/img/files-type/mpeg.png);
+}
+.list-thumb-img-xx li .w-thumb-img-obj {
+  background-image: url(http://localhost:8080/public/img/files-type/obj.png);
+}
+.list-thumb-img-xx li .w-thumb-img-odt {
+  background-image: url(http://localhost:8080/public/img/files-type/odt.png);
+}
+.list-thumb-img-xx li .w-thumb-img-pdf {
+  background-image: url(http://localhost:8080/public/img/files-type/pdf.png);
+}
+.list-thumb-img-xx li .w-thumb-img-png {
+  background-image: url(http://localhost:8080/public/img/files-type/png.png);
+}
+.list-thumb-img-xx li .w-thumb-img-ppt {
+  background-image: url(http://localhost:8080/public/img/files-type/ppt.png);
+}
+.list-thumb-img-xx li .w-thumb-img-pr {
+  background-image: url(http://localhost:8080/public/img/files-type/pr.png);
+}
+.list-thumb-img-xx li .w-thumb-img-psd {
+  background-image: url(http://localhost:8080/public/img/files-type/psd.png);
+}
+.list-thumb-img-xx li .w-thumb-img-py {
+  background-image: url(http://localhost:8080/public/img/files-type/py.png);
+}
+.list-thumb-img-xx li .w-thumb-img-rar {
+  background-image: url(http://localhost:8080/public/img/files-type/rar.png);
+}
+.list-thumb-img-xx li .w-thumb-img-raw {
+  background-image: url(http://localhost:8080/public/img/files-type/raw.png);
+}
+.list-thumb-img-xx li .w-thumb-img-rtf {
+  background-image: url(http://localhost:8080/public/img/files-type/rtf.png);
+}
+.list-thumb-img-xx li .w-thumb-img-svg {
+  background-image: url(http://localhost:8080/public/img/files-type/svg.png);
+}
+.list-thumb-img-xx li .w-thumb-img-swf {
+  background-image: url(http://localhost:8080/public/img/files-type/swf.png);
+}
+.list-thumb-img-xx li .w-thumb-img-tiff {
+  background-image: url(http://localhost:8080/public/img/files-type/tiff.png);
+}
+.list-thumb-img-xx li .w-thumb-img-txt {
+  background-image: url(http://localhost:8080/public/img/files-type/txt.png);
+}
+.list-thumb-img-xx li .w-thumb-img-wav {
+  background-image: url(http://localhost:8080/public/img/files-type/wav.png);
+}
+.list-thumb-img-xx li .w-thumb-img-wmv {
+  background-image: url(http://localhost:8080/public/img/files-type/wmv.png);
+}
+.list-thumb-img-xx li .w-thumb-img-xls {
+  background-image: url(http://localhost:8080/public/img/files-type/xls.png);
+}
+.list-thumb-img-xx li .w-thumb-img-zip {
+  background-image: url(http://localhost:8080/public/img/files-type/zip.png);
+}

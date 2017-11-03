@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'create',
     component: CreateComponent,
     data: {
-      title: 'Thêm tài liệu'
+      title: 'Tạo tài liệu'
     }
   }, {
     path: 'edit/:id',

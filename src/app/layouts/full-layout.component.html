@@ -3,7 +3,7 @@
   <a class="navbar-brand" href="#"></a>
   <button class="navbar-toggler d-md-down-none" type="button" appSidebarToggler>&#9776;</button>
   <ul class="nav navbar-nav d-md-down-none">
-    <li class="nav-item px-3">
+    <!--<li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
     </li>
     <li class="nav-item px-3">
@@ -11,10 +11,10 @@
     </li>
     <li class="nav-item px-3">
       <a class="nav-link" (click)="flashAlert()">Settings</a>
-    </li>
+    </li>-->
   </ul>
   <ul class="nav navbar-nav ml-auto">
-    <li class="nav-item d-md-down-none">
+    <!--<li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
     </li>
     <li class="nav-item d-md-down-none">
@@ -22,7 +22,7 @@
     </li>
     <li class="nav-item d-md-down-none">
       <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
-    </li>
+    </li>-->
     <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
       <a href class="nav-link dropdown-toggle" dropdownToggle (click)="false">
         <img src="{{userAvatar()}}" class="img-avatar" alt="{{user.LastName}} {{user.FirstName}}">
@@ -58,10 +58,18 @@
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin']"><i class="icon-speedometer"></i> Bảng điều khiển </a>
         </li>
-        <!--<li class="divider"></li>
+        <li class="divider"></li>
         <li class="nav-title">
-          UI Elements
-        </li>-->
+          Các danh mục
+        </li>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-settings"></i> Cấu hình</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/setting/category']"><i class="icon-docs"></i> Danh mục</a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-people"></i> Quản lý tài khoản</a>
           <ul class="nav-dropdown-items">
@@ -74,7 +82,7 @@
           </ul>
         </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-doc"></i> Tin tức</a>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-speech"></i> Tin tức</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/news']"><i class="icon-docs"></i> Danh sách tin</a>
@@ -85,18 +93,29 @@
           </ul>
         </li>
         <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-settings"></i> Cấu hình</a>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-doc"></i> Tài liệu</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/setting/category']"><i class="icon-docs"></i> Danh mục</a>
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/document']"><i class="icon-docs"></i> Danh sách tài liệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/document/create']"><i class="icon-plus"></i> Tạo tài liệu</a>
             </li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="['/charts']"><i class="icon-pie-chart"></i> Charts</a>
+        <li class="nav-item nav-dropdown" routerLinkActive="open" appNavDropdown>
+          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-layers"></i> Ngân hàng câu hỏi</a>
+          <ul class="nav-dropdown-items">
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/questions']"><i class="icon-docs"></i> Danh sách câu hỏi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/questions/create']"><i class="icon-plus"></i> Tạo câu hỏi</a>
+            </li>
+          </ul>
         </li>
         <li class="divider"></li>
-        <li class="nav-title">
+        <!--<li class="nav-title">
           Extras
         </li>
         <li class="nav-item nav-dropdown" appNavDropdown>
@@ -115,7 +134,7 @@
               <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
             </li>
           </ul>
-        </li>
+        </li>-->
       </ul>
     </nav>
   </div>

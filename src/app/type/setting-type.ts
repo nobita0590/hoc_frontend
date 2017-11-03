@@ -11,4 +11,5 @@ export class SelectSource extends Model {
 
 export class SelectSourceFilter extends Page {
   ID:  number;
+  GroupsId: number[];
 }

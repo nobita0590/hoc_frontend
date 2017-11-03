@@ -1,0 +1,115 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="mainForm" novalidate (submit)="onSubmit()">
+        <div class="card">
+          <div class="card-header">
+            <i class="icon-user-follow"></i>
+          </div>
+          <div class="card-block">
+            <div class="card-container">
+              <strong>{{title}}</strong>
+              <hr>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Lớp</label>
+                <div class="col-md-9">
+                  <select formControlName="ClassId"
+                          type="text" name="ClassId" class="form-control" placeholder="Lớp..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.ClassId" [fname]="'Lớp'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Môn học</label>
+                <div class="col-md-9">
+                  <select formControlName="SubjectId"
+                          type="text" name="SubjectId" class="form-control" placeholder="Môn học..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.SubjectId" [fname]="'Môn học'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Chuyên mục</label>
+                <div class="col-md-9">
+                  <select formControlName="CategoryId"
+                          type="text" name="CategoryId" class="form-control" placeholder="Chuyên mục..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of categorySource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.CategoryId" [fname]="'Chuyên mục'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Độ khó</label>
+                <div class="col-md-9">
+                  <select formControlName="DifficultId"
+                          type="text" name="DifficultId" class="form-control" placeholder="Độ khó..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of difficultSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.DifficultId" [fname]="'Độ khó'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Nội dung</label>
+                <div class="col-md-12">
+                  <ckeditor
+                    formControlName="Content"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.Content" [fname]="'Nội dung'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Câu trả lời</label>
+                <div class="col-md-12">
+                  <hr>
+                  <div formArrayName="AnswerView" class="well well-lg">
+                    <div *ngFor="let answer of AnswerView.controls; let i=index" [formGroupName]="i" class="row">
+                      <div class="form-group">
+                        <div class="col-8" style="float: left">
+                          <ckeditor
+                            formControlName="Content"
+                            [readonly]="false"
+                            debounce="500">
+                          </ckeditor>
+                        </div>
+                        <div class="col-4" style="float: left">
+                          Câu trả lời đúng ?
+                          &nbsp;&nbsp;&nbsp;
+                          <label class="switch switch-3d switch-success">
+                            <input type="checkbox" class="switch-input" formControlName="IsTrue">
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                          </label>
+                          <br>
+                          Xóa câu trả lời này ?
+                          <button type="button" (click)="removeAnswer(i)" class="btn btn-outline-danger"><i class="fa fa-minus-square"></i>&nbsp; Xóa</button>
+                        </div>
+                      </div>
+                    </div>
+                    <br>
+                    <button type="button" (click)="addAnswer()" class="btn btn-success"><i class="fa fa-plus-square"></i>&nbsp; Thêm câu trả lời</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-container">
+              <button type="submit" class="btn btn-sm btn-primary"> Đăng tin</button>
+              <button type="reset" class="btn btn-sm btn-danger"> Làm mới</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<block-ui [template]="blockTemplate"></block-ui>
+<!--[disabled]="mainForm.invalid"-->

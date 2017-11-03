@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "/usr/go/src/github.com/nobita0590/web_mysql/public/dist",
+      "outDir": "./dist",
       "assets": [
         "public",
         "favicon.ico"

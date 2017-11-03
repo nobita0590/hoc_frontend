@@ -1,0 +1,123 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+          <a class="btn btn-success btn-xs pull-right" [routerLink]="['/admin/user/create']"><i class="icon-user-follow"></i> Thêm tài khoản</a>
+        </div>
+        <div class="card-body">
+          <div>
+            <block-ui [template]="blockTemplate">
+              <data-table id="persons-grid"
+                        headerTitle="Quản lý tài khoản"
+                        [items]="items"
+                        [itemCount]="itemCount"
+                        (reload)="reloadItems($event)"
+                        (rowClick)="rowClick($event)"
+                        (rowDoubleClick)="rowDoubleClick($event)"
+                        [rowTooltip]="rowTooltip"
+            >
+              <data-table-column
+                [property]="'FirstName'"
+                [header]="'Tên người dùng'"
+                [sortable]="true"
+                [resizable]="true">
+                <ng-template #dataTableCell let-item="item">
+                  <span>{{item.LastName}} {{item.FirstName}}</span>
+                </ng-template>
+              </data-table-column>
+              <data-table-column
+                [property]="'UserName'"
+                [header]="'Tên tài khoản'"
+                [sortable]="true">
+                <ng-template #dataTableCell let-item="item">
+                  <span *ngIf="item.UserName">{{item.UserName}}</span>
+                </ng-template>
+              </data-table-column>
+              <data-table-column
+                property="Email"
+                header="Email"
+                [sortable]="true">
+              </data-table-column>
+              <data-table-column
+                [property]="'Phone'"
+                [header]="'Điện thoại'"
+                [visible]="false">
+              </data-table-column>
+                <data-table-column
+                  [property]="'Class'"
+                  [header]="'Lớp'"
+                  [visible]="false">
+                </data-table-column>
+                <data-table-column
+                  [property]="'School'"
+                  [header]="'Trường'"
+                  [visible]="false">
+                </data-table-column>
+                <data-table-column
+                  [property]="'Birthday'"
+                  [header]="'Ngày sinh'"
+                  [visible]="false">
+                  <ng-template #dataTableCell let-item="item">
+                    <span>{{item.Birthday | date:'dd-MM-yyyy'}}</span>
+                  </ng-template>
+                </data-table-column>
+                <data-table-column
+                  [property]="'CreatedAt'"
+                  [header]="'Ngày đăng ký'"
+                  [sortable]="true">
+                  <ng-template #dataTableCell let-item="item">
+                    <span>{{item.CreatedAt | date:'dd-MM-yyyy'}}</span>
+                  </ng-template>
+                </data-table-column>
+              <data-table-column
+                [property]="'DeletedAt'"
+                [header]="'Trạng thái'"
+                [width]="100"
+                [resizable]="true">
+                <ng-template #dataTableHeader let-item="item">
+                  <span>Trạng thái</span>
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                  <span class="text-success" *ngIf="!item.DeletedAt">Hoạt động</span>
+                  <span class="text-danger" *ngIf="item.DeletedAt">Đã Khóa</span>
+                </ng-template>
+              </data-table-column>
+                <data-table-column
+                  [property]="'#'"
+                  [header]="'Quản trị'"
+                  [width]="100"
+                  [styleClass]="'table-action-cell'"
+                  [resizable]="true">
+                  <ng-template #dataTableHeader let-item="item">
+                    <span>Quản trị</span>
+                  </ng-template>
+                  <ng-template #dataTableCell let-item="item">
+                    <div class="btn-group" dropdown placement="bottom right">
+                      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                        Action <span class="caret"></span>
+                      </button>
+                      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item action" [routerLink]="['/admin/user/view/' + item.ID]">
+                          <i class="fa fa-external-link text-info"></i>Xem </a>
+                        </li>
+                        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/user/edit/' + item.ID]">
+                          <i class="fa fa-edit fa-lg text-info"></i> Sửa </a>
+                        </li>
+                        <li class="divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item action" (click)="delete(item.ID)">
+                          <i class="fa fa-minus-square text-danger"></i> Khóa </a></li>
+                      </ul>
+                    </div>
+                  </ng-template>
+                </data-table-column>
+            </data-table>
+            </block-ui>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
