@@ -67,5 +67,5 @@ export class ListComponent implements OnInit {
     // alert('Double clicked: ' + rowEvent.row.item.name);
   }
 
-  rowTooltip(item) { return `${item.Name}`; }
+  rowTooltip(item: Question) { return `${item.Content}`; }
 }

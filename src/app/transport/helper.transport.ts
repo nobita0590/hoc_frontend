@@ -8,9 +8,9 @@ export class HelperTransport {
     return this.API_ENDPOINT + url;
   }
   public static objectToFormData(object: Object): string {
-    let data = this.createUrlData(object);
+    const data = this.createUrlData(object);
     /*return data.toString();*/
-    return data.join('&');
+    return data.toString();
   }
   /*public static createUrlData(object: Object, form?: URLSearchParams, namespace?: string): URLSearchParams {
     const formData = form || new URLSearchParams();
@@ -55,8 +55,8 @@ export class HelperTransport {
     return Promise.reject(error);
   }
 
-  public static createUrlData(object: Object, form?: string[], namespace?: string) {
-    const formData = form || [];
+  public static createUrlData(object: Object, form?: URLSearchParams, namespace?: string) {
+    const formData = form || new URLSearchParams();
     for (const property in object) {
       if (!object.hasOwnProperty(property) || !object[property]) {
         continue;
@@ -68,11 +68,12 @@ export class HelperTransport {
         formKey = namespace ? `${namespace}.${property}` : property;
       }
       if (object[property] instanceof Date) {
-        formData.push(`${formKey}=${object[property].toISOString()}`);
+        formData.append(formKey, object[property].toISOString());
       } else if (typeof object[property] === 'object' && !(object[property] instanceof File)) {
         this.createUrlData(object[property], formData, formKey);
       } else {
-        formData.push(`${formKey}=${object[property]}`);
+        console.log(object[property])
+        formData.append(formKey, object[property]);
       }
     }
     return formData;

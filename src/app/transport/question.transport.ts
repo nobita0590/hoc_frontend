@@ -54,6 +54,7 @@ export class QuestionTransport {
       .catch(HelperTransport.handleError);
   }
   update(question: Question): Promise<any> {
+    console.log(question)
     let data = HelperTransport.objectToFormData(question);
     let options: RequestOptionsArgs = {
       method : 'put',

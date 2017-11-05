@@ -1,0 +1,281 @@
+﻿@charset "utf-8";
+/* CSS by tienducdesign@gmail.com */
+
+/*TOP NAV*/
+.fixed-top + main {margin-top: 117px;}
+.navbar {display: block; padding: 0}
+.bg-blue {background-color: #2b59b0;}
+
+.top-nav {min-height: 60px; display: flex; align-items: center;}
+.top-nav .navbar-nav li { align-items: center; display: flex;}
+.top-nav .navbar-nav li a { padding-right: 1rem !important; padding-left: 1rem !important;}
+.box-search {position: relative; height: 42px; width: 420px; max-width: 100%;}
+.box-search input {display: block; width: 100% !important; height:100%; background-color: #1a4587; border:none; color:#999; border-radius: 2px;}
+.box-search input:focus {box-shadow:none; background-color: #ccc;}
+.box-search .btn {position: absolute; top:0; right: 0; bottom: 0; background-color: transparent; border-radius: 0; box-shadow: none; cursor: pointer; color: rgba(34,34,34,.5);}
+
+.main-nav {background-color: #eee; border-bottom: 1px solid #d1d3d6;}
+.main-nav .navbar-nav {display: flex; justify-content: space-between; border-right: 1px solid #d1d3d6;}
+.main-nav .navbar-nav li {border-left: 1px solid #d1d3d6;flex: auto;}
+.main-nav .navbar-nav li a {color:#666; font-size: 16px; text-transform: uppercase; display: flex; justify-content: center; width: 100%; text-align: center; line-height: 56px; padding: 0; background-color: transparent; align-items:center;}
+.main-nav .navbar-nav li a:hover {background-color: #d1d3d6;}
+.main-nav .navbar-nav li a img {max-height: 32px; color:#666; margin-right: 10px;}
+
+.nav-user-profile {padding:0;}
+.img-circle { border-radius: 50%;}
+.img-user-profile {width: 36px;height: 36px;}
+/*End TOP NAV*/
+
+/*Form login*/
+.body-user {background-color: #e9ebee; min-height: calc(100vh - 117px); padding:2rem 0;}
+.heading-form {padding-top:20px; text-align: center; font-size: 18px; font-weight: 400; text-transform: uppercase; color:#0058a2;}
+.wrapper-form {background-color: #fff; max-width: 550px; padding:20px 40px; margin:0 auto; border-top:1px solid #008aff;box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);}
+.wrapper-form .form-control::placeholder { color:#03488b;}
+.wrapper-form .form-control { font-size: 17px;}
+.hrcontent {text-align: center; color:#a9a9a9; margin-top: 10px; margin-bottom:20px;} 
+.hrcontent span {font-size: 13px; position: relative; display: inline-block; padding: 0 10px; background-color: #fff; z-index: 20;} 
+.hrcontent span .fa {font-size: 15px;}
+.hrcontent hr {border-color:#e9ebee; position: relative; top:-10px; width: 65%; margin:0 auto; z-index: 15;}
+.end-wrap-form {padding: 5px 0; font-size: 13px;}
+.end-wrap-form p {padding:0; margin:3px 0 0;}
+/*END Form login*/
+
+.user-sidebar {}
+.user-main {}
+.headingpageuser {color: #000; font-size: 18px; text-transform: uppercase;}
+
+.user-info {}
+.img-profile-infopage {width: 128px; height: 128px; display: block; border: 7px solid #e9ebee; box-shadow: 0 0 0 7px #fff, 0 0 0 8px #e9ebee; transition-duration: 0.3s;}
+.img-profile-infopage:hover {border: 7px solid #a2e4e0; box-shadow: 0 0 0 9px #fff, 0 0 0 10px #a2e4e0; transition-duration: 0.3s;}
+.user-profile {}
+
+.list-info {}
+.list-info li {border-radius: 0 !important; border:none !important; padding:5px 20px;}
+.list-info li .badge {color: #c800ca}
+.list-info li:hover {background-color: #fde3fc}
+
+.form-info-profile {font-size: 15px;}
+.form-info-profile label {font-weight: 300;}
+
+/*#############################################*/
+/*                END HEADER	               */
+/*#############################################*/
+
+.endpage {background-color: #ceddfb;}
+/*footer*/
+footer {padding: 20px; color:#fff; background-color: #2b59b0; text-align: center;}
+footer p {margin-bottom: 6px;}
+footer ul {margin-bottom: 0;}
+footer ul li {display: inline-block; padding:0; margin-left: 18px;}
+footer ul li a {margin-right: 18px;}
+footer a{color:rgba(255,255,255,0.85);}
+footer a:hover {color:rgb(255,255,255);}
+/*#############################################*/
+/*					BOOTOM        		       */
+/*#############################################*/
+.wiggle {
+	box-shadow: 0 0 1px rgba(0,0,0,0);
+	-moz-osx-font-smoothing: grayscale;
+	backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	transform: translateZ(0);
+	-o-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-webkit-transform: translateZ(0);
+	animation-name: wiggle;
+	-o-animation-name: wiggle;
+	-ms-animation-name: wiggle;
+	-moz-animation-name: wiggle;
+	-webkit-animation-name: wiggle;
+	animation-duration: 5s;
+	-o-animation-duration: 5s;
+	-ms-animation-duration: 5s;
+	-moz-animation-duration: 5s;
+	-webkit-animation-duration: 5s;
+	animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	-ms-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	-webkit-animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	-ms-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	animation-play-state: running;
+	-o-animation-play-state: running;
+	-ms-animation-play-state: running;
+	-moz-animation-play-state: running;
+	-webkit-animation-play-state: running
+}
+@-webkit-keyframes wiggle {
+2% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+4% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+6% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+8% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+10% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+12% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+14% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+16% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+18% {
+-webkit-transform:translateX(1px) rotate(0);
+transform:translateX(1px) rotate(0)
+}
+20% {
+-webkit-transform:translateX(-1px) rotate(0);
+transform:translateX(-1px) rotate(0)
+}
+}
+@keyframes wiggle {
+2% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+4% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+6% {
+-webkit-transform:translateX(3px) rotate(2deg);
+transform:translateX(3px) rotate(2deg)
+}
+8% {
+-webkit-transform:translateX(-3px) rotate(-2deg);
+transform:translateX(-3px) rotate(-2deg)
+}
+10% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+12% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+14% {
+-webkit-transform:translateX(2px) rotate(1deg);
+transform:translateX(2px) rotate(1deg)
+}
+16% {
+-webkit-transform:translateX(-2px) rotate(-1deg);
+transform:translateX(-2px) rotate(-1deg)
+}
+18% {
+-webkit-transform:translateX(1px) rotate(0);
+transform:translateX(1px) rotate(0)
+}
+20% {
+-webkit-transform:translateX(-1px) rotate(0);
+transform:translateX(-1px) rotate(0)
+}
+}
+
+
+
+.icon_call {display:block;position:fixed;left:10px;bottom:0; z-index:100000;}
+.icon_call img {display:block; margin:20px auto; position:relative; top:0;
+    -webkit-animation: callAnimation 6s linear infinite 0s;
+    -moz-animation: callAnimation 6s linear infinite 0s;
+    -o-animation: callAnimation 6s linear infinite 0s;
+    -ms-animation: callAnimation 6s linear infinite 0s;
+    animation: callAnimation 6s linear infinite 0s;
+}
+
+
+@-webkit-keyframes callAnimation { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-moz-keyframes callAnimation { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-o-keyframes callAnimation { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-ms-keyframes callAnimation { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@keyframes callAnimation { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-webkit-keyframes callAnimation2 { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-moz-keyframes callAnimation2 { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-o-keyframes callAnimation2 { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@-ms-keyframes callAnimation2 { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}
+@keyframes callAnimation2 { 
+	0% {opacity: 0.3;top:0;}
+	30% {opacity: 1;top:20px;}
+	60% {opacity: 0.7;top:0;}
+	80% {opacity: 1;top:20px;}
+	100% {opacity: 0.3;top:0;}
+}

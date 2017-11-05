@@ -43,7 +43,6 @@ export class CreateComponent implements OnInit {
     this.mainForm = this.fb.group({
       CategoryId: ['', [Validators.required] ],
       Content: ['', [Validators.required] ],
-      TypeId: [''],
       ClassId: ['', Validators.required ],
       DifficultId: ['', Validators.required ],
       SubjectId: ['', Validators.required ],
@@ -146,25 +145,26 @@ export class CreateComponent implements OnInit {
         this.questionTransport.getA(this.filter)
           .then(question => {
             this.question = question;
-            this.mainForm.setValue({
+            this.mainForm.patchValue({
               CategoryId: question.CategoryId,
               Content: question.Content,
-              TypeId: question.TypeId,
               ClassId: question.ClassId,
               DifficultId: question.DifficultId,
-              SubjectId: question.SubjectId,
+              SubjectId: question.SubjectId
             });
             // AnswerView
-            question.AnswerView.forEach(e => {
-              this.addAnswer(e);
-            });
+            if (Array.isArray(question.AnswerView)) {
+              for (const e of question.AnswerView) {
+                this.addAnswer(e);
+              }
+            }
             setTimeout(() => {
               CKEDITOR.instances[Object.keys(CKEDITOR.instances)[0]].setData(question.Content);
-            }, 100);
+            }, 200);
           })
           .catch(err => {
             console.log(err);
-            this.route.navigate(['admin/news']);
+            // this.route.navigate(['admin/questions']);
           });
       }else {
         this.addAnswer();

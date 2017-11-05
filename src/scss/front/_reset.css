@@ -1,0 +1,52 @@
+@charset "utf-8";
+/* CSS by tienducdesign */
+* {
+margin:0px;padding:0px;
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+}
+body {font-family: 'Roboto', sans-serif; font-size:14px; background:#fff;color:#333333;}
+h1, h2, h3, h4, h5, h6 {}
+a {text-decoration:none; color:#222;}
+a:hover {text-decoration:none; color:#1473e6;}
+input:focus, textarea:focus, select:focus { outline: none !important;}
+ul {list-style: none;}
+
+/*#############################################*/
+/*                END general                  */
+/*#############################################*/
+
+.form-control {border-radius: 0;}
+.form-control[type="password"] {color:red;}
+.form-login .form-control {padding: .62rem 0; border-top-color:transparent; border-right-color:transparent; border-left-color:transparent;}
+.form-login .form-control:focus {box-shadow: none !important;}
+.btn { /*reset button*/
+  border-radius: 2px;
+  border:none;
+  padding:0 12px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26);
+  line-height: 40px;
+  cursor: pointer;
+  font-size: 15px;
+}
+.btn-sm {
+  line-height: 32px;
+}
+.btn-lg {
+  line-height: 60px;
+}
+.btn-p55 {padding-left: 55px; padding-right: 55px;}
+.btn-p30 {padding-left: 30px; padding-right: 30px;}
+.btn-social-fb {background-color: #3b5999 !important;}
+.btn-social-gg {background-color: #d9534f !important;}
+a[class*="-social-"] .fa {margin-right: 10px;}
+
+.dropdown-menu {
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
+    will-change: width, height !important;
+    border-radius: 0; border:none;
+    font-size: 14px !important;
+}
+.dropdown-item {padding: .35rem 1.5rem;}
