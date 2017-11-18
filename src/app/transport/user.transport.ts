@@ -12,36 +12,54 @@ export class UserTransport {
   accessKeyName = 'access_token';
   constructor(private http: Http) { }
   login(user: User): Promise<any> {
-    let data = HelperTransport.objectToFormData(user);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(user);
+    const options: RequestOptionsArgs = {
       method : 'post',
       headers : HelperTransport.getHeader(),
     };
     return this.http.post(HelperTransport.api(`auth/login`), data, options)
       .toPromise()
       .then(response => {
-        let _d = response.json();
+        const _d = response.json();
         if (_d.status) {
           localStorage.setItem(UserConfig.AccessKeyName, _d.data.access_token);
           localStorage.setItem('user', JSON.stringify(_d.data.user));
         }
-        return _d;
+        return _d.data.user;
       })
       .catch(HelperTransport.handleError);
   }
-  loginFacebook(id: string,token: string): Promise<any> {
-    let data = HelperTransport.objectToFormData({
+  register(user: User): Promise<User> {
+    const data = HelperTransport.objectToFormData(user);
+    const options: RequestOptionsArgs = {
+      method : 'post',
+      headers : HelperTransport.getHeader(),
+    };
+    return this.http.post(HelperTransport.api(`auth/register`), data, options)
+      .toPromise()
+      .then(response => {
+        const _d = response.json();
+        if (_d.status) {
+          localStorage.setItem(UserConfig.AccessKeyName, _d.data.access_token);
+          localStorage.setItem('user', JSON.stringify(_d.data.user));
+        }
+        return _d.data.user;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  loginFacebook(id: string, token: string): Promise<any> {
+    const data = HelperTransport.objectToFormData({
       id: id,
       access_token: token
     });
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       method : 'post',
       headers : HelperTransport.getHeader(),
     };
     return this.http.post(HelperTransport.api(`auth/login/facebook`), data, options)
       .toPromise()
       .then(response => {
-        let _d = response.json();
+        const _d = response.json();
         if (_d.status) {
           localStorage.setItem(UserConfig.AccessKeyName, _d.data.access_token);
           localStorage.setItem('user', JSON.stringify(_d.data.user));
@@ -51,8 +69,8 @@ export class UserTransport {
       .catch(HelperTransport.handleError);
   }
   checkLogin(): boolean {
-    let accessKey = localStorage.getItem(this.accessKeyName);
-    //console.log(accessKey)
+    const accessKey = localStorage.getItem(this.accessKeyName);
+    // console.log(accessKey)
     if (accessKey && accessKey !== 'undefined') {
       return true;
     }
@@ -60,10 +78,11 @@ export class UserTransport {
   }
   logout() {
     localStorage.removeItem(this.accessKeyName);
+    localStorage.removeItem('user');
   }
   getA(filter: UserFilter): Promise<User> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
@@ -79,13 +98,13 @@ export class UserTransport {
     user: User[],
     p_info: UserFilter
   }> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
     };
-    //console.log(this.headers);
+    // console.log(this.headers);
     return this.http.get(this.userApi + '/list', options)
       .toPromise()
       .then(response => {
@@ -94,8 +113,8 @@ export class UserTransport {
       .catch(HelperTransport.handleError);
   }
   insert(user: User): Promise<any> {
-    let data = HelperTransport.objectToFormData(user);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(user);
+    const options: RequestOptionsArgs = {
       method : 'post',
       headers : this.headers,
     };
@@ -107,8 +126,8 @@ export class UserTransport {
       .catch(HelperTransport.handleError);
   }
   update(user: User): Promise<any> {
-    let data = HelperTransport.objectToFormData(user);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(user);
+    const options: RequestOptionsArgs = {
       method : 'put',
       headers : this.headers,
     };
@@ -120,8 +139,8 @@ export class UserTransport {
       .catch(HelperTransport.handleError);
   }
   delete(filter: UserFilter): Promise<number> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data

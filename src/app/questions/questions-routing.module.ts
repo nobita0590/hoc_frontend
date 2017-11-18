@@ -4,6 +4,9 @@ import { Routes,
 
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
+import { TestComponent } from './test/test.component';
+import { TestsFrameFormComponent } from './tests-frame/tests-frame-form.component';
+import { TestsFrameComponent } from './tests-frame/tests-frame.component';
 
 const routes: Routes = [
   {
@@ -23,6 +26,30 @@ const routes: Routes = [
     component: CreateComponent,
     data: {
       title: 'Sửa câu hỏi'
+    }
+  }, {
+    path: 'test',
+    component: TestComponent,
+    data: {
+      title: 'Đề thi'
+    }
+  }, {
+    path: 'test/frame',
+    component: TestsFrameComponent,
+    data: {
+      title: 'Mẫu đề'
+    }
+  }, {
+    path: 'test/frame/create',
+    component: TestsFrameFormComponent,
+    data: {
+      title: 'Tạo mẫu đề'
+    }
+  }, {
+    path: 'test/frame/edit/:id',
+    component: TestsFrameFormComponent,
+    data: {
+      title: 'Sửa mẫu đề'
     }
   }
 ];

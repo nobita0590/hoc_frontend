@@ -1,0 +1,75 @@
+<form [formGroup]="mainForm" novalidate (submit)="onSubmit()">
+  <div class="card">
+    <div class="card-header">
+      <i class="fa fa-align-justify"></i>
+    </div>
+    <div class="card-body">
+      <div class="card-container">
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Tên đề</label>
+          <div class="col-md-9">
+            <input type="text" class="form-control" formControlName="Title">
+            <show-errors [control]="mainForm.controls.Title" [fname]="'Tên đề'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Lớp</label>
+          <div class="col-md-9">
+            <select class="form-control" formControlName="ClassId">
+              <option value="0">Lớp</option>
+              <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.ClassId" [fname]="'Lớp'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Môn học</label>
+          <div class="col-md-9">
+            <select class="form-control" formControlName="SubjectId">
+              <option value="0">Môn học</option>
+              <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.SubjectId" [fname]="'Môn học'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Thời lượng</label>
+          <div class="col-md-9">
+            <div class="input-group">
+              <input type="text" class="form-control" formControlName="Time">
+              <span class="input-group-addon">Phút</span>
+            </div>
+            <show-errors [control]="mainForm.controls.Time" [fname]="'Thời lượng'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 form-control-label">Mô tả</label>
+          <div class="col-md-9">
+            <textarea name="Description" id="" cols="30" rows="3"formControlName="Description" class="form-control"></textarea>
+            <show-errors [control]="mainForm.controls.Description" [fname]="'Mô tả'" ></show-errors>
+          </div>
+        </div>
+        <div class="row">
+          <ul class="questions">
+            <li class="question" *ngFor="let question of test.Questions;let i = index">
+              <div class="title">
+                <span class="btn btn-outline-primary btn-sm">{{showClassName(question)}}</span>
+                <span class="btn btn-outline-primary btn-sm">{{showSubjectName(question)}}</span>
+                <span class="btn btn-outline-primary btn-sm">{{showDifficulName(question)}}</span>
+                <span class="btn btn-outline-danger btn-sm" (click)="removeQuestion(i)">Bỏ câu hỏi</span>
+              </div>
+              <div class="description" [innerHTML]="question.Content"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-container">
+        <button type="submit" class="btn btn-sm btn-primary"> Cập nhật đề thi</button>
+        <button type="reset" class="btn btn-sm btn-danger" (click)="onDone.emit()"> Bỏ qua</button>
+      </div>
+    </div>
+  </div>
+</form>
+

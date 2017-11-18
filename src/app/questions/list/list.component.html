@@ -1,9 +1,10 @@
 <div class="animated fadeIn">
   <div class="row">
-    <div class="col-lg-12">
+    <div [ngClass]="isCreating ? 'col-lg-6' : 'col-lg-12'">
       <div class="card">
         <div class="card-header">
           <i class="fa fa-align-justify"></i>
+          <button class="btn btn-success btn-xs pull-right" (click)="createTest()" style="margin-left: 0.5em;">Tạo đề</button>
           <a class="btn btn-success btn-xs pull-right" [routerLink]="['/admin/questions/create']"><i class="icon-user-follow"></i> Tạo câu hỏi</a>
         </div>
         <div class="card-body">
@@ -15,9 +16,6 @@
                           [items]="items"
                           [itemCount]="itemCount"
                           (reload)="reloadItems($event)"
-                          (rowClick)="rowClick($event)"
-                          (rowDoubleClick)="rowDoubleClick($event)"
-                          [rowTooltip]="rowTooltip"
                           [expandableRows]="true"
               >
                 <template #dataTableExpand let-item="item">
@@ -26,18 +24,42 @@
                 <data-table-column
                   property="ClassName"
                   header="Lớp">
+                  <ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.ClassId" (change)="reloadItems()">
+                      <option value="">Lớp</option>
+                      <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>
                 </data-table-column>
                 <data-table-column
                   property="SubjectName"
                   header="Môn học">
+                  <ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.SubjectId" (change)="reloadItems()">
+                      <option value="">Môn học</option>
+                      <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>
                 </data-table-column>
                 <data-table-column
                   property="CategoryName"
                   header="Chuyên đề">
+                  <ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.CategoryId" (change)="reloadItems()">
+                      <option value="">Chuyên đề</option>
+                      <option *ngFor="let source of categorySource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>
                 </data-table-column>
                 <data-table-column
                   property="DifficultName"
                   header="Độ khó">
+                  <ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.DifficultId" (change)="reloadItems()">
+                      <option value="">Độ khó</option>
+                      <option *ngFor="let source of difficultSource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>
                 </data-table-column>
                 <data-table-column
                   property="CreatorName"
@@ -60,6 +82,11 @@
                         Action <span class="caret"></span>
                       </button>
                       <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li *ngIf="isCreating" role="menuitem">
+                          <a class="dropdown-item action" (click)="addToTest(item)">
+                            <i class="fa fa-edit fa-lg" [ngClass]="isAdded(item) ? 'text-muted' : 'text-info'"></i> Thêm vào bài thi
+                          </a>
+                        </li>
                         <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/questions/edit/' + item.ID]">
                           <i class="fa fa-edit fa-lg text-info"></i> Sửa </a>
                         </li>
@@ -76,6 +103,11 @@
 
         </div>
       </div>
+    </div>
+    <div class="col-lg-6" *ngIf="isCreating">
+      <test-form-component [difficultSource]="difficultSource" (onDone)="isCreating = false"
+                           [classSource]="classSource" [subjectSource]="subjectSource" [test]="test">
+      </test-form-component>
     </div>
   </div>
 </div>

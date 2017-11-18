@@ -1,7 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserTransport } from './../transport/user.transport';
-import {ToastyService, ToastyConfig, ToastOptions, ToastData} from 'ng2-toasty';
+import { ToastyService, ToastyConfig, ToastOptions } from 'ng2-toasty';
 import { FlashAlert } from './../shared/flash.alert';
 import { User } from './../type/user-type';
 import { Subscription } from 'rxjs/Subscription';

@@ -4,11 +4,21 @@ import { AbstractControlDirective, AbstractControl } from '@angular/forms';
 @Component({
   selector: 'show-errors',
   template: `
-    <ul *ngIf="shouldShowErrors()" class="alert alert-danger">
-      <li style="list-style-type: none;" *ngFor="let error of listOfErrors()">{{error}}</li>
-    </ul>
+    <span *ngIf="shouldShowErrors()" class="error-text">{{getError()}}</span>
   `,
+  styles: [`
+    .error-text {
+      margin-top: .25rem;
+      font-size: .875rem;
+      color: #f86c6b;
+    }
+  `]
 })
+/*
+* <div *ngIf="shouldShowErrors()">
+      <span class="invalid-feedback" style="list-style-type: none;" *ngFor="let error of listOfErrors()">{{error}}</span>
+    </div>
+* */
 export class ShowErrorsComponent {
 
   private static readonly errorMessages = {
@@ -18,7 +28,7 @@ export class ShowErrorsComponent {
     'maxlength': (fname, params) => `${fname} có độ dài tối đa là ${params.requiredLength}`,
     'pattern': (fname, params) => `The required pattern is: ${params.requiredPattern}`,
     'server': (fname, params) => {
-      console.log(params);
+      // console.log(params);
       return `Loi tu server tra ve ${params}`;
     },
     /*'years': (params) => params.message,
@@ -37,6 +47,10 @@ export class ShowErrorsComponent {
       (this.control.errors.server || this.control.dirty || this.control.touched);
   }
 
+  getError(): string {
+    const errors = this.listOfErrors();
+    return errors[0];
+  }
   listOfErrors(): string[] {
     return Object.keys(this.control.errors)
       .map(field => this.getMessage(field, this.control.errors[field]));

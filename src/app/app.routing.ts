@@ -4,12 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 // Layouts
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 import { FullLayoutComponent } from './layouts/full-layout.component';
-import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin/document/create',
+    redirectTo: 'admin/questions/test/frame/create',
     pathMatch: 'full',
   },
   {
@@ -67,15 +66,6 @@ export const routes: Routes = [
         path: '',
         loadChildren: './auth/auth.module#AuthModule'
       }
-    ]
-  },
-  {
-    path: 'fr',
-    component: FrondtendLayoutComponent,
-    data: {
-      title: 'Trang chủ'
-    },
-    children: [
     ]
   }
 ];

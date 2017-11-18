@@ -7,10 +7,17 @@ export class ValidateHelper {
       return { 'email': true };
     }
   }
+  static numberRequired(control: FormControl) {
+    if (control.value && control.value != 0) {
+      return null;
+    } else {
+      return { required: true };
+    }
+  }
 }
 
 export class FormErrorHelper {
-  static showErrorInvalid(formGroup: FormGroup){
+  static showErrorInvalid(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach(field => {
       const control = formGroup.get(field);
       if (control instanceof FormControl) {

@@ -66,7 +66,7 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-settings"></i> Cấu hình</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/setting/category']"><i class="icon-docs"></i> Danh mục</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/setting/category']"><i class="icon-docs"></i> Danh mục</a>
             </li>
           </ul>
         </li>
@@ -74,10 +74,10 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-people"></i> Quản lý tài khoản</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/user']"><i class="icon-layers"></i> Danh sách</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/user']"><i class="icon-layers"></i> Danh sách</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/user/create']"><i class="icon-user-follow"></i> Tạo tài khoản</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/user/create']"><i class="icon-user-follow"></i> Tạo tài khoản</a>
             </li>
           </ul>
         </li>
@@ -85,10 +85,10 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-speech"></i> Tin tức</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/news']"><i class="icon-docs"></i> Danh sách tin</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/news']"><i class="icon-docs"></i> Danh sách tin</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/news/create']"><i class="icon-plus"></i> Tạo mới tin</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/news/create']"><i class="icon-plus"></i> Tạo mới tin</a>
             </li>
           </ul>
         </li>
@@ -96,10 +96,10 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-doc"></i> Tài liệu</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/document']"><i class="icon-docs"></i> Danh sách tài liệu</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/document']"><i class="icon-docs"></i> Danh sách tài liệu</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/document/create']"><i class="icon-plus"></i> Tạo tài liệu</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/document/create']"><i class="icon-plus"></i> Tạo tài liệu</a>
             </li>
           </ul>
         </li>
@@ -107,34 +107,26 @@
           <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-layers"></i> Ngân hàng câu hỏi</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/questions']"><i class="icon-docs"></i> Danh sách câu hỏi</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions']"><i class="icon-docs"></i> Danh sách câu hỏi</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/admin/questions/create']"><i class="icon-plus"></i> Tạo câu hỏi</a>
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions/create']"><i class="icon-plus"></i> Tạo câu hỏi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions/test']"><i class="icon-plus"></i> Đề thi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions']" [queryParams]="{t:0}"><i class="icon-plus"></i> Tạo đề thi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions/test/frame']"><i class="icon-plus"></i> Mẫu đề thi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/admin/questions/test/frame/create']"><i class="icon-plus"></i> Tạo mẫu đề thi</a>
             </li>
           </ul>
         </li>
         <li class="divider"></li>
-        <!--<li class="nav-title">
-          Extras
-        </li>
-        <li class="nav-item nav-dropdown" appNavDropdown>
-          <a class="nav-link nav-dropdown-toggle" href="#" appNavDropdownToggle><i class="icon-star"></i> Pages</a>
-          <ul class="nav-dropdown-items">
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/login']"><i class="icon-star"></i> Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/register']"><i class="icon-star"></i> Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/404']"><i class="icon-star"></i> Error 404</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
-            </li>
-          </ul>
-        </li>-->
       </ul>
     </nav>
   </div>

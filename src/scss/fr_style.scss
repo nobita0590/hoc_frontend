@@ -1,0 +1,12 @@
+//@import "bootstrap-variables";
+//@import "bootstrap/bootstrap";
+
+@import "frontend";
+
+input.ng-invalid.ng-touched,select.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched {
+  border: 1px solid #dc3545;
+}
+input.ng-valid.ng-touched,select.ng-valid.ng-touched, textarea.ng-valid.ng-touched{
+  border: 1px solid #28a745;
+}
+

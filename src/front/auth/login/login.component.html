@@ -1,0 +1,43 @@
+<div class="body-user">
+
+  <div class="container">
+    <h3 class="heading-form">Đăng nhập</h3>
+    <div class="wrapper-form">
+      <form class="form-login" [formGroup]="mainForm" novalidate (submit)="onSubmit()">
+        <p class="text-center">Để học, thi, luyện và giao lưu với bạn bè trên mọi miền tổ quốc</p>
+        <div class="hrcontent">
+          <span><i class="fa fa-user-circle"></i></span><hr>
+        </div>
+        <div class="form-group">
+          <input type="text" formControlName="UserName" name="UserName"
+                 class="form-control" placeholder="Tên đăng nhập hoặc Email">
+          <show-errors [control]="mainForm.controls.UserName" [fname]="'Tên đăng nhập'" ></show-errors>
+        </div>
+        <div class="form-group">
+          <input formControlName="Password" name="Password"
+                 type="password" class="form-control" placeholder="Mật khẩu">
+          <show-errors [control]="mainForm.controls.Password" [fname]="'Mật khẩu'" ></show-errors>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary btn-p55 text-uppercase">Đăng nhập</button>
+        </div>
+        <div class="hrcontent">
+          <span>Hoặc đăng nhập qua:</span><hr>
+        </div>
+      </form>
+      <div class="row login-with-social">
+        <div class="col">
+          <a href="" class="btn btn-block btn-primary btn-social-fb"><i class="fa fa-facebook-official"></i> Login with Facebook</a>
+        </div>
+        <div class="col">
+          <a href="" class="btn btn-block btn-primary btn-social-gg"><i class="fa fa-google"></i> Login with Google</a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center end-wrap-form">
+      <p class=" m-10-0-0">Bạn chưa có tài khoản? <a [routerLink]="['/tai-khoan/dang-ky']" class="btn-link">Đăng ký tại đây</a></p>
+      <p>Bạn quên mật khẩu? <a [routerLink]="['/tai-khoan/quyen-mat-khau']" class="btn-link">Lấy lại tại đây</a></p>
+    </div>
+  </div> <!-- /container -->
+
+</div>

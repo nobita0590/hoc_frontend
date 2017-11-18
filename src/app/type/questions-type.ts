@@ -20,4 +20,8 @@ export class Answer {
 export class QuestionFilter extends Page {
   ID:  number;
   IsFill: boolean;
+  ClassId = '';
+  SubjectId = '';
+  CategoryId = '';
+  DifficultId = '';
 }

@@ -24,7 +24,7 @@ import { FlashAlert } from './shared/flash.alert';
 // Layouts
 import { FullLayoutComponent } from './layouts/full-layout.component';
 import { SimpleLayoutComponent } from './layouts/simple-layout.component';
-import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
+// import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
 
 @NgModule({
   imports: [
@@ -43,7 +43,7 @@ import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
     AppComponent,
     SimpleLayoutComponent,
     FullLayoutComponent,
-    FrondtendLayoutComponent,
+    // FrondtendLayoutComponent,
     NAV_DROPDOWN_DIRECTIVES,
     BreadcrumbsComponent,
     SIDEBAR_TOGGLE_DIRECTIVES,

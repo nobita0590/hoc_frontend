@@ -1,3 +1,8 @@
+@import "front/bootstrap.min.css";
 @import "front/_reset.css";
 @import "front/_responsive.css";
 @import "front/_style.css";
+
+a.action{
+  cursor: pointer !important;
+}

@@ -1,4 +1,4 @@
-import { Headers } from '@angular/http';
+import { Headers, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 export class HelperTransport {
@@ -7,10 +7,10 @@ export class HelperTransport {
   public static api(url: string): string {
     return this.API_ENDPOINT + url;
   }
-  public static objectToFormData(object: Object): string {
+  public static objectToFormData(object: Object): any {
     const data = this.createUrlData(object);
-    /*return data.toString();*/
-    return data.toString();
+    return data;
+    // return data;
   }
   /*public static createUrlData(object: Object, form?: URLSearchParams, namespace?: string): URLSearchParams {
     const formData = form || new URLSearchParams();
@@ -72,7 +72,6 @@ export class HelperTransport {
       } else if (typeof object[property] === 'object' && !(object[property] instanceof File)) {
         this.createUrlData(object[property], formData, formKey);
       } else {
-        console.log(object[property])
         formData.append(formKey, object[property]);
       }
     }

@@ -1,43 +1,25 @@
 @charset "utf-8";
 /* CSS by tienducdesign@gmail.com */
 @media only screen and (min-width: 1170px) {
+  .courses-list-ofdetail .courses-item {width:33.33%;}
 }
 @media only screen and (max-width: 980px) {
+  .courses-list .courses-item {width:33.33%;}
+  .courses-list-ofdetail .courses-item {width:50%;}
 }
 @media only screen and (max-width: 768px) {
-.navbar .navbar-nav>li[class*="dropdown"]>.dropdown-menu, .navbar .navbar-nav>li.dropdown-grid>.dropdown-grid-wrapper>.dropdown-menu {top:100% !important;}
-.navbar .navbar-nav>li {position: relative !important;}
-.navbar .navbar-nav>li .customa {position: absolute; top: 0; right: 0; padding-left: 15px !important; background-color: rgba(34,34,34,.1)!important;}
-.caret {margin-left: 0 !important;}
-
-.main_slider { top: -40px; margin-bottom: -40px;}
-
-.big-video-review, .list-video-review {float: none; width: 100%;}
-.list-video-review ul {}
-.list-video-review ul li {margin:20px 0; float: none; width: 100%;}
-#modal_video {width: 100%;}
-#modal_video iframe {width: 100% !important;}
-
-.section-left .textinfo {left: initial;}
-.textinfo {width: 100%;}
-.wrap-textinfo h2 {top: 0; padding:10px 0; font-size: 36px;}
-footer .footer-header { padding: 20px 0;}
-footer .footer-header .row > div{ padding-bottom: 20px;}
-.breadcrum {display: none;}
-
+  .courses-list .courses-item {width:50%;}
+  .courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
 @media only screen and (max-width: 640px) {
-.logo-center {top: -22px;}
-.logo-center img {width:180px;}
-.col-menu {width: 0;}
-.col-menu.wrap-logo {width: 100%;}
+  .courses-list .courses-item {width:50%;}
+  .courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
 @media only screen and (max-width: 480px) {
-	.subth2 {width:initial;}
+  .courses-list .courses-item {float: none; width:100%;}
+  .courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
-@media only screen and (max-width: 320px) {
-
-}
+@media only screen and (max-width: 320px) {}
 
 /*#############################################*/
 /*                END responsive               */

@@ -1,0 +1,77 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="mainForm" novalidate (submit)="onSubmit()">
+        <div class="card">
+          <div class="card-header">
+            <i class="icon-user-follow"></i>
+          </div>
+          <div class="card-block">
+            <div class="card-container">
+              <strong>{{title}}</strong>
+              <hr>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Tên mẫu đề</label>
+                <div class="col-md-9">
+                  <input formControlName="Title"
+                         type="text" name="Title" class="form-control" placeholder="Tên mẫu đề..">
+                  <show-errors [control]="mainForm.controls.Title" [fname]="'Tên mẫu đề'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Số câu</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <input formControlName="Total"
+                           type="text" name="Total" class="form-control" placeholder="Số câu..">
+                    <span class="input-group-addon">Câu</span>
+                  </div>
+                  <show-errors [control]="mainForm.controls.Total" [fname]="'Số câu'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Thời lượng làm bài</label>
+                <div class="col-md-9">
+                  <div class="input-group">
+                    <input formControlName="Time"
+                           type="text" name="Time" class="form-control" placeholder="Thời lượng làm bài..">
+                    <span class="input-group-addon">Phút</span>
+                  </div>
+                  <show-errors [control]="mainForm.controls.Time" [fname]="'Thời lượng làm bài'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Cấu hình câu hỏi</label>
+                <div class="col-md-9" formArrayName="DifficulConfig" [title]="confTitle">
+                  <div *ngFor="let config of DifficulConfig.controls; let i=index" [formGroupName]="i">
+                    <div class="input-group">
+                      <span class="input-group-addon">{{difficultSource[i].Value}}</span>
+                      <input type="text" name="Percent" class="form-control" formControlName="Percent">
+                      <span class="input-group-addon">%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Mô tả</label>
+                <div class="col-md-9">
+                  <textarea formControlName="Description"
+                            type="text" name="Description" class="form-control" placeholder="Mô tả.."></textarea>
+                  <show-errors [control]="mainForm.controls.Description" [fname]="'Mô tả'" ></show-errors>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-container">
+              <button type="submit" class="btn btn-sm btn-primary"> Cập nhật</button>
+              <button type="reset" class="btn btn-sm btn-danger"> Bỏ qua</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<block-ui [template]="blockTemplate"></block-ui>
+<!--[disabled]="mainForm.invalid"-->

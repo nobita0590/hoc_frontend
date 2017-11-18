@@ -22,6 +22,26 @@ export class NewsTransport {
       })
       .catch(HelperTransport.handleError);
   }
+  detailNews(filter: NewsFilter): Promise<{
+    news: News,
+    relate: News[]
+  }> {
+    let data = HelperTransport.objectToFormData(filter);
+    let options: RequestOptionsArgs = {
+      headers : this.headers,
+      body : data,
+      search: data
+    };
+    return this.http.get(`${this.apiUrl}/detail` , options)
+      .toPromise()
+      .then(response => {
+        return response.json().data as {
+          news: News,
+          relate: News[]
+        };
+      })
+      .catch(HelperTransport.handleError);
+  }
   getList(filter: NewsFilter): Promise<{
     models: News[],
     p_info: NewsFilter
