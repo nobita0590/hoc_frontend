@@ -21,6 +21,7 @@ export class TestsFrameFormComponent implements OnInit {
   classSource = [];
   difficultSource = [];
   subjectSource = [];
+  typeSource = [];
   mainForm: FormGroup;
   test = new TestsFrame();
   @BlockUI() blockUI: NgBlockUI;
@@ -32,7 +33,9 @@ export class TestsFrameFormComponent implements OnInit {
               private selectSourceTransport: SelectSourceTransport) {
     this.mainForm = this.fb.group({
       Title: ['', [Validators.required]],
-      Time: ['', [ValidateHelper.numberRequired]],
+      ClassesId: ['', [ValidateHelper.numberRequired]],
+      SubjectId: ['', [ValidateHelper.numberRequired]],
+      TypeId: ['', [ValidateHelper.numberRequired]],
       Description: [''],
       Total: ['', [ValidateHelper.numberRequired]],
       DifficulConfig: this.fb.array([])
@@ -46,7 +49,7 @@ export class TestsFrameFormComponent implements OnInit {
         this.title = 'Sửa mẫu đề';
       }
     });
-    let ssFilter = {GroupsId: [1, 2, 3, 5]} as SelectSourceFilter;
+    let ssFilter = {GroupsId: [1, 2, 3, 5, 7]} as SelectSourceFilter;
     this.selectSourceTransport.getGroup(ssFilter)
       .then(groups => {
         if (groups[1]) {
@@ -58,8 +61,8 @@ export class TestsFrameFormComponent implements OnInit {
         if (groups[3]) {
           this.difficultSource = groups[3];
         }
-        if (groups[5]) {
-          this.categorySource = groups[5];
+        if (groups[7]) {
+          this.typeSource = groups[7];
         }
         if (this.test.ID > 0) {
           this.testsFrameTransport.getA({

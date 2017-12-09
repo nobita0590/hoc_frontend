@@ -17,7 +17,7 @@
     <div class="sidebar">
       <!-- ads sidebar -->
       <div class="ads">
-        <a [routerLink]="['/tin-tuc/chi-tiet']"><img class="img-fluid" src="public/frondtend/images/ads-sidebar-2.png"></a>
+        <a><img class="img-fluid" src="public/frondtend/images/ads-sidebar-2.png"></a>
       </div>
       <!-- END ads sidebar -->
 
@@ -30,59 +30,14 @@
         </div>
         <!-- END title -->
         <div class="mod-sidebar-cont">
-
-          <div class="item-sidebar">
+          <div class="item-sidebar" *ngFor="let item of listNews">
             <div class="wrap-article">
-              <a [routerLink]="['/tin-tuc/chi-tiet']" class="img-thumb-art img-cover" style="background-image: url(public/frondtend/images/Layer19-blog.png);"></a>
+              <a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]" class="img-thumb-art img-cover" [style.background-image]="urlImg(item.ImageUrl)"></a>
             </div>
             <div class="des-article">
-              <h3><a [routerLink]="['/tin-tuc/chi-tiet']">Tôi đã bắt đầu nghiên cứu AI trong 2 tháng gần đây như thế nào?</a></h3>
+              <h3><a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]">{{item.Title}}</a></h3>
               <p class="mb-0">
-                <span> <i class="fa fa-eye text-primary"></i> 235 lượt xem</span>
-              </p>
-            </div>
-          </div>
-          <div class="item-sidebar">
-            <div class="wrap-article">
-              <a [routerLink]="['/tin-tuc/chi-tiet']" class="img-thumb-art img-cover" style="background-image: url(public/frondtend/images/Layer23-blog.png);"></a>
-            </div>
-            <div class="des-article">
-              <h3><a [routerLink]="['/tin-tuc/chi-tiet']">Làm thế nào để kiểm thử tính bảo mật của ứng dụng web bằng việc...</a></h3>
-              <p class="mb-0">
-                <span> <i class="fa fa-eye text-primary"></i> 235 lượt xem</span>
-              </p>
-            </div>
-          </div>
-          <div class="item-sidebar">
-            <div class="wrap-article">
-              <a [routerLink]="['/tin-tuc/chi-tiet']" class="img-thumb-art img-cover" style="background-image: url(public/frondtend/images/Layer20-blog.png);"></a>
-            </div>
-            <div class="des-article">
-              <h3><a [routerLink]="['/tin-tuc/chi-tiet']">Các kỹ thuật SEO tối thiểu mà Dev cần nắm vững trong lập trình Web 2017</a></h3>
-              <p class="mb-0">
-                <span> <i class="fa fa-eye text-primary"></i> 235 lượt xem</span>
-              </p>
-            </div>
-          </div>
-          <div class="item-sidebar">
-            <div class="wrap-article">
-              <a [routerLink]="['/tin-tuc/chi-tiet']" class="img-thumb-art img-cover" style="background-image: url(public/frondtend/images/Layer21-blog.png);"></a>
-            </div>
-            <div class="des-article">
-              <h3><a [routerLink]="['/tin-tuc/chi-tiet']">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</a></h3>
-              <p class="mb-0">
-                <span> <i class="fa fa-eye text-primary"></i> 235 lượt xem</span>
-              </p>
-            </div>
-          </div>
-          <div class="item-sidebar">
-            <div class="wrap-article">
-              <a [routerLink]="['/tin-tuc/chi-tiet']" class="img-thumb-art img-cover" style="background-image: url(public/frondtend/images/Layer22-blog.png);"></a>
-            </div>
-            <div class="des-article">
-              <h3><a [routerLink]="['/tin-tuc/chi-tiet']">Việt Nam là một trong những nước hàng đầu của thị trường dịch vụ...</a></h3>
-              <p class="mb-0">
-                <span> <i class="fa fa-eye text-primary"></i> 235 lượt xem</span>
+                <span> <i class="fa fa-eye text-primary"></i> {{item.Views}} lượt xem</span>
               </p>
             </div>
           </div>

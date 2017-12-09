@@ -23,6 +23,7 @@ export class ListComponent implements OnInit {
   classSource = [];
   difficultSource = [];
   subjectSource = [];
+  testTypeSource = [];
 
   constructor(private questionTranport: QuestionTransport,
               private selectSourceTransport: SelectSourceTransport,
@@ -36,7 +37,7 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit() {
-    let ssFilter = {GroupsId: [1, 2, 3, 5]} as SelectSourceFilter;
+    let ssFilter = {GroupsId: [1, 2, 3, 5, 7]} as SelectSourceFilter;
     this.selectSourceTransport.getGroup(ssFilter)
       .then(groups => {
         if (groups[1]) {
@@ -50,6 +51,9 @@ export class ListComponent implements OnInit {
         }
         if (groups[5]) {
           this.categorySource = groups[5];
+        }
+        if (groups[7]) {
+          this.testTypeSource = groups[7];
         }
       })
       .catch(err => {

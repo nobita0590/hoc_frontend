@@ -1,6 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserTransport } from './../transport/user.transport';
+import { UserTransport, HelperTransport } from './../transport';
 import { ToastyService, ToastyConfig, ToastOptions } from 'ng2-toasty';
 import { FlashAlert } from './../shared/flash.alert';
 import { User } from './../type/user-type';
@@ -83,6 +83,6 @@ export class FullLayoutComponent implements AfterViewInit {
     if (this.user.AvatarUrl) {
       return this.user.AvatarUrl;
     }
-    return 'http://localhost:8080/public/img/default_user.png';
+    return HelperTransport.imageUrl('/public/img/default_user.png');
   }
 }

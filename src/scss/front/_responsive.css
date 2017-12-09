@@ -1,23 +1,33 @@
 @charset "utf-8";
 /* CSS by tienducdesign@gmail.com */
 @media only screen and (min-width: 1170px) {
-  .courses-list-ofdetail .courses-item {width:33.33%;}
-}
+	.courses-list-ofdetail .courses-item {width:33.33%;}
+} 
 @media only screen and (max-width: 980px) {
-  .courses-list .courses-item {width:33.33%;}
-  .courses-list-ofdetail .courses-item {width:50%;}
-}
+	
+	.courses-list .courses-item {width:33.33%;}
+	.courses-list-ofdetail .courses-item {width:50%;}
+
+	.section-slider {padding-bottom: 20px;}
+	.slider-body {margin-bottom: 1rem;}
+	.feature-news {height: auto; }
+	.slider-ticket {position: initial; bottom: initial; margin-top: 1rem;}
+	.section-slider + .section-get-question {padding-top: 2rem;}
+	.wrap-ticket > .row > div {margin-bottom: 1rem;}
+	.wrap-ticket > .row > div:last-child {margin-bottom: 0;}
+} 
 @media only screen and (max-width: 768px) {
-  .courses-list .courses-item {width:50%;}
-  .courses-list-ofdetail .courses-item {float: none; width:100%;}
+	.fixed-top + main { margin-top: 60px;}
+	.courses-list .courses-item {width:50%;}
+	.courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
 @media only screen and (max-width: 640px) {
-  .courses-list .courses-item {width:50%;}
-  .courses-list-ofdetail .courses-item {float: none; width:100%;}
+	.courses-list .courses-item {width:50%;}
+	.courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
 @media only screen and (max-width: 480px) {
-  .courses-list .courses-item {float: none; width:100%;}
-  .courses-list-ofdetail .courses-item {float: none; width:100%;}
+	.courses-list .courses-item {float: none; width:100%;}
+	.courses-list-ofdetail .courses-item {float: none; width:100%;}
 }
 @media only screen and (max-width: 320px) {}
 

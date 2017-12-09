@@ -3,6 +3,10 @@
 
 @import "frontend";
 
+@import "./../../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+@import "./../../node_modules/ng2-toasty/style.css";
+@import "./../../node_modules/ladda/css/ladda";
+
 input.ng-invalid.ng-touched,select.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched {
   border: 1px solid #dc3545;
 }
@@ -10,3 +14,6 @@ input.ng-valid.ng-touched,select.ng-valid.ng-touched, textarea.ng-valid.ng-touch
   border: 1px solid #28a745;
 }
 
+ul.navbar-nav li.nav-item a.active{
+  background-color: #c7e0fb;
+}

@@ -42,11 +42,7 @@
           </div>
           <div class="panel-body">
             <ul class="list-feature-news">
-              <li><a ><i class="fa fa-mortar-board mr-1"></i> Vì sao mô hình VNEN lại gặp nhiều trở ngại ở Việt Nam?</a></li>
-              <li><a ><i class="fa fa-mortar-board mr-1"></i> Hội thi “Học tập và làm theo tư tưởng, đạo đức, phong cách HCM”</a></li>
-              <li><a ><i class="fa fa-mortar-board mr-1"></i> Thí sinh có thể tham khảo định dạng đề thi năm 2017</a></li>
-              <li><a ><i class="fa fa-mortar-board mr-1"></i> Công chức Hà Nội không được phát ngôn tùy tiện trên mạng xã hội</a></li>
-              <li><a ><i class="fa fa-mortar-board mr-1"></i> Khai mạc Tuần lễ hưởng ứng học tập suốt đời năm 2017</a></li>
+              <li *ngFor="let item of news"><a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]"><i class="fa fa-mortar-board mr-1"></i> {{item.Title}}</a></li>
             </ul>
           </div>
         </aside>
@@ -92,26 +88,7 @@
 <!-- END section slider -->
 
 <!-- section get question -->
-<section class="section-get-question">
-  <div class="container text-center">
-    <h4 class="text-uppercase text-primary font-italic">Đăng câu hỏi và tham gia thảo luận cùng bạn bè!</h4>
-    <p class="pb-3">Đội ngũ giao viên cùng cộng đồng TOPEDU sẽ cùng tham gia trở lời<br>và thảo luận nhanh nhất và chính xác nhất.</p>
-    <div class="box-get-question bg-white d-flex mx-auto my-2 row">
-      <input class="input-get-question col" type="text" name="" placeholder="Câu hỏi của bạn">
-      <select class="select-get-question col-3">
-        <option>Chọn chuyên mục</option>
-        <option>Toán học</option>
-        <option>Vật lý</option>
-        <option>Tiếng anh</option>
-        <option>...</option>
-      </select>
-      <button type="button" class="btn btn-warning btn-get-question text-black text-shadow-white font-weight-bold fa-lg col-2"><i class="fa fa-send mr-2"></i> Gửi</button>
-    </div>
-    <p class="font-italic">(Đặt câu hỏi và cùng tích điểm ngay nào ^^
-      <a class="text-primary">Tìm hiểu thêm <i class="fa fa-question-circle"></i></a>)
-    </p>
-  </div>
-</section>
+<section fagsBanner class="section-get-question"></section>
 <!-- END section get question -->
 
 <!-- section topic -->
@@ -247,106 +224,11 @@
   <div class="container" style="height: 700px;">
     <h4 class="heading-title text-uppercase font-weight-normal">Khóa học luyện thi</h4>
     <div class="courses-slick">
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-0.png);"></a>
-          <p class="courses-author"><a>Thầy Lê Bá Trần Phương</a></p>
-          <h3 class="courses-name"><a>Luyện thi trắc nghiệm toán 2018</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-            <small class="text-secondary">(896)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-1b75ba">259.000 đ</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-1.png);"></a>
-          <p class="courses-author"><a>Thầy Phạm Ngọc Hưng</a></p>
-          <h3 class="courses-name"><a>Rèn luyện và nâng cao kỹ năng giải toán</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(98)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-2.png);"></a>
-          <p class="courses-author"><a>Cô Trang Elight</a></p>
-          <h3 class="courses-name"><a>Tiếng Anh cho tân sinh viên</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(325)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-3.png);"></a>
-          <p class="courses-author"><a>Cô Hoa</a></p>
-          <h3 class="courses-name"><a>Luyện thi lí, hóa, sinh dành cho lớp 12</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-            <small class="text-secondary">(39)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <!--<div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-4.png);"></a>
-          <p class="courses-author"><a>Cô Hồng</a></p>
-          <h3 class="courses-name"><a>Hướng dẫn học Tiếng Việt lớp 7</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(698)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>-->
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-5.png);"></a>
-          <p class="courses-author"><a>Nguyễn Thu Hiền</a></p>
-          <h3 class="courses-name"><a>Khóa học piano cơ bản Trong 3 tuần</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(256)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
+      <div class="courses-item" courseItem *ngFor="let item of courses" [course]="item"></div>
     </div>
 
     <br/>
-    <h4 class="heading-title text-uppercase font-weight-normal">Khóa học bổ trợ</h4>
+    <!--<h4 class="heading-title text-uppercase font-weight-normal">Khóa học bổ trợ</h4>
     <div class="courses-slick">
       <div class="courses-item">
         <div>
@@ -364,103 +246,7 @@
           <div class="courses-price text-right px-3"><label class="badge badge-1b75ba">259.000 đ</label></div>
         </div>
       </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-6.png);"></a>
-          <p class="courses-author"><a>Thầy Phạm Ngọc Hưng</a></p>
-          <h3 class="courses-name"><a>Rèn luyện và nâng cao kỹ năng giải toán</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(98)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-7.png);"></a>
-          <p class="courses-author"><a>Cô Trang Elight</a></p>
-          <h3 class="courses-name"><a>Tiếng Anh cho tân sinh viên</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(325)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-8.png);"></a>
-          <p class="courses-author"><a>Cô Hoa</a></p>
-          <h3 class="courses-name"><a>Luyện thi lí, hóa, sinh dành cho lớp 12</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-            <small class="text-secondary">(39)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-9.png);"></a>
-          <p class="courses-author"><a>Cô Hồng</a></p>
-          <h3 class="courses-name"><a>Hướng dẫn học Tiếng Việt lớp 7</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(698)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <!--<div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-0.png);"></a>
-          <p class="courses-author"><a>Nguyễn Thu Hiền</a></p>
-          <h3 class="courses-name"><a>Khóa học piano cơ bản Trong 3 tuần</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(256)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-2.png);"></a>
-          <p class="courses-author"><a>Cô Hồng</a></p>
-          <h3 class="courses-name"><a>Hướng dẫn học Tiếng Việt lớp 7</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <small class="text-secondary">(698)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-success">Free</label></div>
-        </div>
-      </div>-->
-    </div>
+    </div>-->
 
   </div>
 </section>

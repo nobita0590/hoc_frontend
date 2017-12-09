@@ -66,6 +66,17 @@
                 </div>
               </div>
               <div class="form-group row">
+                <label class="col-md-3 form-control-label">Đáp án</label>
+                <div class="col-md-12">
+                  <ckeditor
+                    formControlName="FullAnswer"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.FullAnswer" [fname]="'Đáp án'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
                 <label class="col-md-3 form-control-label">Câu trả lời</label>
                 <div class="col-md-12">
                   <hr>

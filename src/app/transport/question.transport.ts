@@ -41,12 +41,12 @@ export class QuestionTransport {
       .catch(HelperTransport.handleError);
   }
   insert(question: Question): Promise<any> {
-    let data = HelperTransport.objectToFormData(question);
+    // let data = HelperTransport.objectToFormData(question);
     let options: RequestOptionsArgs = {
       method : 'post',
-      headers : this.headers,
+      headers : HelperTransport.getJsonHeader(),
     };
-    return this.http.post(this.apiUrl, data, options)
+    return this.http.post(this.apiUrl, question, options)
       .toPromise()
       .then(res => {
         return res.json().data as number;
@@ -54,13 +54,13 @@ export class QuestionTransport {
       .catch(HelperTransport.handleError);
   }
   update(question: Question): Promise<any> {
-    console.log(question)
-    let data = HelperTransport.objectToFormData(question);
+    // console.log(question)
+    // let data = HelperTransport.objectToFormData(question);
     let options: RequestOptionsArgs = {
       method : 'put',
-      headers : this.headers,
+      headers : HelperTransport.getJsonHeader(),
     };
-    return this.http.put(this.apiUrl, data, options)
+    return this.http.put(this.apiUrl, question, options)
       .toPromise()
       .then(res => {
         return res.json().data as Question;

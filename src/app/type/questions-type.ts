@@ -8,7 +8,9 @@ export class Question extends Model {
   SubjectId: number;
   CreatorId: number;
   Answer: string;
+  FullAnswer: string;
   AnswerView: Answer[];
+  Ticker;
 }
 
 export class Answer {

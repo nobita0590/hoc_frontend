@@ -16,6 +16,7 @@ export class TestFormComponent implements OnInit {
   @Input() classSource: SelectSource[];
   @Input() subjectSource: SelectSource[];
   @Input() difficultSource: SelectSource[];
+  @Input() testTypeSource: SelectSource[];
   @Input() test: Tests;
   @Output() onDone = new EventEmitter();
   mainForm: FormGroup;
@@ -27,7 +28,8 @@ export class TestFormComponent implements OnInit {
       Title: ['', [Validators.required]],
       ClassId: ['', [ValidateHelper.numberRequired]],
       SubjectId: ['', [ValidateHelper.numberRequired]],
-      Time: ['', [ValidateHelper.numberRequired]],
+      TypeId: ['', [ValidateHelper.numberRequired]],
+      // Time: ['', [ValidateHelper.numberRequired]],
       Description: ['', [Validators.required]],
     });
   }
@@ -37,7 +39,8 @@ export class TestFormComponent implements OnInit {
       Title: this.test.Title,
       ClassId: this.test.ClassId,
       SubjectId: this.test.SubjectId,
-      Time: this.test.Time,
+      // Time: this.test.Time,
+      TypeId: this.test.TypeId,
       Description: this.test.Description,
     });
   }

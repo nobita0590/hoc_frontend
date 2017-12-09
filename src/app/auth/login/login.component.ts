@@ -39,9 +39,7 @@ export class LoginComponent implements OnInit {
     }
     this.userTransport.login(this.credential)
       .then(_d => {
-        if (_d.status) {
-          this.route.navigate(['/admin']);
-        }
+        this.route.navigate(['/admin']);
       })
       .catch(e => {
         if (e.status == 400 && e._body && e._body.detail) {

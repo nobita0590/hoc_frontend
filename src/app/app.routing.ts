@@ -52,6 +52,12 @@ export const routes: Routes = [
         data: {
           title: 'Ngân hàng câu hỏi'
         }
+      }, {
+        path: 'course',
+        loadChildren: './course/course.module#CourseModule',
+        data: {
+          title: 'Khóa học'
+        }
       },
     ]
   },

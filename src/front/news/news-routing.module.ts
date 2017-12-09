@@ -35,7 +35,13 @@ const routes: Routes = [
           title: 'Danh mục tin tức'
         }
       }, {
-        path: 'chi-tiet',
+        path: 'thong-tin-tuyen-sinh/:url/:id',
+        component: DetailComponent,
+        data: {
+          title: 'Chi tiết'
+        }
+      }, {
+        path: 'bi-quyet-hoc-thi/:url/:id',
         component: DetailComponent,
         data: {
           title: 'Chi tiết'

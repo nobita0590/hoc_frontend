@@ -13,7 +13,7 @@
               <div class="form-group row">
                 <label class="col-md-3 form-control-label">Tiêu đề</label>
                 <div class="col-md-9">
-                  <input formControlName="Title"
+                  <input formControlName="Title" (blur)="setPrettyUrl(mainForm.controls.Title.value)"
                          type="text" name="Title" class="form-control" placeholder="Tiêu đề..">
                   <show-errors [control]="mainForm.controls.Title" [fname]="'Tiêu đề'" ></show-errors>
                 </div>
@@ -21,7 +21,7 @@
               <div class="form-group row">
                 <label class="col-md-3 form-control-label">Đường dẫn</label>
                 <div class="col-md-9">
-                  <input formControlName="PrettyUrl"
+                  <input formControlName="PrettyUrl" (blur)="setPrettyUrl(mainForm.controls.PrettyUrl.value)"
                          type="text" name="PrettyUrl" class="form-control" placeholder="Đường dẫn..">
                   <show-errors [control]="mainForm.controls.PrettyUrl" [fname]="'Đường dẫn'" ></show-errors>
                 </div>

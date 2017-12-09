@@ -14,7 +14,7 @@ const routes: Routes = [
     },
     children: [
       {
-        path: 'thong-tin',
+        path: 'toi',
         component: ProfileComponent,
         data: {
           title: 'Thông tin tài khoản'

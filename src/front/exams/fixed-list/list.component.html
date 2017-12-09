@@ -1,0 +1,80 @@
+<div class="cover-exams">
+  <img src="public/frondtend/img/cover-exams.jpg" class="img-fluid">
+</div>
+<section class="section-topic">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+        <div class="faqs-title pt-3 pb-3">
+          <h2>Thi thử cùng 2Study
+            <!-- link sang thi THPT Quoc Gia -->
+            <a class="btn btn-warning btn-sm pull-right"><i class="fa fa-hand-o-right"></i> Đề kiểm tra, thi  thử</a>
+          </h2>
+        </div>
+        <div class="alert alert-primary" role="alert">
+          <div class="row">
+            <div class="col-sm-16 col-md-4">
+              <select class="form-control" [(ngModel)]="filter.ClassId" (change)="refresh()">
+                <option value="0">Chọn lớp</option>
+                <option *ngFor="let source of classesSource" [value]="source.ID">{{source.Value}}</option>
+              </select>
+            </div>
+            <div class="col-sm-16 col-md-4">
+              <select class="form-control" [(ngModel)]="filter.SubjectId" (change)="refresh()">
+                <option value="0">Chọn môn</option>
+                <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+              </select>
+            </div>
+            <div class="col-sm-16 col-md-4">
+              <select class="form-control" [(ngModel)]="filter.TypeId" (change)="refresh()">
+                <option value="0">Loại đề</option>
+                <option *ngFor="let source of testTypeSource" [value]="source.ID">{{source.Value}}</option>
+              </select>
+            </div>
+            <!--<div class="col-sm-16 col-md-3">
+              <button class="form-control btn-primary">Lọc</button>
+            </div>-->
+          </div>
+        </div>
+        <ul class="nav nav-tabs faqs-tab">
+          <li class="nav-item">
+            <a class="nav-link" (click)="changeUserAction('')" [ngClass]="{active: !filter.uf}">Đề mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="changeUserAction('doing')"
+               [ngClass]="{active: filter.uf == 'doing'}">Đề đang làm <small>(2)</small></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="changeUserAction('done')"
+               [ngClass]="{active: filter.uf == 'done'}">Đề đã làm <small>(16)</small></a>
+          </li>
+        </ul>
+        <div class="wrap-doc-new">
+          <ul class="list-doc-new">
+            <li *ngFor="let test of tests">
+              <div class="row">
+                <div class="col-sm-auto"><img src="/public/frondtend/img/clipboard.svg"></div>
+                <div class="col-sm px-0">
+                  <h3><a [routerLink]="['/thi-online/thi',test.ID]">{{test.Title}}</a></h3>
+                  <p class="mb-0 mt-1">
+                    <a href="" class="text-success">- {{test.SubjectName}}</a>
+                    <span class="ml-3 text-primary">{{test.ClassName}}</span>
+                    <span class="ml-3 text-warning"><i class="fa fa-clock-o"></i> {{test.TypeName}}</span>
+                  </p>
+                </div>
+                <div class="col-sm-auto text-center">
+                  <a [routerLink]="['/thi-online/thi',test.ID]" class="btn btn-sm btn-primary btn-block">Vào thi</a>
+                  <small class="text-secondary">{{exampNumber(test.Time)}} lượt thi</small>
+                </div>
+              </div>
+              <hr>
+            </li>
+
+          </ul>
+        </div>
+        <nav paging aria-label="navigation" [page]="filter" [max]="3" [query]="{}" (onPageChange)="pageChange($event)"></nav>
+      </div>
+      <div class="col-sm-12 col-md-4"></div>
+    </div>
+  </div>
+</section>

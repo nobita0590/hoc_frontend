@@ -106,7 +106,7 @@
     </div>
     <div class="col-lg-6" *ngIf="isCreating">
       <test-form-component [difficultSource]="difficultSource" (onDone)="isCreating = false"
-                           [classSource]="classSource" [subjectSource]="subjectSource" [test]="test">
+                           [classSource]="classSource" [subjectSource]="subjectSource" [testTypeSource]="testTypeSource" [test]="test">
       </test-form-component>
     </div>
   </div>

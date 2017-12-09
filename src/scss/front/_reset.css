@@ -1,10 +1,10 @@
 @charset "utf-8";
 /* CSS by tienducdesign */
 * {
-  margin:0px;padding:0px;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
+margin:0px;padding:0px;
+box-sizing: border-box;
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
 }
 body {font-family: 'Roboto', sans-serif; font-size:14px; background:#fff;color:#333333;}
 h1, h2, h3, h4, h5, h6 {}
@@ -45,16 +45,17 @@ ul {list-style: none;}
 a[class*="-social-"] .fa {margin-right: 10px;}
 
 /*badge*/
-.badge {border-radius: 2px; padding: 3px 1rem;}
+.badge {border-radius: 2px; padding: 3px;}
 .badge-pill {border-radius: 10rem;}
 .badge-1b75ba {background-color:#eef0f5; color: #1b75ba}
+.progress-bar {transition-duration: 0.3s;} 
 
 .dropdown-menu {
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
-  will-change: width, height !important;
-  border-radius: 0; border:none;
-  font-size: 14px !important;
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2) !important;
+    will-change: width, height !important;
+    border-radius: 0; border:none;
+    font-size: 14px !important;
 }
 .dropdown-item {padding: .35rem 1.5rem;}
 .text-shadow-white {text-shadow: 0 1px 0 #fff !important;}

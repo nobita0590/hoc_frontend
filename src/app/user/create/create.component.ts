@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from './../../type/user-type';
+import { User } from './../../type';
 import { ValidateHelper, FormErrorHelper } from './../../shared/validate.helper';
-import { UserTransport } from './../../transport/user.transport';
+import { UserTransport } from './../../transport';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { BlockTemplateComponent } from './../../shared/block-template.component';
 import { FlashAlert } from './../../shared/flash.alert';

@@ -43,6 +43,7 @@ export class CreateComponent implements OnInit {
     this.mainForm = this.fb.group({
       CategoryId: ['', [Validators.required] ],
       Content: ['', [Validators.required] ],
+      FullAnswer: ['', [Validators.required] ],
       ClassId: ['', Validators.required ],
       DifficultId: ['', Validators.required ],
       SubjectId: ['', Validators.required ],
@@ -160,6 +161,7 @@ export class CreateComponent implements OnInit {
             }
             setTimeout(() => {
               CKEDITOR.instances[Object.keys(CKEDITOR.instances)[0]].setData(question.Content);
+              CKEDITOR.instances[Object.keys(CKEDITOR.instances)[1]].setData(question.FullAnswer);
             }, 200);
           })
           .catch(err => {

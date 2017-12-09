@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Tests, TestsFilter } from './../type/type';
+import { Tests, Exams, TestsFilter } from './../type/type';
 import { HelperTransport } from './helper.transport';
 import { Http, RequestOptionsArgs } from '@angular/http';
 
@@ -19,6 +19,23 @@ export class TestsTransport {
       .toPromise()
       .then(response => {
         return response.json().data as Tests;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  getForExams(filter: TestsFilter): Promise<{
+    test: Tests,
+    exams: Exams[]
+  }> {
+    let data = HelperTransport.objectToFormData(filter);
+    let options: RequestOptionsArgs = {
+      headers : this.headers,
+      body : data,
+      search: data
+    };
+    return this.http.get(`${this.apiUrl}/exams` , options)
+      .toPromise()
+      .then(response => {
+        return response.json().data;
       })
       .catch(HelperTransport.handleError);
   }

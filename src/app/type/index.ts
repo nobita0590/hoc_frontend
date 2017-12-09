@@ -6,3 +6,5 @@ export * from './setting-type';
 export * from './user-type';
 export * from './test-type';
 export * from './tests-frame-type';
+export * from './course-type';
+export * from './fags-type';

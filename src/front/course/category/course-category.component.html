@@ -1,0 +1,50 @@
+<section class="section-courses">
+  <div class="container">
+    <h4 class="heading-title text-uppercase font-weight-normal">Khóa học luyện thi</h4>
+    <p class="text-secondary">khóa học luyện thi giúp các bạn học sinh, sinh viên cọ sát các đề thi thử để có kỹ năng làm bài tốt khi bước vào các kỳ thi, khóa thi...<br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="courses-list">
+      <div courseItem *ngFor="let item of items" [course]="item" class="courses-item"></div>
+    </div>
+    <hr>
+    <nav paging aria-label="navigation" [page]="filter" [max]="3" [query]="{}" (onPageChange)="pageChange($event)"></nav>
+  </div>
+</section>
+<section class="section-teacher">
+  <div class="container">
+    <h4 class="heading-title text-uppercase font-weight-normal mb-4">Ưu điểm các khóa học tại TopEdu</h4>
+    <div class="row">
+      <div class="col-12 col-sm-6 col-md-4">
+        <h6 class="text-white p-2 bg-success"><i class="fa fa-star fa-lg text-warning"></i> Công nghệ tiến tiến nhất</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <h6 class="text-white p-2 bg-warning"><i class="fa fa-mortar-board fa-lg"></i> Giảng viên giàu kiến thức</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+      <div class="col-12 col-sm-6 col-md-4">
+        <h6 class="text-white p-2 bg-primary"><i class="fa fa-support fa-lg"></i> Hỗ trợ học viên 24/7</h6>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+  </div>
+</section>

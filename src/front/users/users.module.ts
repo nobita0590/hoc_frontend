@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { BlockUIModule } from 'ng-block-ui';
-import { FormsModule } from '@angular/forms';
+import { CommonHelperModule } from '../../app/common-helper.module';
 
 // import { ShowErrorsComponent } from './../shared/show-errors.component';
 import { UserRoutingModule } from './user-routing.module';
@@ -15,6 +15,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 @NgModule({
   imports: [
     FormsModule,
+    CommonHelperModule,
     UserRoutingModule,
     BlockUIModule,
     ReactiveFormsModule,

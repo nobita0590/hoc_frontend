@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-blue">
   <div class="top-nav">
     <div class="container d-flex">
-      <a class="navbar-brand" [routerLink]="['/trang-chu']"><i class="fa fa-lg fa-mortar-board"></i> TOPEDU</a>
+      <a class="navbar-brand" [routerLink]="['/trang-chu']"><i class="fa fa-lg fa-mortar-board"></i> 2Study</a>
 
       <form class="form-inline box-search" (submit)="searchAll()">
         <input [(ngModel)]="search" name="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
@@ -18,7 +18,7 @@
         <li class="nav-item dropdown" dropdown>
           <a class="nav-link nav-user-profile action" dropdownToggle><img [src]="userAvatar()" alt="{{user.LastName}} {{user.FirstName}}" class="img-circle img-user-profile"></a>
           <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
-            <a class="dropdown-item" [routerLink]="['/nguoi-dung/thong-tin']"><i class="fa fa-user-circle mr-1 text-secondary"></i> Trang cá nhân</a>
+            <a class="dropdown-item" [routerLink]="['/nguoi-dung/toi']"><i class="fa fa-user-circle mr-1 text-secondary"></i> Trang cá nhân</a>
             <a class="dropdown-item" ><i class="fa fa-cog mr-1 text-secondary"></i> Cài đặt</a>
             <a class="dropdown-item" ><i class="fa fa-question-circle mr-1 text-secondary"></i> Trợ giúp</a>
             <div class="dropdown-divider"></div>
@@ -45,20 +45,23 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <div class="container">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a><img src="public/frondtend/img/006-letter.svg"> Các Khóa học </a>
+          <li class="nav-item">
+            <a routerLinkActive="active" [routerLink]="['/khoa-hoc']"><img src="public/frondtend/img/006-letter.svg"> Khóa học </a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/tin-tuc/thong-tin-tuyen-sinh']"><img src="public/frondtend/img/010-id-card.svg"> Thông tin tuyển sinh</a>
+            <a routerLinkActive="active" [routerLink]="['/tin-tuc/thong-tin-tuyen-sinh']"><img src="public/frondtend/img/010-id-card.svg"> Thông tin tuyển sinh</a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/tin-tuc/danh-muc']"><img src="public/frondtend/img/005-archive.svg"> Thư viện tài liệu</a>
+            <a routerLinkActive="active" [routerLink]="['/tin-tuc/danh-muc']"><img src="public/frondtend/img/005-archive.svg"> Tài liệu</a>
           </li>
           <li class="nav-item">
-            <a [routerLink]="['/tin-tuc/bi-quyet-hoc-thi']"><img src="public/frondtend/img/003-folder.svg"> Bí quyết học thi</a>
+            <a routerLinkActive="active" [routerLink]="['/tin-tuc/bi-quyet-hoc-thi']"><img src="public/frondtend/img/003-folder.svg"> Bí quyết học thi</a>
           </li>
           <li class="nav-item">
-            <a ><img src="public/frondtend/img/013-faqs.svg"> Hỏi đáp</a>
+            <a routerLinkActive="active" [routerLink]="['/thi-online']"><img src="public/frondtend/img/013-faqs.svg"> Thi online</a>
+          </li>
+          <li class="nav-item">
+            <a routerLinkActive="active" [routerLink]="['/hoi-dap']"><img src="public/frondtend/img/013-faqs.svg"> Hỏi đáp</a>
           </li>
         </ul>
       </div>

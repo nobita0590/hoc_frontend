@@ -17,9 +17,11 @@ export class CategoryComponent implements OnInit {
   categories = [
     {id: 1, name: 'Lớp'},
     {id: 2, name: 'Môn học'},
-    {id: 5, name: 'Chuyên mục'},
     {id: 3, name: 'Độ khó'},
     {id: 4, name: 'Tỉnh/ Thành phố'},
+    {id: 5, name: 'Chuyên mục'},
+    {id: 6, name: 'Giáo viên'},
+    {id: 7, name: 'Loại đề'}
   ];
   isChange = false;
   listSource: SelectSource[] = [];
@@ -66,6 +68,7 @@ export class CategoryComponent implements OnInit {
   editSource(item: SelectSource) {
     this.bsModalRef = this.modalService.show(CategoryModalComponent, {class : 'modal-lg'});
     this.bsModalRef.content.source = item;
+    this.bsModalRef.content.category = this.currentCategory;
     // console.log(this.listSource)
   }
   changeList() {

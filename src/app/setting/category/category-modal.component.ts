@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { SelectSource } from './../../type/setting-type';
+import { SelectSource } from './../../type';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { FormErrorHelper } from './../../shared/validate.helper';
 import { SelectSourceTransport } from './../../transport/select-source.transport';
@@ -26,6 +26,14 @@ import { SelectSourceTransport } from './../../transport/select-source.transport
             <show-errors [control]="mainForm.controls.Value" [fname]="'Tên'" ></show-errors>
           </div>
         </div>
+        <div class="form-group row" *ngIf="isExtra">
+          <label class="col-md-3 form-control-label">{{extraName}}</label>
+          <div class="col-md-9">
+            <input formControlName="Extra"
+                   type="text" name="Extra" class="form-control" placeholder="{{extraName}}..">
+            <show-errors [control]="mainForm.controls.Extra" [fname]="extraName" ></show-errors>
+          </div>
+        </div>
         <!--<div class="form-group row">
           <label class="col-md-3 form-control-label" for="hf-password">Password</label>
           <div class="col-md-9">
@@ -45,6 +53,8 @@ export class CategoryModalComponent implements OnInit {
   public title: string;
   public category: any = {};
   isLoading = false;
+  isExtra = false;
+  extraName = '';
   mainForm: FormGroup;
   constructor(public bsModalRef: BsModalRef,
               private fb: FormBuilder,
@@ -53,6 +63,7 @@ export class CategoryModalComponent implements OnInit {
       Value: [this.source.Value, [Validators.required] ],
       ConvertedValue: [this.source.ConvertedValue ],
       GroupId: [this.source.GroupId ],
+      Extra: [this.source.Extra || ''],
       // CategoryId: [this.source.CategoryId, Validators.required ],
       RelateId: [this.source.RelateId ]
     });
@@ -101,6 +112,7 @@ export class CategoryModalComponent implements OnInit {
         Value: this.source.Value,
         ConvertedValue: this.source.ConvertedValue,
         GroupId: this.source.GroupId,
+        Extra: this.source.Extra,
         // CategoryId: [this.source.CategoryId, Validators.required ],
         RelateId: this.source.RelateId,
       });
@@ -108,6 +120,12 @@ export class CategoryModalComponent implements OnInit {
         this.title = 'Sửa danh mục';
       }else {
         this.title = 'Tạo danh mục';
+      }
+      if (this.source.GroupId == 7) {
+        this.extraName  = 'Thời lượng(phút)';
+        this.isExtra = true;
+      } else {
+        this.isExtra = false;
       }
     }, 100);
   }

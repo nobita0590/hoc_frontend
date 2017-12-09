@@ -6,24 +6,26 @@ import { HttpModule } from '@angular/http';
 
 import { CommonHelperModule } from '../app/common-helper.module';
 import { BsDropdownModule } from 'ngx-bootstrap';
+import { ToastyModule } from 'ng2-toasty';
 
-import { AppComponent } from '../app/app.component';
 import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
 import { HomeComponent } from './home/home.component';
 
 import { FrontRoutingModule } from './front.routing';
-
+import { ItemModule } from './item/item.module';
 
 @NgModule({
   declarations: [
-    AppComponent, FrondtendLayoutComponent, HomeComponent
+    FrondtendLayoutComponent, HomeComponent
   ],
   imports: [
+    ItemModule,
     BrowserModule,
     CommonHelperModule,
     FrontRoutingModule,
     FormsModule,
     HttpModule,
+    ToastyModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
   providers: [{

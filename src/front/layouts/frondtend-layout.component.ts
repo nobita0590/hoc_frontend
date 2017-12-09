@@ -5,12 +5,12 @@ import { ToastyService, ToastyConfig, ToastOptions } from 'ng2-toasty';
 
 import { UserTransport } from '../../app/transport/transport';
 import { User } from '../../app/type/type';
-import { ChannelService } from '../service/ChannelService';
+import { ChannelService, Helper } from '../service';
 
 @Component({
   selector: 'body',
   templateUrl: './frondtend-layout.component.html',
-  providers: [UserTransport, ChannelService, ToastyService, ToastyConfig]
+  providers: [UserTransport, ChannelService, ToastyConfig]
 })
 export class FrondtendLayoutComponent implements OnInit {
   user: User = new User();
@@ -23,11 +23,12 @@ export class FrondtendLayoutComponent implements OnInit {
               private toastyService: ToastyService) {
     this.user = JSON.parse(localStorage.getItem('user')) as User;
     this.channelService.changeUser().subscribe(user => {
-      console.log(user);
+      localStorage.setItem('user', JSON.stringify(user));
       this.isLogin = true;
       this.user = user;
     });
     this.channelService.getFlashAlert().subscribe(alertInfo => {
+      console.log(alertInfo);
       const toastOptions: ToastOptions = {
         title: alertInfo.title,
         msg: alertInfo.msg,
@@ -72,9 +73,6 @@ export class FrondtendLayoutComponent implements OnInit {
     this.router.navigate(['tai-khoan/dang-nhap']);
   }
   userAvatar(): string {
-    if (this.user.AvatarUrl) {
-      return this.user.AvatarUrl;
-    }
-    return 'http://localhost:8080/public/img/default_user.png';
+    return Helper.userAvatar(this.user.AvatarUrl);
   }
 }

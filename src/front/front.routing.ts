@@ -29,6 +29,15 @@ export const routes: Routes = [
   }, {
     path: 'tin-tuc',
     loadChildren: './news/news.module#NewsModule'
+  }, {
+    path: 'khoa-hoc',
+    loadChildren: './course/course.module#CourseModule'
+  }, {
+    path: 'thi-online',
+    loadChildren: './exams/exams.module#ExamsModule'
+  }, {
+    path: 'hoi-dap',
+    loadChildren: './fags/fags.module#FagsModule'
   }
 ];
 

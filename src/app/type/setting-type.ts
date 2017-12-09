@@ -3,6 +3,7 @@ export class SelectSource extends Model {
   ID: number;
   Value: string;
   ConvertedValue: string;
+  Extra: string;
   GroupId: number;
   IsSystem: number;
   Order: number;

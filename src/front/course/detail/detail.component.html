@@ -1,0 +1,77 @@
+<section class="section-slider section-courses-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6" >
+        <!-- neu khoa hoc ko fai or khong co video thi bỏ iframe youtube, và chen anh dai dien vào đây -->
+        <div class="frame-view" *ngIf="hasYoutube" [style.background-image]="urlImg(course.ImageUrl)">
+          <iframe width="100%" height="100%" [src]="youtubeUrl" allowfullscreen frameborder="0"></iframe>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6">
+        <div class="courses-des">
+          <h1 class="h1-detail text-white">{{course.Title}}</h1>
+          <a class="btn btn-danger text-uppercase action" (click)="registerCourse()">Đăng ký khóa học này</a>
+          <ul class="pt-3 courses-des-list">
+            <li><i class="fa fa-user-circle text-warning mr-1"></i> <label>Giảng viên: </label> {{course.TeacherName}}</li>
+            <!--<li><i class="fa fa-file-text-o text-warning mr-1"></i> <label>Bài giảng:</label> {{course.TeacherName}}</li>-->
+            <li><i class="fa fa-users text-warning mr-1"></i> <label>Học viên đăng ký:</label> {{course.BoughtNumber}}</li>
+            <li><i class="fa fa-dollar text-warning mr-1"></i> <label>Giá gốc:</label> <span class="text-warning fa-lg">{{course.Price}} vnđ</span></li>
+            <li *ngIf="course.IsSaleOff"><i class="fa fa-diamond text-warning mr-1"></i> <label>Ưu đãi còn:</label> <span class="text-warning fa-lg">{{course.Price - course.SaleOffPrice}} vnđ</span> </li>
+            <li *ngIf="course.IsSaleOff"><i class="fa fa-gift text-warning mr-1"></i> {{course.SaleOffDescription}}</li>
+            <li><i class="fa fa-calendar-check-o text-warning mr-1"></i> <label>Ngày khai giảng:</label> {{viewDate(course.StartDate)}}</li>
+            <li><i class="fa fa-calendar-minus-o text-warning mr-1"></i> <label>Ngày bế giảng:</label> {{viewDate(course.EndDate)}}</li>
+          </ul>
+          <!--<a href="" class="badge badge-warning"><i class="fa fa-tag"></i> Toán học</a>
+          <a href="" class="badge badge-warning"><i class="fa fa-tag"></i> Luyện thi</a>
+          <a href="" class="badge badge-warning"><i class="fa fa-tag"></i> Bài giảng video</a>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-8">
+      <div class="main-content">
+        <div class="courses-detail mt-3">
+          <tabset>
+            <tab [active]="true" heading="Giới thiệu" [innerHTML]="course.Description"></tab>
+            <tab heading="Nội dung">
+              <accordion [closeOthers]="true">
+                <accordion-group *ngFor="let chap of course.Content;let j = index" heading="Phần {{j + 1}}: {{chap.Title}}" [isOpen]="j == 0">
+                  <div class="card-body">
+                    <ul class="list-group">
+                      <li *ngFor="let step of chap.Steps;let i = index"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <a>
+                          <label>Bài {{i + 1}}</label>
+                          <span>{{step.Name}}</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </accordion-group>
+              </accordion>
+            </tab>
+            <tab heading="Lợi ích" [innerHTML]="course.Benefit"></tab>
+            <tab heading="Đối tượng" [innerHTML]="course.Target"></tab>
+            <tab heading="Quyền lợi học viên" [innerHTML]="course.Interest"></tab>
+          </tabset>
+        </div>
+        <div class="p-3 text-center"><a class="btn btn-danger text-uppercase action" (click)="registerCourse()">Đăng ký khóa học này</a></div>
+        <hr>
+        <div class="title-mod">
+          <div class="title-mod-cont">
+            <h4 class="text-uppercase text-shadow-white font-weight-normal">Khóa học khác</h4>
+          </div>
+        </div>
+        <div class="courses-list courses-list-ofdetail">
+          <div courseItem class="courses-item" *ngFor="let item of relate" [course]="item"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+
+    </div>
+  </div>
+</div>

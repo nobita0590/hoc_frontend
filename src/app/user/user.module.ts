@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CreateComponent } from './create/create.component';
 import { ViewComponent } from './view/view.component';
 import { ListComponent } from './list/list.component';
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, BsDatepickerModule } from 'ngx-bootstrap';
 
 import { UserRoutingModule } from './user-routing.module';
 import { DataTableModule } from 'angular-4-data-table/src/index';
@@ -12,7 +12,6 @@ import { ImageUploadModule } from "angular2-image-upload";
 
 import { ReactiveFormsModule } from '@angular/forms';
 // import { ShowErrorsComponent } from './../shared/show-errors.component';
-import { BsDatepickerModule } from 'ngx-bootstrap';
 import { EditComponent } from './edit/edit.component';
 
 import { CommonHelperModule } from './../common-helper.module';

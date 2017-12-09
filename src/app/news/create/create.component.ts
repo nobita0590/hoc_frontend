@@ -124,7 +124,7 @@ export class CreateComponent implements OnInit {
     });
   }
   onRemovedImage($e) {
-    console.log('onRemovedImage:', $e);
+    this.news.ImageUrl = '';
   }
   onUploadFinished($e) {
     console.log('onUploadFinished', $e);
@@ -141,5 +141,8 @@ export class CreateComponent implements OnInit {
   }
   onUploadStateChanged($e) {
     console.log('onUploadStateChanged', $e);
+  }
+  setPrettyUrl(str: string) {
+    this.mainForm.patchValue({'PrettyUrl': FlashAlert.VNToId(str)});
   }
 }

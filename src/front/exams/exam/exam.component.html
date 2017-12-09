@@ -1,0 +1,141 @@
+<div *ngIf="step != 1" class="exams-progress">
+  <div class="container">
+    <div class="row pt-2" style="margin-bottom: 3px;">
+      <div class="col-md-3 text-center">
+        <small class="mb-0">Thời gian còn lại:</small> <h5 class="mb-0 mt-0 text-s" id="down-time"><span id="calendar3">12</span> : <span id="calendar4">29</span></h5>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="progress mt-2">
+          <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" [ngStyle]="{width: percent}"></div>
+        </div>
+        <small>Hoàn thành <span class="text-primary">{{percent}}</span></small>
+      </div>
+      <div class="col-md-3 text-right">
+        <a class="btn btn-success">Nộp bài</a>
+        <a class="btn btn-info"><i class="fa fa-save"></i> Lưu bài</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <div class="title-paper">
+    <div class="row">
+      <div class="col-sm-auto"><img src="/public/frondtend/img/clipboard.svg" width="50px"></div>
+      <div class="col-sm px-0">
+        <h1>{{title}}</h1>
+        <p class="mb-0 mt-1">
+          <a class="text-success">- {{subjectName}}</a>
+          <span class="ml-3 text-primary">{{className}}</span>
+          <span class="ml-3 text-warning"><i class="fa fa-clock-o"></i> {{typeName}}</span>
+          <span class="ml-3 text-secondary" title="Đề gồm {{questions.length}} câu"><i class="fa fa-circle-o"></i> {{questions.length}} câu</span>
+        </p>
+      </div>
+      <div class="col-sm-auto text-right" >
+        <span class="text-secondary">{{test.Time}} lượt thi</span>
+        <div title="Kết quả tốt nhất" class="text-secondary">
+          <i class="fa fa-fort-awesome"></i> <strong><span class="text-success">{{bestTrue}}</span>/{{questions.length}}</strong>
+        </div>
+        <a (click)="showTop10 = !showTop10" class="badge badge-warning action">Xem bảng xếp hạng</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="step == 1" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>{{title}}</h5>
+    <p class="text-secondary">{{description}}</p>
+    <div class="alert alert-info" role="alert">
+      <div class="row">
+        <span class="col-12 col-sm-6 text-left text-sm-right">Môn :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">Vật lý</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian làm bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">90 phút</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Số lượng câu hỏi :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{questions.length}}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="text-center">
+      <a (click)="start()" class="btn btn-success btn-lg btn-p55 text-uppercase">
+        <i class="fa fa-clock-o mr-2 fa-lg fa-spin"></i> bắt đầu làm bài
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="step == 3" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>Bài làm của bạn đã được lưu lại</h5>
+    <div class="alert alert-info" role="alert">
+      <span>Bạn có thể tiếp tục quay lại làm bài</span>
+    </div>
+    <hr>
+    <div class="text-center">
+      <a (click)="step = 2" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Tiếp tục làm bài</a>
+      <!--<a class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Làm lại từ đầu</a>-->
+    </div>
+  </div>
+  <div *ngIf="step == 4" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>Kết quả</h5>
+    <strong class="fa-2x"><span class="text-success">{{exams.TrueNumber}}</span>/{{exams.Total}}</strong>
+    <div class="alert alert-info" role="alert">
+      <div class="row">
+        <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian bắt đầu làm bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{viewTime(exams.StartTime)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian nộp bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{viewTime(exams.FinishTime)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Tổng thời gian làm bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{timeDoing(exams.TimeDoing)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Số đáp án đúng :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{exams.TrueNumber}}/{{exams.Total}} </span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Điểm :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{exams.Score.toFixed(2)}}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="text-center">
+      <a (click)="config.ShowAnswer = 1" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án</a>
+      <a (click)="config.ShowAnswer = 2" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án + lời giải</a>
+      <a (click)="showTop10 = !showTop10" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Xem bảng xếp hạng</a>
+      <a class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Làm lại</a>
+    </div>
+  </div>
+
+  <div *ngIf="!showTop10 && step == 2 || step == 4 " class="wrap-paper" examContent [config]="config" [questions]="questions"
+       (onPause)="onPause($event)" (onCheck)="chooseAnswer($event)"></div>
+  <div *ngIf="showTop10" class="wrap-paper px-2 px-sm-5">
+
+    <div class="wrap-cup">
+      <div class="title-mod">
+        <div class="title-mod-cont">
+          <img src="/public/frondtend/img/trophy.svg">
+          <h4 class="text-uppercase text-shadow-white font-weight-normal">Bảng xếp hạng</h4>
+        </div>
+      </div>
+      <!-- END title -->
+      <div class="cup-list">
+        <table class="table table-cup">
+          <thead>
+          <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Họ và tên</th>
+            <th scope="col">Số câu đúng</th>
+            <th scope="col">Điểm</th>
+            <th scope="col">Thời gian làm bài</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let top of top10;let i = index">
+            <th scope="row">
+              <span [ngClass]="{'badge-warning':i < 3,'badge-secondary': i > 2}" class="badge badge-pill">{{i + 1}}</span>
+            </th>
+            <td><a>{{top.UserName}}</a></td>
+            <td>{{top.TrueNumber}}/{{top.Total}}</td>
+            <td>{{top.Score}}</td>
+            <td class="text-success">{{timeDoing(top.TimeDoing)}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

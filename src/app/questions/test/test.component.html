@@ -37,12 +37,14 @@
                 <data-table-column
                   property="SubjectName"
                   header="Môn học">
-                  <!--<ng-template #dataTableHeader let-item="item">
-                    <select class="form-control" [(ngModel)]="filter.SubjectId" (change)="reloadItems()">
-                      <option value="">Môn học</option>
-                      <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
-                    </select>
-                  </ng-template>-->
+                </data-table-column>
+                <data-table-column
+                  property="TypeName"
+                  header="Loại đề">
+                </data-table-column>
+                <data-table-column
+                  property="Time"
+                  header="Số lượt thi">
                 </data-table-column>
                 <data-table-column
                   property="Description"

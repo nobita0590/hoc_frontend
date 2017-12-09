@@ -33,6 +33,16 @@
           </div>
         </div>
         <div class="form-group row">
+          <label class="col-md-3 form-control-label">Loại đề</label>
+          <div class="col-md-9">
+            <select class="form-control" formControlName="TypeId">
+              <option value="0">Loại đề</option>
+              <option *ngFor="let source of testTypeSource" [value]="source.ID">{{source.Value}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.TypeId" [fname]="'Loại đề'" ></show-errors>
+          </div>
+        </div>
+        <!--<div class="form-group row">
           <label class="col-md-3 form-control-label">Thời lượng</label>
           <div class="col-md-9">
             <div class="input-group">
@@ -41,7 +51,7 @@
             </div>
             <show-errors [control]="mainForm.controls.Time" [fname]="'Thời lượng'" ></show-errors>
           </div>
-        </div>
+        </div>-->
         <div class="form-group row">
           <label class="col-md-3 form-control-label">Mô tả</label>
           <div class="col-md-9">

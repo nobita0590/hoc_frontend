@@ -44,6 +44,14 @@ export class HelperTransport {
       'Authorization': `Bearer ${localStorage.getItem('access_token')}`
     });
   }
+  public static getJsonHeader(): Headers {
+    return new Headers({
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+      'Accept-Language': 'vi,en-US;q=0.8,en;q=0.6',
+      'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+    });
+  }
   public static handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     try {
@@ -81,9 +89,10 @@ export class HelperTransport {
   public static imageUrl(input: string): string {
     if (input.indexOf('http') == 0) {
       return input;
-    } else {
+    } else if (input) {
       return `${this.SERVER_URL + input}`;
     }
+    return '';
   }
 }
 

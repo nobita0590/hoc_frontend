@@ -30,14 +30,36 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label class="col-md-3 form-control-label">Thời lượng làm bài</label>
+                <label class="col-md-3 form-control-label">Lớp</label>
                 <div class="col-md-9">
-                  <div class="input-group">
-                    <input formControlName="Time"
-                           type="text" name="Time" class="form-control" placeholder="Thời lượng làm bài..">
-                    <span class="input-group-addon">Phút</span>
-                  </div>
-                  <show-errors [control]="mainForm.controls.Time" [fname]="'Thời lượng làm bài'" ></show-errors>
+                  <select formControlName="ClassesId"
+                          type="text" name="ClassesId" class="form-control" placeholder="Lớp..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.ClassesId" [fname]="'Lớp'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Môn học</label>
+                <div class="col-md-9">
+                  <select formControlName="SubjectId"
+                          type="text" name="SubjectId" class="form-control" placeholder="Môn học..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.SubjectId" [fname]="'Môn học'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Loại câu hỏi</label>
+                <div class="col-md-9">
+                  <select formControlName="TypeId"
+                          type="text" name="TypeId" class="form-control" placeholder="Loại câu hỏi..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of typeSource" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.TypeId" [fname]="'Loại câu hỏi'" ></show-errors>
                 </div>
               </div>
               <div class="form-group row">

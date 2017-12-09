@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ShowErrorsComponent } from './shared/show-errors.component';
 import { BlockTemplateComponent } from './shared/block-template.component';
-
-
+import { PagingComponent } from '../front/service';
+import { AppComponent } from './app.component';
 
 /*@NgModule({
   imports: [],
@@ -11,13 +12,15 @@ import { BlockTemplateComponent } from './shared/block-template.component';
 })*/
  @NgModule({
    imports: [
-     CommonModule
+     CommonModule, RouterModule
    ],
    declarations: [
      ShowErrorsComponent,
-     BlockTemplateComponent
+     BlockTemplateComponent,
+     PagingComponent,
+     AppComponent
    ],
-   exports: [CommonModule, ShowErrorsComponent],
+   exports: [CommonModule, ShowErrorsComponent, PagingComponent, AppComponent],
    entryComponents: [
      BlockTemplateComponent // Make sure to add it to the entry components
    ],

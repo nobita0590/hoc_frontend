@@ -6,3 +6,6 @@ export * from './news.transport';
 export * from './question.transport';
 export * from './tests.transport';
 export * from './tests-frame.transport';
+export * from './frond.transport';
+export * from './course.transport';
+export * from './exams.transport';

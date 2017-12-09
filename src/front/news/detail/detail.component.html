@@ -17,12 +17,7 @@
   </div>
   <!-- END title -->
   <div class="row">
-    <div *ngFor="let item of relate" class="col-sm-12 col-md-6 col-lg-3">
-      <div class="wrap-article">
-        <a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]" class="img-thumb-art img-cover" [style.background-image]="urlImg(item.ImageUrl)"></a>
-        <h3><a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]">{{item.Title}}</a></h3>
-      </div>
-    </div>
+    <div *ngFor="let item of relate" newsItem [news]="item" class="col-sm-12 col-md-6 col-lg-3"></div>
   </div>
 
 </div>

@@ -7,6 +7,13 @@ export class TestsFrame extends Model {
   Total: number;
   Time: number;
   CreatorId: number;
+  CreatorName: string;
+  SubjectId: number;
+  ClassesId: number;
+  TypeId: number;
+  TypeName: string;
+  SubjectName: string;
+  ClassesName: string;
 }
 
 export class DifficulConfig {

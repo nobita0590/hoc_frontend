@@ -27,7 +27,7 @@ export class BreadcrumbsComponent {
       do {
         const childrenRoutes = currentRoute.children;
         currentRoute = null;
-        childrenRoutes.forEach(route => {
+        childrenRoutes.forEach( route => {
           if (route.outlet === 'primary') {
             const routeSnapshot = route.snapshot;
             url += '/' + routeSnapshot.url.map(segment => segment.path).join('/');

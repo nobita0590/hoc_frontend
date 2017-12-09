@@ -40,7 +40,6 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
     AuthModule
   ],
   declarations: [
-    AppComponent,
     SimpleLayoutComponent,
     FullLayoutComponent,
     // FrondtendLayoutComponent,

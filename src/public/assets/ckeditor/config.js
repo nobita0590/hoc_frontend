@@ -13,8 +13,8 @@ CKEDITOR.editorConfig = function( config ) {
   config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML';
 
 
-  config.filebrowserUploadUrl = 'http://localhost:8080/api/upload';
-  config.filebrowserBrowseUrl = 'http://localhost:8080/api/upload';
+  config.filebrowserUploadUrl = 'http://localhost:8080/api/upload/ckeditor';
+  // config.filebrowserBrowseUrl = 'http://localhost:8080/api/upload';
   config.dataParser = function(data){
     console.log(data);
     if (data){

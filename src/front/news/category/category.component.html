@@ -1,6 +1,5 @@
 
 <div class="main-content">
-
   <div class="main-mod">
     <div class="title-mod">
       <div class="title-mod-cont">
@@ -9,49 +8,15 @@
     </div>
     <div class="content-mod">
       <div class="row">
-        <div *ngFor="let item of hightLightItems" class="col-sm-12 col-md-6">
-          <div class="wrap-article">
-            <a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]" class="img-thumb-art img-cover" [style.background-image]="urlImg(item.ImageUrl)"></a>
-            <h2><a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]">{{item.Title}}</a></h2>
-            <p>{{item.Description}}</p>
-          </div>
-        </div>
+        <div newsHightlightItem *ngFor="let item of hightLightItems" [news]="item" class="col-sm-12 col-md-6"></div>
         <div class="col-12">
           <div class="row">
-            <div *ngFor="let item of items" class="col-sm-12 col-md-6 col-lg-4">
-              <div class="wrap-article">
-                <a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]" class="img-thumb-art img-cover" [style.background-image]="urlImg(item.ImageUrl)"></a>
-                <h3><a [routerLink]="['/tin-tuc/chi-tiet/' + item.ID]">{{item.Title}}</a></h3>
-              </div>
-            </div>
+            <div *ngFor="let item of items" newsItem [news]="item" class="col-sm-12 col-md-6 col-lg-4"></div>
           </div>
         </div>
       </div>
     </div>
     <br>
-    <nav aria-label="navigation">
-      <ul class="pagination">
-        <li class="page-item disabled">
-          <a class="page-link" [routerLink]="['/tin-tuc/danh-muc']" aria-label="Previous">
-            <span class="fa" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-        </li>
-        <li class="page-item active"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">1</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">2</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">3</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">4</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">5</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">6</a></li>
-        <li class="page-item"><a class="page-link" [routerLink]="['/tin-tuc/danh-muc']">7</a></li>
-        <li class="page-item">
-          <a class="page-link" [routerLink]="['/tin-tuc/danh-muc']" aria-label="Next">
-            <span class="fa" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <nav paging aria-label="navigation" [page]="newsFilter" [max]="3" [query]="{}" (onPageChange)="pageChange($event)"></nav>
   </div>
-
 </div>
