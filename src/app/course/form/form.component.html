@@ -1,0 +1,213 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="mainForm" novalidate (submit)="onSubmit()">
+        <div class="card">
+          <div class="card-header">
+            <i class="icon-user-follow"></i>
+          </div>
+          <div class="card-block">
+            <div class="card-container">
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Tiêu đề</label>
+                <div class="col-md-9">
+                  <input formControlName="Title" (blur)="setPrettyUrl(mainForm.controls.Title.value)"
+                         type="text" name="Title" class="form-control" placeholder="Tiêu đề..">
+                  <show-errors [control]="mainForm.controls.Title" [fname]="'Tiêu đề'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Đường dẫn</label>
+                <div class="col-md-9">
+                  <input formControlName="PrettyUrl"  (blur)="setPrettyUrl(mainForm.controls.PrettyUrl.value)"
+                         type="text" name="PrettyUrl" class="form-control" placeholder="Đường dẫn..">
+                  <show-errors [control]="mainForm.controls.PrettyUrl" [fname]="'Đường dẫn'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Hình đại diện</label>
+                <div class="col-md-9">
+                  <image-upload [url]="uploadUrl" [max]="1" [extensions]="['jpeg','jpg','png']"
+                                [uploadedFiles]="oldImgs"
+                                (removed)="onRemovedImage($event)"
+                                (uploadFinished)="onUploadFinished($event)"
+                                (uploadStateChanged)="onUploadStateChanged($event)"></image-upload>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Youtube Id</label>
+                <div class="col-md-9">
+                  <input formControlName="YoutubeUrl"
+                         type="text" name="YoutubeUrl" class="form-control" placeholder="Youtube Id..">
+                  <show-errors [control]="mainForm.controls.YoutubeUrl" [fname]="'Youtube Id'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Giáo viên</label>
+                <div class="col-md-9">
+                  <select formControlName="TeacherId"
+                          type="text" name="TeacherId" class="form-control" placeholder="Giáo viên..">
+                    <option value="">Lựa chọn</option>
+                    <option *ngFor="let source of teachers" [value]="source.ID">{{source.Value}}</option>
+                  </select>
+                  <show-errors [control]="mainForm.controls.TeacherId" [fname]="'Giáo viên'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Giá</label>
+                <div class="col-md-9">
+                  <input formControlName="Price"
+                         type="text" name="Price" class="form-control" placeholder="Giá..">
+                  <show-errors [control]="mainForm.controls.Price" [fname]="'Giá'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Khuyến mãi</label>
+                <div class="col-md-9">
+                  <input formControlName="IsSaleOff"
+                         type="checkbox" name="IsSaleOff" placeholder="Khuyến mãi..">
+                  <show-errors [control]="mainForm.controls.IsSaleOff" [fname]="'Khuyến mãi'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row" *ngIf="mainForm.controls.IsSaleOff.value">
+                <label class="col-md-3 form-control-label">Tiền khuyễn mãi</label>
+                <div class="col-md-9">
+                  <input formControlName="SaleOffPrice"
+                         type="text" name="SaleOffPrice" class="form-control" placeholder="Tiền khuyễn mãi..">
+                  <show-errors [control]="mainForm.controls.SaleOffPrice" [fname]="'Tiền khuyễn mãi'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row" *ngIf="mainForm.controls.IsSaleOff.value">
+                <label class="col-md-3 form-control-label">Mô tả khuyễn mãi</label>
+                <div class="col-md-9">
+                  <input formControlName="SaleOffDescription"
+                         type="text" name="SaleOffDescription" class="form-control" placeholder="Mô tả khuyễn mãi..">
+                  <show-errors [control]="mainForm.controls.SaleOffDescription" [fname]="'Mô tả khuyễn mãi'" ></show-errors>
+                </div>
+              </div>
+              <!--<div class="form-group row">
+                <label class="col-md-3 form-control-label">Tags</label>
+                <div class="col-md-9">
+                  <input formControlName="Tags"
+                         type="text" name="Tags" class="form-control" placeholder="Tags..">
+                  <show-errors [control]="mainForm.controls.Tags" [fname]="'Tags'" ></show-errors>
+                </div>
+              </div>-->
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Giới thiệu</label>
+                <div class="col-md-9">
+                  <ckeditor
+                    formControlName="Description"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.Description" [fname]="'Giới thiệu'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Lợi ích</label>
+                <div class="col-md-9">
+                  <ckeditor
+                    formControlName="Benefit"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.Benefit" [fname]="'Lợi ích'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Đối tượng</label>
+                <div class="col-md-9">
+                  <ckeditor
+                    formControlName="Target"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.Target" [fname]="'Đối tượng'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Quyền lợi học viên</label>
+                <div class="col-md-9">
+                  <ckeditor
+                    formControlName="Interest"
+                    [readonly]="false"
+                    debounce="500">
+                  </ckeditor>
+                  <show-errors [control]="mainForm.controls.Interest" [fname]="'Quyền lợi học viên'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Ngày khai giảng</label>
+                <div class="col-md-9">
+                  <input formControlName="StartDate" bsDatepicker [bsConfig]="{containerClass: 'theme-default'}" readonly
+                         type="text" name="StartDate" class="form-control" placeholder="Ngày khai giảng..">
+                  <show-errors [control]="mainForm.controls.StartDate" [fname]="'Quyền lợi học viên'" ></show-errors>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-md-3 form-control-label">Ngày bế giảng</label>
+                <div class="col-md-9">
+                  <input formControlName="EndDate" bsDatepicker [bsConfig]="{containerClass: 'theme-default'}" readonly
+                         type="text" name="EndDate" class="form-control" placeholder="Ngày bế giảng..">
+                  <show-errors [control]="mainForm.controls.EndDate" [fname]="'Quyền lợi học viên'" ></show-errors>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 form-control-label">Nội dung khóa học</label>
+              <div class="col-md-12" style="border-top: 1px solid #d2d3d3;padding-top: 20px;">
+                <div formArrayName="Content" class="well well-lg">
+                  <div class="row" *ngFor="let chap of Content.controls; let i=index" [formGroupName]="i">
+                    <div class="col-md-12">
+                      <div class="form-group row">
+                        <label class="col-md-3 form-control-label">Chương {{i + 1}}</label>
+                        <div class="col-md-9">
+                          <div class="input-group form-group">
+                            <input type="email" formControlName="Title"
+                                   name="Title" class="form-control" placeholder="Tên chương">
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-danger" (click)="removeChap(chap,i)"><i class="fa fa-ban"></i>Xóa chương</button>
+                            </span>
+                            <span class="input-group-btn">
+                              <button type="button" class="btn btn-success" (click)="addStep(chap)"><i class="fa fa-ban"></i>Thêm bài</button>
+                            </span>
+                          </div>
+                          <div formArrayName="Steps">
+                            <div class="col-md-12" *ngFor="let step of chap.get('Steps').controls; let j=index" [formGroupName]="j">
+                              <div class="form-group row">
+                                <div class="col-md-3 form-control-label">Bài {{j + 1}}</div>
+                                <div class="col-md-9">
+                                  <div class="input-group">
+                                    <input type="email" formControlName="Name"
+                                           name="Name" class="form-control" placeholder="Tên bài">
+                                    <span class="input-group-btn">
+                                      <button type="button" class="btn btn-danger" (click)="chap.get('Steps').removeAt(j)"><i class="fa fa-ban"></i>Xóa bài</button>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <button type="button" (click)="addChaper()" class="btn btn-success"><i class="fa fa-plus-square"></i>&nbsp; Thêm chương</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-container">
+              <button type="submit" class="btn btn-sm btn-primary"> Đăng tin</button>
+              <button type="reset" class="btn btn-sm btn-danger"> Làm mới</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<block-ui [template]="blockTemplate"></block-ui>

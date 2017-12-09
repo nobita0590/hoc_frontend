@@ -1,0 +1,84 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i>
+          <a class="btn btn-success btn-xs pull-right" [routerLink]="['/admin/course/create']"><i class="icon-user-follow"></i> Tạo khóa học</a>
+        </div>
+        <div class="card-body">
+          <div >
+            <block-ui [template]="blockTemplate">
+              <data-table id="persons-grid"
+                          headerTitle="Quản khóa học"
+                          [indexColumn]="false"
+                          [items]="items"
+                          [itemCount]="itemCount"
+                          (reload)="reloadItems($event)" >
+                <data-table-column
+                  property="Title"
+                  header="Tiêu đề">
+                </data-table-column>
+                <data-table-column
+                  property="TeacherName"
+                  header="Giáo viên">
+                  <!--<ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.ClassId" (change)="reloadItems()">
+                      <option value="">Lớp</option>
+                      <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>-->
+                </data-table-column>
+                <data-table-column
+                  property="Price"
+                  header="Đơn giá">
+                  <!--<ng-template #dataTableHeader let-item="item">
+                    <select class="form-control" [(ngModel)]="filter.SubjectId" (change)="reloadItems()">
+                      <option value="">Môn học</option>
+                      <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+                    </select>
+                  </ng-template>-->
+                </data-table-column>
+                <data-table-column
+                  property="BoughtNumber"
+                  header="Học viên đăng ký">
+                </data-table-column>
+                <data-table-column
+                  property="CreatorName"
+                  header="Người tạo"
+                  [visible]="false">
+                </data-table-column>
+                <data-table-column
+                  [property]="'#'"
+                  [header]="'Quản trị'"
+                  [width]="100"
+                  [styleClass]="'table-action-cell'"
+                  [resizable]="true">
+                  <ng-template #dataTableHeader let-item="item">
+                    <span>Quản trị</span>
+                  </ng-template>
+                  <ng-template #dataTableCell let-item="item">
+                    <div class="btn-group" dropdown placement="bottom right">
+                      <button dropdownToggle type="button" class="btn btn-primary dropdown-toggle">
+                        Action <span class="caret"></span>
+                      </button>
+                      <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/course/edit/'+item.ID]" >
+                          <i class="fa fa-edit fa-lg text-info"></i> Sửa </a>
+                        </li>
+                        <li class="divider dropdown-divider"></li>
+                        <li role="menuitem"><a class="dropdown-item action" (click)="delete(item.ID)">
+                          <i class="fa fa-minus-square text-danger"></i> Khóa </a></li>
+                      </ul>
+                    </div>
+                  </ng-template>
+                </data-table-column>
+              </data-table>
+            </block-ui>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
