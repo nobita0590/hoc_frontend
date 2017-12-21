@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs/';
 import { User } from '../../app/type';
 
 @Injectable()
@@ -13,7 +13,8 @@ export class ChannelService {
   public static StoreKey = 'flash';
 
   private flashSubject = new Subject<any>();
-  private userSubject = new Subject<any>();
+  private userSubject = new Subject<User>();
+  private needLogin = new Subject<boolean>();
 
   flashAlert(typeAlert: string, title: string, msg: string) {
     this.flashSubject.next({
@@ -31,5 +32,11 @@ export class ChannelService {
   }
   changeUser(): Observable<User> {
     return this.userSubject.asObservable();
+  }
+  loginCalling(bool: boolean) {
+    this.needLogin.next(bool);
+  }
+  loginCalled(): Observable<boolean> {
+    return this.needLogin.asObservable();
   }
 }

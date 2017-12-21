@@ -26,6 +26,9 @@ export class FullLayoutComponent implements AfterViewInit {
       this.route.navigate(['/auth/login']);
     }
     this.user = JSON.parse(localStorage.getItem('user')) as User;
+    if (!this.user || !this.user.IsAdmin) {
+      location.href = '/trang-chu';
+    }
     this.subscription = this.flashAlert.getFlashAlert().subscribe(alertInfo => {
       console.log(alertInfo);
       //if (alertInfo.status ) {

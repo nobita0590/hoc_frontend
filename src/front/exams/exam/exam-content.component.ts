@@ -9,7 +9,7 @@ import { ExamConfig } from './config';
       <div class="row">
         <div class="col-sm-auto no">{{_config.Current * _config.Per + i - 1}}</div>
         <div class="col-sm ">
-          <p [innerHTML]="_q.Content"></p>
+          <p appMathJax [MathJax]="_q.Content"></p>
         </div>
       </div>
       <div class="row answer">
@@ -18,13 +18,13 @@ import { ExamConfig } from './config';
             <input type="radio" class="custom-control-input" [(ngModel)]="_q.Ticker"
                    name="_answer_{{i}}" value="{{j}}" (click)="choose()">
             <span class="custom-control-indicator"></span>
-            <span class="custom-control-description" [innerHTML]="answer.Content"></span>
+            <span class="custom-control-description" appMathJax [MathJax]="answer.Content"></span>
             <i *ngIf="_config.ShowAnswer != 0 && answer.IsTrue" class="text-success fa fa-check"
                [ngClass]="{'text-success': _q.Ticker == j, 'text-danger': _q.Ticker != j}"></i>
           </label>
         </div>
       </div>
-      <div *ngIf="_config.ShowAnswer == 2" class="card p-3" [innerHTML]="_q.FullAnswer"></div>
+      <div *ngIf="_config.ShowAnswer == 2" class="card p-3" appMathJax [MathJax]="_q.FullAnswer"></div>
       <hr>
     </div>
     <div class="text-center">

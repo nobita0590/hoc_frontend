@@ -1,0 +1,36 @@
+<div class="cover-exams">
+  <img src="/public/frondtend/img/cover-doc.jpg" class="img-fluid">
+</div>
+<section class="section-topic">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+
+        <div class="title-paper mb-5">
+          <div class="row">
+            <div class="col-auto"><img src="img/pdf.png" width="50px"></div>
+            <div class="col px-0">
+              <h1>{{doc.Name}}</h1>
+              <p class="mb-0 mt-1">
+                <a class="text-success">- {{doc.SubjectName}}</a>
+                <span class="ml-3 text-primary">{{doc.ClassName}}</span>
+                <span class="ml-3 text-secondary"><i class="fa fa-download"></i> {{doc.DownloadNumber}} lượt tải</span>
+              </p>
+            </div>
+          </div>
+          <div class="text-center my-3">
+            <a (click)="download()" class="btn btn-success btn-p30 text-uppercase"><i class="fa fa-download fa-lg"></i> Tải xuống</a>
+          </div>
+          <div class="card">
+            <div class="card-body" [innerHTML]="doc.Description">
+            </div>
+
+          </div>
+        </div>
+        <!-- END doc detail -->
+
+      </div>
+      <div class="col-sm-12 col-md-4" docTopUser></div>
+    </div>
+  </div>
+</section>

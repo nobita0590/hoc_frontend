@@ -20,6 +20,8 @@
 	.fixed-top + main { margin-top: 60px;}
 	.courses-list .courses-item {width:50%;}
 	.courses-list-ofdetail .courses-item {float: none; width:100%;}
+	.navbar-collapse .container {padding: 0;}
+	.navbar-collapse .nav-item {border-bottom: 1px solid rgba(0,0,0,.12);}
 }
 @media only screen and (max-width: 640px) {
 	.courses-list .courses-item {width:50%;}

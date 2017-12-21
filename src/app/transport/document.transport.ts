@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Document, DocumentFilter } from './../type/document-type';
+import { Documents, DocumentFilter } from './../type';
 import { HelperTransport } from './helper.transport';
 import { Http, RequestOptionsArgs } from '@angular/http';
 
@@ -8,7 +8,7 @@ export class DocumentTransport {
   private headers = HelperTransport.getLogedInHeader();
   private apiUrl = HelperTransport.api('document');
   constructor(private http: Http) { }
-  getA(filter: DocumentFilter): Promise<Document> {
+  getA(filter: DocumentFilter): Promise<Documents> {
     let data = HelperTransport.objectToFormData(filter);
     let options: RequestOptionsArgs = {
       headers : this.headers,
@@ -18,12 +18,26 @@ export class DocumentTransport {
     return this.http.get(this.apiUrl , options)
       .toPromise()
       .then(response => {
-        return response.json().data as Document;
+        return response.json().data as Documents;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  getFront(filter: DocumentFilter): Promise<Documents> {
+    let data = HelperTransport.objectToFormData(filter);
+    let options: RequestOptionsArgs = {
+      headers : this.headers,
+      body : data,
+      search: data
+    };
+    return this.http.get(this.apiUrl + '/front' , options)
+      .toPromise()
+      .then(response => {
+        return response.json().data as Documents;
       })
       .catch(HelperTransport.handleError);
   }
   getList(filter: DocumentFilter): Promise<{
-    models: Document[],
+    models: Documents[],
     p_info: DocumentFilter
   }> {
     let data = HelperTransport.objectToFormData(filter);
@@ -40,8 +54,8 @@ export class DocumentTransport {
       })
       .catch(HelperTransport.handleError);
   }
-  insert(document: Document): Promise<any> {
-    let data = HelperTransport.objectToFormData(document);
+  insert(doc: Documents): Promise<any> {
+    let data = HelperTransport.objectToFormData(doc);
     let options: RequestOptionsArgs = {
       method : 'post',
       headers : this.headers,
@@ -53,8 +67,8 @@ export class DocumentTransport {
       })
       .catch(HelperTransport.handleError);
   }
-  update(document: Document): Promise<any> {
-    let data = HelperTransport.objectToFormData(document);
+  update(doc: Documents): Promise<any> {
+    let data = HelperTransport.objectToFormData(doc);
     let options: RequestOptionsArgs = {
       method : 'put',
       headers : this.headers,
@@ -62,7 +76,7 @@ export class DocumentTransport {
     return this.http.put(this.apiUrl, data, options)
       .toPromise()
       .then(res => {
-        return res.json().data as Document;
+        return res.json().data as Documents;
       })
       .catch(HelperTransport.handleError);
   }

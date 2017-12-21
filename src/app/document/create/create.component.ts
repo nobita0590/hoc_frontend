@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Document, DocumentFilter } from './../../type/document-type';
+import { Documents, DocumentFilter, SelectSourceFilter } from './../../type';
 import { FormErrorHelper } from './../../shared/validate.helper';
-import { DocumentTransport } from './../../transport/document.transport';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { BlockTemplateComponent } from './../../shared/block-template.component';
 import { FlashAlert } from './../../shared/flash.alert';
-import { HelperTransport } from './../../transport/helper.transport';
+import { HelperTransport, SelectSourceTransport, DocumentTransport } from './../../transport';
 import { FileType } from './../upload-document.component';
 
-import { SelectSourceTransport } from './../../transport/select-source.transport';
-import { SelectSourceFilter } from './../../type/setting-type';
 
 @Component({
   selector: 'app-create',
@@ -28,7 +25,7 @@ export class CreateComponent implements OnInit {
   uploadError = '';
   mainForm: FormGroup;
   title = 'Tạo tài liệu';
-  document: Document = new Document();
+  document: Documents = new Documents();
   sub: any;
   filter: DocumentFilter = new DocumentFilter();
   isEdit = false;
@@ -61,7 +58,7 @@ export class CreateComponent implements OnInit {
     console.log(this.filesResponse, this.oldFiles);
     let filePath = '';
     if (this.filesResponse) {
-      if (this.filesResponse.length != 1) {
+      if (this.filesResponse.length !== 1) {
         this.uploadError = 'Bạn phải chọn một tập tin để upload';
         return;
       }else {
@@ -81,7 +78,7 @@ export class CreateComponent implements OnInit {
       FormErrorHelper.showErrorInvalid(this.mainForm);
       return;
     }
-    var doc = this.mainForm.value as Document;
+    const doc = this.mainForm.value as Documents;
     doc.PathStore = filePath;
     this.blockUI.start();
     if (this.isEdit) {

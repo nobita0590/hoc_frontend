@@ -1,6 +1,7 @@
 import { Page, Model } from './app.type';
-export class Document extends Model {
+export class Documents extends Model {
   Name: string;
+  PrettyUrl: string;
   PathStore: string;
   Description: string;
   CreatorId: number;
@@ -15,4 +16,6 @@ export class Document extends Model {
 export class DocumentFilter extends Page {
   ID:  number;
   IsFill: boolean;
+  ClassId = 0;
+  SubjectId = 0;
 }

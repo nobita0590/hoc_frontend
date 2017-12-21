@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DocumentTransport } from './../../transport/document.transport';
-import { Document, DocumentFilter } from './../../type/document-type';
+import { Documents, DocumentFilter } from './../../type';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { BlockTemplateComponent } from './../../shared/block-template.component';
-import { HelperTransport } from './../../transport/helper.transport';
+import { HelperTransport } from './../../transport';
 
 @Component({
   selector: 'app-list',
@@ -12,7 +12,7 @@ import { HelperTransport } from './../../transport/helper.transport';
   providers: [DocumentTransport]
 })
 export class ListComponent implements OnInit {
-  items: Document[] = [];
+  items: Documents[] = [];
   itemCount = 0;
   @BlockUI() blockUI: NgBlockUI;
   blockTemplate = BlockTemplateComponent;

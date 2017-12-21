@@ -101,52 +101,13 @@
             <div class="title-mod-cont">
               <img src="public/frondtend/img/question.png">
               <h4 class="text-uppercase text-shadow-white font-weight-normal">Thảo luận - Câu hỏi mới</h4>
-              <a >Xem thêm</a>
+              <a [routerLink]="['/hoi-dap']">Xem thêm</a>
             </div>
           </div>
           <!-- END title -->
           <div class="topic-cont">
             <ul class="list-topic-style-1">
-              <li>
-                <img src="public/frondtend/img/question.png">
-                <h3><a >Công thức tính diện tích hình vuông, chu vi hình vuông</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Toán học</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Nam</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/question.png">
-                <h3><a >Phương pháp quản lý lớp học hiệu quả</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Phương pháp quản lý</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Huân</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/question.png">
-                <h3><a >Công thức tính phần trăm</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Toán học</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Phạm thị Bách</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/question.png">
-                <h3><a >Nguyên tắc để học nhóm hiệu quả là gì?</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Phương pháp quản lý</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Tuyến</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/question.png">
-                <h3><a >Làm sao để học tiếng anh hiệu quả và nhớ nhiều từ mới?</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Tiếng Anh</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Trịnh Hoàng Yến</span>
-                </p>
-              </li>
+              <li *ngFor="let fag of newFags" fagItem [fag]="fag"></li>
             </ul>
           </div>
           <!-- END topic content -->
@@ -158,55 +119,20 @@
             <div class="title-mod-cont">
               <img src="public/frondtend/img/starfish.svg">
               <h4 class="text-uppercase text-shadow-white font-weight-normal">Chủ đề nóng</h4>
-              <a >Xem thêm</a>
+              <a [routerLink]="['/hoi-dap']">Xem thêm</a>
             </div>
           </div>
           <!-- END title -->
           <div class="topic-cont">
             <ul class="list-topic-style-1 list-topic-style-2">
-              <li>
-                <img src="public/frondtend/img/starfish.svg">
-                <h3><a >Tiếng Anh hiệu quả cho Tân sinh viên</a></h3>
+              <li *ngFor="let fag of hotFags">
+                <img src="/public/frondtend/img/starfish.svg">
+                <h3>
+                  <a [routerLink]="['/hoi-dap',fag.PrettyUrl,fag.ID]">{{fag.Title}}</a>
+                </h3>
                 <p class="mb-0">
-                  <a class="subjects-of-topic">- Tiếng Anh</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Đạt</span>
-                  <span class="author-of-topic"> <i class="fa fa-comments-o"></i> 259 bình luận</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/starfish.svg">
-                <h3><a >13 kỹ năng cần thiết cho học sinh phổ thông</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Phương pháp quản lý</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Huân</span>
-                  <span class="author-of-topic"> <i class="fa fa-comments-o"></i> 308 bình luận</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/starfish.svg">
-                <h3><a >Rèn luyện & nâng cao kỹ năng giải toán Trung học phổ thông</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Toán học</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Phạm thị Bách</span>
-                  <span class="author-of-topic"> <i class="fa fa-comments-o"></i> 242 bình luận</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/starfish.svg">
-                <h3><a >Luyện thi trắc nghiệm vật lý Trung học 2018</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Phương pháp quản lý</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Nguyễn Văn Tuyến</span>
-                  <span class="author-of-topic"> <i class="fa fa-comments-o"></i> 122 bình luận</span>
-                </p>
-              </li>
-              <li>
-                <img src="public/frondtend/img/starfish.svg">
-                <h3><a >Bí kíp luyện thi tiếng anh Trung học Phổ thông 2017</a></h3>
-                <p class="mb-0">
-                  <a class="subjects-of-topic">- Tiếng Anh</a>
-                  <span class="author-of-topic"> <i class="fa fa-user-circle"></i> Trịnh Hoàng Yến</span>
-                  <span class="author-of-topic"> <i class="fa fa-comments-o"></i> 96 bình luận</span>
+                  <a class="subjects-of-topic">- {{fag.SubjectName}}</a>
+                  <span class="author-of-topic"> <i class="fa fa-comment-o"></i> {{fag.CommentsNumber}} bình luận</span>
                 </p>
               </li>
             </ul>
@@ -228,26 +154,6 @@
     </div>
 
     <br/>
-    <!--<h4 class="heading-title text-uppercase font-weight-normal">Khóa học bổ trợ</h4>
-    <div class="courses-slick">
-      <div class="courses-item">
-        <div>
-          <a class="courses-img" style="background-image: url(public/frondtend/images/thumb-5.png);"></a>
-          <p class="courses-author"><a>Thầy Lê Bá Trần Phương</a></p>
-          <h3 class="courses-name"><a>Luyện thi trắc nghiệm toán 2018</a></h3>
-          <div class="courses-rate text-success px-3">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-o"></i>
-            <i class="fa fa-star-o"></i>
-            <small class="text-secondary">(896)</small>
-          </div>
-          <div class="courses-price text-right px-3"><label class="badge badge-1b75ba">259.000 đ</label></div>
-        </div>
-      </div>
-    </div>-->
-
   </div>
 </section>
 <!-- END section courses -->
@@ -256,204 +162,13 @@
 <section class="section-documents">
   <div class="container">
     <h4 class="doc-title text-uppercase font-weight-normal">
-      <a  class="pull-right btn-sm btn-link">Xem thêm</a>
+      <a [routerLink]="['/tai-lieu']" class="pull-right btn-sm btn-link">Xem thêm</a>
       <img src="public/frondtend/img/icon-ticket-3.png">
       Tài liệu mới
     </h4>
     <div class="wrap-doc-new">
       <ul class="row list-doc-new">
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giáo trình luyện tiếng anh giao tiếp 2017</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Tiếng anh</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giải bài tập SGK Vật lý lớp 6 bài 16: Tổng kết Chương I...</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Vật Lý</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giải bài tập SGK Vật lý lớp 6 bài 15: Ròng rọc</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Vật Lý</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Đề thi học kì 1 môn Ngữ văn lớp 6 Phòng GD&ĐT Vĩnh</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Tiếng anh</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giải bài tập SGK Vật lý lớp 6 bài 16: Tổng kết Chương I...</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Vật lý</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giải bài tập SGK Vật lý lớp 6 bài 15: Cơ năng</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Vật lý</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giải bài tập trang 38, 39 SGK Toán lớp 6 tập 1: Dấu hiệu...</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Toán lớp 6</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Giáo trình luyện tiếng anh nghe đọc viết 2016</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Tiếng anh</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Đề cương ôn tập học kì 1 môn Toán lớp 8 năm 2016</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Toán lớp 8</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Bộ đề thi giữa học kì 1 môn Tiếng Anh lớp 9 có đáp án</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Tiếng anh</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Bộ đề thi giữa học kì 1 môn Tiếng Anh lớp 9 có đáp án</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Tiếng anh</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
-        <li class="col-sm-12 col-md-6">
-          <div class="row">
-            <div class="col-sm-auto"><img src="public/frondtend/img/pdf.png"></div>
-            <div class="col-sm px-0">
-              <h3><a >Đề kiểm tra học kì I môn Giáo dục công dân lớp 6 - Đề số 1</a></h3>
-              <p class="mb-0">
-                <a  class="text-success">- Giáo dục công dân</a>
-              </p>
-            </div>
-            <div class="col-sm-auto text-center">
-              <a  class="btn btn-sm btn-success btn-block">Tải xuống</a>
-              <small class="text-secondary">235 lượt tải</small>
-            </div>
-          </div>
-          <hr>
-        </li>
+        <li class="col-sm-12 col-md-6" *ngFor="let doc of docs" docItem [docx]="doc"></li>
       </ul>
     </div>
   </div>
@@ -467,174 +182,23 @@
     <div class="row">
       <div class="col-sm-12 col-md-7">
         <h4 class="exams-title text-uppercase font-weight-normal">
-          <a  class="pull-right btn-link">Xem thêm</a>
+          <a href="" class="pull-right btn-link">Xem thêm</a>
           <img src="public/frondtend/img/clipboard.svg">
-          Thi online
+          Luyện Thi Online
         </h4>
         <div class="row exams-list">
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s1">
-              <h4>ĐỀ THI Trung học phổ thông 2018</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s2">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA 2017</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s4">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA SỐ 1</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s3">
-              <h4>Đề thi Trung học phổ thông QUỐC GIA SỐ 1</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s5">
-              <h4>ĐỀ THI Trung học phổ thông 2018</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s6">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA 2017</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s7">
-              <h4>ĐỀ THI Trung học phổ thông 2018</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s2">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA 2017</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item">
-              <h4>Đề thi Trung học phổ thông QUỐC GIA SỐ 1</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s1">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA 2017</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s7">
-              <h4>ĐỀ THI Trung học phổ thông QUỐC GIA SỐ 1</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-4">
-            <div class="exams-item bg-ga-s5">
-              <h4>ĐỀ THI Trung học phổ thông 2018</h4>
-              <div><a  class="btn btn-sm">Vào thi</a></div>
+          <div *ngFor="let subject of subjects;let i = index" class="col-sm-6 col-md-4">
+            <div class="exams-item" [ngClass]="'bg-ga-s' + (i + 1)">
+              <h4>Đề thi môn {{subject.Value}} </h4>
+              <div>
+                <a class="img-ex mb-3" [routerLink]="['/thi-online']" [queryParams]="{s: subject.ID}" [style.background-image]="subjectBackground(i)"></a>
+                <a [routerLink]="['/thi-online']" [queryParams]="{s: subject.ID}" class="btn">Vào thi</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-sm-12 col-md-5">
-        <div class="wrap-cup">
-          <div class="title-mod">
-            <div class="title-mod-cont">
-              <img src="public/frondtend/img/trophy.svg">
-              <h4 class="text-uppercase text-shadow-white font-weight-normal">Bảng xếp hạng</h4>
-              <ul>
-                <li><a >Tháng 7</a></li>
-                <li><a >Tháng 8</a></li>
-              </ul>
-            </div>
-          </div>
-          <!-- END title -->
-          <div class="cup-list">
-            <table class="table table-cup">
-              <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Họ và tên</th>
-                <th scope="col">Tổng điểm</th>
-                <th scope="col">Điểm TB</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-warning">1</span></th>
-                <td><a >Lê Khánh Huyền</a></td>
-                <td>30</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-warning">2</span></th>
-                <td><a >Nguyễn Vũ Bình</a></td>
-                <td>29.5</td>
-                <td>9.75</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-warning">3</span></th>
-                <td><a >Đặng Thị Quế</a></td>
-                <td>29.5</td>
-                <td>9.75</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">4</span></th>
-                <td><a >Lê Thị Kim Anh</a></td>
-                <td>29</td>
-                <td>9.7</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">5</span></th>
-                <td><a >Nguyễn Hoàng</a></td>
-                <td>28</td>
-                <td>9.3</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">6</span></th>
-                <td><a >Nguyễn Lê Tuyết</a></td>
-                <td>28</td>
-                <td>9.3</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">7</span></th>
-                <td><a >Nguyễn Minh Anh</a></td>
-                <td>28</td>
-                <td>9.3</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">8</span></th>
-                <td><a >Nguyễn Mỹ Anh</a></td>
-                <td>28</td>
-                <td>9.3</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">9</span></th>
-                <td><a >Nguyễn Thị Tường</a></td>
-                <td>27.5</td>
-                <td>9.2</td>
-              </tr>
-              <tr>
-                <th scope="row"><span class="badge badge-pill badge-secondary">10</span></th>
-                <td><a >Trương Thị Ngọc</a></td>
-                <td>27</td>
-                <td>9.0</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+      <div class="col-sm-12 col-md-5" topExam [isAds]="false" [mons]="1"></div>
     </div>
   </div>
 </section>

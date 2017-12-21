@@ -6,11 +6,11 @@ import { CourseRoutingModule } from './course-routing.module';
 
 import { DataTableModule } from 'angular-4-data-table/src/index';
 import { BlockUIModule } from 'ng-block-ui';
-import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule, AccordionModule, BsDatepickerModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CKEditorModule } from 'ng2-ckeditor';
-import { BsDatepickerModule } from 'ngx-bootstrap';
-import { ImageUploadModule } from "angular2-image-upload";
+import { ImageUploadModule } from 'angular2-image-upload';
+import { ViewComponent } from './view/view.component';
 
 @NgModule({
   imports: [
@@ -21,10 +21,11 @@ import { ImageUploadModule } from "angular2-image-upload";
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    AccordionModule.forRoot(),
     ReactiveFormsModule,
     CKEditorModule,
     ImageUploadModule.forRoot()
   ],
-  declarations: [ListComponent, FormComponent]
+  declarations: [ListComponent, FormComponent, ViewComponent]
 })
 export class CourseModule { }

@@ -9,6 +9,7 @@ import { DetailComponent } from './detail/detail.component';
 
 import { ItemModule } from '../item/item.module';
 import { CourseRoutingModule } from './course-routing.module';
+import { LaddaModule } from 'angular2-ladda';
 
 @NgModule({
   imports: [
@@ -18,7 +19,13 @@ import { CourseRoutingModule } from './course-routing.module';
     ReactiveFormsModule,
     TabsModule.forRoot(),
     AccordionModule.forRoot(),
-    ItemModule
+    ItemModule,
+    LaddaModule.forRoot({
+      style: 'zoom-in',
+      spinnerSize: 40,
+      spinnerColor: '#795548',
+      spinnerLines: 12
+    })
   ],
   declarations: [
     CategoryComponent, DetailComponent

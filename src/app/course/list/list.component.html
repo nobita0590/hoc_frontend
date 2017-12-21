@@ -20,6 +20,10 @@
                   header="Tiêu đề">
                 </data-table-column>
                 <data-table-column
+                  property="StudentsNumber"
+                  header="Học viên đăng ký">
+                </data-table-column>
+                <data-table-column
                   property="TeacherName"
                   header="Giáo viên">
                   <!--<ng-template #dataTableHeader let-item="item">
@@ -63,6 +67,9 @@
                         Action <span class="caret"></span>
                       </button>
                       <ul *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                        <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/course/view/'+item.ID]" >
+                          <i class="fa fa-edit fa-lg text-info"></i> Xem </a>
+                        </li>
                         <li role="menuitem"><a class="dropdown-item" [routerLink]="['/admin/course/edit/'+item.ID]" >
                           <i class="fa fa-edit fa-lg text-info"></i> Sửa </a>
                         </li>

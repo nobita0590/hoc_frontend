@@ -8,3 +8,4 @@ export * from './test-type';
 export * from './tests-frame-type';
 export * from './course-type';
 export * from './fags-type';
+export * from './fag-comment-type';

@@ -6,7 +6,7 @@
       <span><i class="fa fa-calendar"></i> {{viewDate(news.CreatedAt)}}</span> <!--<span><i class="fa fa-eye"></i> 259 lượt xem</span>-->
     </div>
     <h2 class="h2-des">{{news.Description}}</h2>
-    <div [innerHTML]="news.Content"></div>
+    <div appMathJax [MathJax]="news.Content"></div>
   </div>
   <hr>
 

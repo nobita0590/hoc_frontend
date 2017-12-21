@@ -8,7 +8,7 @@ import { SelectSourceTransport } from './../../transport/select-source.transport
 // import set = Reflect.set;
 
 @Component({
-  selector: 'modal-content',
+  selector: 'app-modal-content',
   template: `
     <div class="modal-header">
       <h4 class="modal-title pull-left">{{title}}: {{category.name}}</h4>

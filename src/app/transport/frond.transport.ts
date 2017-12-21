@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { News, User, Course } from './../type';
+import { News, User, Course, Documents, Fags, SelectSource } from './../type';
 import { HelperTransport } from './helper.transport';
 import { Http, RequestOptionsArgs } from '@angular/http';
 
@@ -11,6 +11,10 @@ export class FrondTransport {
   getHomePage(): Promise<{
     news: News[],
     courses: Course[],
+    docs: Documents[],
+    newFags: Fags[],
+    hotFags: Fags[],
+    subjects: SelectSource[],
   }> {
     let options: RequestOptionsArgs = {
       headers : this.headers,

@@ -14,6 +14,7 @@ export class Tests extends Model {
   ClassName: string;
   SubjectName: string;
   TypeName: string;
+  Minutes: number;
 }
 
 export class TestsFilter extends Page {
@@ -22,6 +23,8 @@ export class TestsFilter extends Page {
   ClassId: number = 0;
   TypeId: number = 0;
   SubjectId: number = 0;
+  From: Date;
+  To: Date;
 }
 
 export class Exams {
@@ -38,6 +41,15 @@ export class Exams {
   FinishTime: Date;
   TimeDoing: number;
   History: QuestionHistory[];
+}
+
+export class ExamsFilter extends Page {
+  ID:  number;
+  IDs: number[];
+  TestIds: number[];
+  TypeId: number;
+  From: Date;
+  To: Date;
 }
 export class QuestionHistory {
   True: any;

@@ -68,6 +68,31 @@ export class UserTransport {
       })
       .catch(HelperTransport.handleError);
   }
+  loginGoogle(id: string, token: string): Promise<{
+    user: User,
+    err: string,
+    access_token: string
+  }> {
+    const data = HelperTransport.objectToFormData({
+      id: id,
+      access_token: token
+    });
+    const options: RequestOptionsArgs = {
+      method : 'post',
+      headers : HelperTransport.getHeader(),
+    };
+    return this.http.post(HelperTransport.api(`auth/login/google`), data, options)
+      .toPromise()
+      .then(response => {
+        const _d = response.json().data;
+        if (_d.status) {
+          localStorage.setItem(UserConfig.AccessKeyName, _d.access_token);
+          localStorage.setItem('user', JSON.stringify(_d.user));
+        }
+        return _d;
+      })
+      .catch(HelperTransport.handleError);
+  }
   checkLogin(): boolean {
     const accessKey = localStorage.getItem(this.accessKeyName);
     // console.log(accessKey)

@@ -10,7 +10,9 @@
       <div class="col-sm-12 col-md-6">
         <div class="courses-des">
           <h1 class="h1-detail text-white">{{course.Title}}</h1>
-          <a class="btn btn-danger text-uppercase action" (click)="registerCourse()">Đăng ký khóa học này</a>
+          <a *ngIf="!course.Resitered" [ladda]="submitting" class="btn btn-danger text-uppercase"
+             (click)="registerCourse()">Đăng ký khóa học này</a>
+          <a *ngIf="course.Resitered" class="btn btn-success text-uppercase">Bạn đã đăng ký khóa học</a>
           <ul class="pt-3 courses-des-list">
             <li><i class="fa fa-user-circle text-warning mr-1"></i> <label>Giảng viên: </label> {{course.TeacherName}}</li>
             <!--<li><i class="fa fa-file-text-o text-warning mr-1"></i> <label>Bài giảng:</label> {{course.TeacherName}}</li>-->
@@ -58,7 +60,11 @@
             <tab heading="Quyền lợi học viên" [innerHTML]="course.Interest"></tab>
           </tabset>
         </div>
-        <div class="p-3 text-center"><a class="btn btn-danger text-uppercase action" (click)="registerCourse()">Đăng ký khóa học này</a></div>
+        <div class="p-3 text-center">
+          <a *ngIf="!course.Resitered" [ladda]="submitting" class="btn btn-danger text-uppercase"
+             (click)="registerCourse()">Đăng ký khóa học này</a>
+          <a *ngIf="course.Resitered" class="btn btn-success text-uppercase">Bạn đã đăng ký khóa học</a>
+        </div>
         <hr>
         <div class="title-mod">
           <div class="title-mod-cont">

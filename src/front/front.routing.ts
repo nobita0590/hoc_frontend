@@ -19,10 +19,6 @@ export const routes: Routes = [
   }, {
     path: 'nguoi-dung',
     loadChildren: './users/users.module#UsersModule'
-    /*component: UserComponent,
-    data: {
-      title: 'Người dùng'
-    }*/
   }, {
     path: 'tai-khoan',
     loadChildren: './auth/auth.module#AuthModule'
@@ -38,6 +34,9 @@ export const routes: Routes = [
   }, {
     path: 'hoi-dap',
     loadChildren: './fags/fags.module#FagsModule'
+  }, {
+    path: 'tai-lieu',
+    loadChildren: './documents/documents.module#DocumentsModule'
   }
 ];
 

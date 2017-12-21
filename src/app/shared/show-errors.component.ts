@@ -29,7 +29,7 @@ export class ShowErrorsComponent {
     'pattern': (fname, params) => `The required pattern is: ${params.requiredPattern}`,
     'server': (fname, params) => {
       // console.log(params);
-      return `Loi tu server tra ve ${params}`;
+      return `${params}`;
     },
     /*'years': (params) => params.message,
     'countryCity': (params) => params.message,

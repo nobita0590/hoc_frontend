@@ -10,6 +10,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
 
 // import { ShowErrorsComponent } from './../shared/show-errors.component';
 import { CreateComponent } from './create/create.component';
+import { FagsComponent } from './main/fags.component';
+import { DetailComponent } from './detail/detail.component';
+import { LaddaModule } from 'angular2-ladda';
 
 @NgModule({
   imports: [
@@ -22,9 +25,15 @@ import { CreateComponent } from './create/create.component';
     ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    LaddaModule.forRoot({
+      style: 'zoom-in',
+      spinnerSize: 40,
+      spinnerColor: '#795548',
+      spinnerLines: 12
+    })
   ],
   declarations: [
-    CreateComponent
+    CreateComponent, FagsComponent, DetailComponent
   ],
 })
 export class FagsModule { }

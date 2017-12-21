@@ -6,14 +6,21 @@ export class User extends Model {
   FirstName: string;
   LastName: string;
   AvatarUrl: string;
+  CorverUrl: string;
   Phone: string;
   Class: string;
   School: string;
   Birthday: string;
-  CreatorId: Date;
-  ProvinceId: number;
-  SocialId: string;
   Gender: number;
+  CreatorId: number;
+  Description: string;
+  ProvinceId: number;
+  ExamsNumber: number;
+  TestedNumber: number;
+  LessonsLearnedNumber: number;
+  SocialId: string;
+  ActivityNumber: number;
+  IsAdmin: boolean;
 }
 
 export class UserFilter extends Page {

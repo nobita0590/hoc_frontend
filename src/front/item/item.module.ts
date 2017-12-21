@@ -5,30 +5,40 @@ import { CourseItemComponent } from './course/course.component';
 import { NewsItemComponent } from './news/news-item.component';
 import { NewsHightlightItemComponent } from './news/news-hightlight-item.component';
 import { FagsBannerComponent } from './fags/fags-banner.component';
-/*import { ShowErrorsComponent } from './shared/show-errors.component';
-import { BlockTemplateComponent } from './shared/block-template.component';
-import { PagingComponent } from '../front/service';*/
+import { FagsItemComponent } from './fags/fags-item.component';
+import { FagsHotItemComponent } from './fags/fags-hot-item.component';
+import { MathJaxDirective } from './mathjax.directive';
+import { TopExamComponent } from './exam/top-exam.component';
+import { DocItemComponent } from './docs/doc-item.component';
+import { FagsNewItemComponent } from './fags/fags-new-item.component';
 
-
-/*@NgModule({
-  imports: [],
-  exports: []
-})*/
 @NgModule({
  imports: [
    CommonModule, RouterModule
  ],
  declarations: [
+   FagsNewItemComponent,
    CourseItemComponent,
    NewsItemComponent,
    NewsHightlightItemComponent,
-   FagsBannerComponent
+   FagsBannerComponent,
+   FagsItemComponent,
+   FagsHotItemComponent,
+   MathJaxDirective,
+   TopExamComponent,
+   DocItemComponent
  ],
  exports: [
+   FagsNewItemComponent,
    CourseItemComponent,
    NewsItemComponent,
    NewsHightlightItemComponent,
-   FagsBannerComponent
+   FagsBannerComponent,
+   FagsItemComponent,
+   FagsHotItemComponent,
+   MathJaxDirective,
+   TopExamComponent,
+   DocItemComponent
  ],
  entryComponents: [
    // BlockTemplateComponent // Make sure to add it to the entry components

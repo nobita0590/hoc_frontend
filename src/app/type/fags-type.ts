@@ -11,8 +11,13 @@ export class Fags extends Model {
   SubjectName: string;
   ClassName: string;
   UserName: string;
+  AvatarUrl: string;
 }
 
 export class FagsFilter extends Page {
   ID:  number;
+  SubjectId: number;
+  ClassId: number;
+  Option: string;
+  IsHot: boolean;
 }

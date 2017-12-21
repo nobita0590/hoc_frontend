@@ -5,19 +5,21 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { CommonHelperModule } from '../app/common-helper.module';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule } from 'ngx-bootstrap';
 import { ToastyModule } from 'ng2-toasty';
 
 import { FrondtendLayoutComponent } from './layouts/frondtend-layout.component';
 import { HomeComponent } from './home/home.component';
+import { LoginModalComponent } from './layouts/login-modal.component';
 
 import { FrontRoutingModule } from './front.routing';
 import { ItemModule } from './item/item.module';
 
 @NgModule({
   declarations: [
-    FrondtendLayoutComponent, HomeComponent
+    FrondtendLayoutComponent, HomeComponent, LoginModalComponent
   ],
+  entryComponents: [LoginModalComponent],
   imports: [
     ItemModule,
     BrowserModule,
@@ -25,6 +27,7 @@ import { ItemModule } from './item/item.module';
     FrontRoutingModule,
     FormsModule,
     HttpModule,
+    ModalModule.forRoot(),
     ToastyModule.forRoot(),
     BsDropdownModule.forRoot()
   ],

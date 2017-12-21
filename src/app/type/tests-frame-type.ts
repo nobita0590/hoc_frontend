@@ -8,12 +8,9 @@ export class TestsFrame extends Model {
   Time: number;
   CreatorId: number;
   CreatorName: string;
-  SubjectId: number;
-  ClassesId: number;
   TypeId: number;
   TypeName: string;
-  SubjectName: string;
-  ClassesName: string;
+  Minutes: number;
 }
 
 export class DifficulConfig {
@@ -23,4 +20,6 @@ export class DifficulConfig {
 
 export class TestsFrameFilter extends Page {
   ID:  number;
+  SubjectId: number;
+  ClassesId: number;
 }

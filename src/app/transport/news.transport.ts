@@ -62,6 +62,7 @@ export class NewsTransport {
   }
   insert(news: News): Promise<any> {
     // let data = HelperTransport.objectToFormData(news);
+    news.CategoryId = Math.floor(news.CategoryId);
     let options: RequestOptionsArgs = {
       method : 'post',
       headers : HelperTransport.getJsonHeader(),
@@ -75,6 +76,7 @@ export class NewsTransport {
   }
   update(news: News): Promise<any> {
     // let data = HelperTransport.objectToFormData(news);
+    news.CategoryId = Math.floor(news.CategoryId);
     let options: RequestOptionsArgs = {
       method : 'put',
       headers : HelperTransport.getJsonHeader(),

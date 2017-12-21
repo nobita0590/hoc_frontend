@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row pt-2" style="margin-bottom: 3px;">
       <div class="col-md-3 text-center">
-        <small class="mb-0">Thời gian còn lại:</small> <h5 class="mb-0 mt-0 text-s" id="down-time"><span id="calendar3">12</span> : <span id="calendar4">29</span></h5>
+        <small class="mb-0">Thời gian còn lại:</small> <h5 class="mb-0 mt-0 text-s" id="down-time">{{endMinute}}: {{endSecond}}</h5>
       </div>
       <div class="col-md-6 text-center">
         <div class="progress mt-2">
@@ -10,9 +10,9 @@
         </div>
         <small>Hoàn thành <span class="text-primary">{{percent}}</span></small>
       </div>
-      <div class="col-md-3 text-right">
-        <a class="btn btn-success">Nộp bài</a>
-        <a class="btn btn-info"><i class="fa fa-save"></i> Lưu bài</a>
+      <div *ngIf="step == 2" class="col-md-3 text-right">
+        <a (click)="stopExam(4)" class="btn btn-success">Nộp bài</a>
+        <a (click)="stopExam(3)" class="btn btn-info"><i class="fa fa-save"></i> Lưu bài</a>
       </div>
     </div>
   </div>
@@ -47,16 +47,16 @@
     <div class="alert alert-info" role="alert">
       <div class="row">
         <span class="col-12 col-sm-6 text-left text-sm-right">Môn :</span>
-        <span class="col-12 col-sm-6 text-left text-primary">Vật lý</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{subjectName}}</span>
         <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian làm bài :</span>
-        <span class="col-12 col-sm-6 text-left text-primary">90 phút</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{typeName}}</span>
         <span class="col-12 col-sm-6 text-left text-sm-right">Số lượng câu hỏi :</span>
         <span class="col-12 col-sm-6 text-left text-primary">{{questions.length}}</span>
       </div>
     </div>
     <hr>
     <div class="text-center">
-      <a (click)="start()" class="btn btn-success btn-lg btn-p55 text-uppercase">
+      <a (click)="startExam()" class="btn btn-success btn-lg btn-p55 text-uppercase">
         <i class="fa fa-clock-o mr-2 fa-lg fa-spin"></i> bắt đầu làm bài
       </a>
     </div>
@@ -69,7 +69,7 @@
     </div>
     <hr>
     <div class="text-center">
-      <a (click)="step = 2" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Tiếp tục làm bài</a>
+      <a (click)="doExam()" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Tiếp tục làm bài</a>
       <!--<a class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Làm lại từ đầu</a>-->
     </div>
   </div>
@@ -92,15 +92,17 @@
     </div>
     <hr>
     <div class="text-center">
-      <a (click)="config.ShowAnswer = 1" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án</a>
-      <a (click)="config.ShowAnswer = 2" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án + lời giải</a>
+      <a *ngIf="config.ShowAnswer == 2" (click)="config.ShowAnswer = 1"
+         class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án</a>
+      <a *ngIf="config.ShowAnswer == 1" (click)="config.ShowAnswer = 2"
+         class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án + lời giải</a>
       <a (click)="showTop10 = !showTop10" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Xem bảng xếp hạng</a>
       <a class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Làm lại</a>
     </div>
   </div>
 
   <div *ngIf="!showTop10 && step == 2 || step == 4 " class="wrap-paper" examContent [config]="config" [questions]="questions"
-       (onPause)="onPause($event)" (onCheck)="chooseAnswer($event)"></div>
+       (onPause)="stopExam($event)" (onCheck)="chooseAnswer($event)"></div>
   <div *ngIf="showTop10" class="wrap-paper px-2 px-sm-5">
 
     <div class="wrap-cup">

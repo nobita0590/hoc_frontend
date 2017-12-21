@@ -26,11 +26,11 @@
         </div>
       </form>
       <div class="row login-with-social">
-        <div class="col">
-          <a href="" class="btn btn-block btn-primary btn-social-fb"><i class="fa fa-facebook-official"></i> Login with Facebook</a>
+        <div class="col-6 offset-3"><!--col-->
+          <a (click)="loginFacebook()" class="btn btn-block btn-primary btn-social-fb"><i class="fa fa-facebook-official"></i> Login with Facebook</a>
         </div>
-        <div class="col">
-          <a href="" class="btn btn-block btn-primary btn-social-gg"><i class="fa fa-google"></i> Login with Google</a>
+        <div *ngIf="false" class="col">
+          <a class="btn btn-block btn-primary btn-social-gg"><i class="fa fa-google"></i> Login with Google</a>
         </div>
       </div>
     </div>

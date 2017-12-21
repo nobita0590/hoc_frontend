@@ -1,0 +1,131 @@
+<div *ngIf="step != 1" class="exams-progress">
+  <div class="container">
+    <div class="row pt-2" style="margin-bottom: 3px;">
+      <div class="col-md-3 text-center">
+        <small class="mb-0">Thời gian còn lại:</small> <h5 class="mb-0 mt-0 text-s" id="down-time">{{endMinute}}: {{endSecond}}</h5>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="progress mt-2">
+          <div class="progress-bar progress-bar-striped bg-warning progress-bar-animated" [ngStyle]="{width: percent}"></div>
+        </div>
+        <small>Hoàn thành <span class="text-primary">{{percent}}</span></small>
+      </div>
+      <div *ngIf="step == 2" class="col-md-3 text-right">
+        <a (click)="stopExam(4)" class="btn btn-success">Nộp bài</a>
+        <a (click)="stopExam(3)" class="btn btn-info"><i class="fa fa-save"></i> Lưu bài</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pt-3">
+
+  <div *ngIf="step == 1" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>ĐỀ TẠO NGẪU NHIÊN</h5>
+    <p class="text-secondary">Việc tạo đề thi sẽ giúp bạn có 1 đề thi luyện tập phù hợp với nhu cầu của bạn. Đề thi sẽ có cấu trúc như một đề thi tiêu chuẩn và được cấu thành từ việc trộn ngẫu nhiên các câu hỏi từ ngân hàng câu hỏi của hệ thống 2study.edu</p>
+    <div *ngIf="isReady" class="alert alert-success" role="alert">
+      <strong>Đề được khởi tạo thành công</strong>
+    </div>
+    <div class="alert alert-info" role="alert">
+      <h6 class="my-3">Bạn hãy chọn những tiêu chí phù hợp với nhu cầu của bạn</h6><hr>
+
+      <form [formGroup]="mainForm" novalidate (submit)="generateQuestion()" class="text-left" style="max-width: 520px; margin: 1rem auto">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label text-md-right">Môn học:</label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="SubjectId" [attr.disabled]="chosen ? '':null">
+              <option value="">Chọn môn học</option>
+              <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.SubjectId" [fname]="'Môn học'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label text-md-right">Lớp:</label>
+          <div class="col-sm-8">
+            <select class="form-control" formControlName="ClassesId" [attr.disabled]="chosen ? '':null">
+              <option value="">Chọn lớp</option>
+              <option *ngFor="let source of classesSource" [value]="source.ID">{{source.Value}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.ClassesId" [fname]="'Lớp'" ></show-errors>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label text-md-right">Loại đề thi:</label>
+          <div class="col-sm-8">
+            <select (change)="changeTest()" class="form-control" formControlName="ID" [attr.disabled]="chosen ? '':null">
+              <option value="">Chọn loại đề thi</option>
+              <option *ngFor="let testType of testTypeSource" [value]="testType.ID">{{testType.Title}}</option>
+            </select>
+            <show-errors [control]="mainForm.controls.ID" [fname]="'Loại đề thi'" ></show-errors>
+          </div>
+        </div>
+        <hr>
+        <div *ngIf="currentFrame" class="form-group row">
+          <label class="col-sm-4 col-form-label text-md-right">Tổng số câu:</label>
+          <div class="col-sm-8 py-1">
+            {{currentFrame.Total}} câu
+          </div>
+          <label class="col-sm-4 col-form-label text-md-right">Loại đề</label>
+          <div class="col-sm-8 py-1">
+            {{currentFrame.TypeName}}
+          </div>
+          <label class="col-sm-4 col-form-label text-md-right">Thời lượng</label>
+          <div class="col-sm-8 py-1">
+            {{currentFrame.Minutes}} phút
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <hr>
+    <div class="text-center">
+      <a *ngIf="isReady" (click)="startExam()" class="btn btn-success btn-lg btn-p55 text-uppercase">
+        <i class="fa fa-pencil-square-o mr-2 fa-lg"></i> Bắt đầu làm bài
+      </a>
+      <a *ngIf="!isReady" [ladda]="submiting" (click)="generateQuestion()" class="btn btn-success btn-lg btn-p55 text-uppercase">
+        <i class="fa fa-file-text-o mr-2 fa-lg"></i> Tạo đề
+      </a>
+      <a [routerLink]="['/thi-online']" class="btn btn-info btn-lg btn-p55 text-uppercase">Quay lại</a>
+    </div>
+  </div>
+  <div *ngIf="step == 3" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>Bài làm của bạn đã được lưu lại</h5>
+    <div class="alert alert-info" role="alert">
+      <span>Bạn có thể tiếp tục quay lại làm bài</span>
+    </div>
+    <hr>
+    <div class="text-center">
+      <a (click)="doExam()" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Tiếp tục làm bài</a>
+      <!--<a class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Làm lại từ đầu</a>-->
+    </div>
+  </div>
+  <div *ngIf="step == 4" class="wrap-paper text-center px-2 px-sm-5">
+    <h5>Kết quả</h5>
+    <strong class="fa-2x"><span class="text-success">{{exams.TrueNumber}}</span>/{{exams.Total}}</strong>
+    <div class="alert alert-info" role="alert">
+      <div class="row">
+        <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian bắt đầu làm bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{viewTime(exams.StartTime)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Thời gian nộp bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{viewTime(exams.FinishTime)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Tổng thời gian làm bài :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{timeDoing(exams.TimeDoing)}}</span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Số đáp án đúng :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{exams.TrueNumber}}/{{exams.Total}} </span>
+        <span class="col-12 col-sm-6 text-left text-sm-right">Điểm :</span>
+        <span class="col-12 col-sm-6 text-left text-primary">{{exams.Score.toFixed(2)}}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="text-center">
+      <a *ngIf="config.ShowAnswer == 2" (click)="config.ShowAnswer = 1"
+         class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án</a>
+      <a *ngIf="config.ShowAnswer == 1" (click)="config.ShowAnswer = 2"
+         class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-success">Xem đáp án + lời giải</a>
+      <!--<a (click)="showTop10 = !showTop10" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-primary">Xem bảng xếp hạng</a>-->
+      <a [routerLink]="['/thi-online']" class="btn d-block d-md-inline-block px-5 my-2 mx-0 mx-md-2 btn-warning">Quay lại</a>
+    </div>
+  </div>
+  <div *ngIf="!showTop10 && step == 2 || step == 4 " class="wrap-paper" examContent [config]="config" [questions]="questions"
+       (onPause)="stopExam($event)" (onCheck)="chooseAnswer($event)"></div>
+</div>

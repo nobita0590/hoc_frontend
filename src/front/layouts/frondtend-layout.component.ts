@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ToastyService, ToastyConfig, ToastOptions } from 'ng2-toasty';
-
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { UserTransport } from '../../app/transport/transport';
 import { User } from '../../app/type/type';
 import { ChannelService, Helper } from '../service';
+import { LoginModalComponent } from './login-modal.component';
 
 @Component({
   selector: 'body',
@@ -13,14 +14,17 @@ import { ChannelService, Helper } from '../service';
   providers: [UserTransport, ChannelService, ToastyConfig]
 })
 export class FrondtendLayoutComponent implements OnInit {
+  isShowNav = false;
   user: User = new User();
   search = '';
   isLogin = true;
+  bsModalRef: BsModalRef;
   constructor(private router: Router,
               private title: Title,
               private userTransport: UserTransport,
               private channelService: ChannelService,
-              private toastyService: ToastyService) {
+              private toastyService: ToastyService,
+              private modalService: BsModalService) {
     this.user = JSON.parse(localStorage.getItem('user')) as User;
     this.channelService.changeUser().subscribe(user => {
       localStorage.setItem('user', JSON.stringify(user));
@@ -55,6 +59,10 @@ export class FrondtendLayoutComponent implements OnInit {
         default:
           this.toastyService.default(toastOptions);
       }
+    });
+    this.channelService.loginCalled().subscribe(bool => {
+      console.log('open popup to login: ', bool);
+      this.bsModalRef = this.modalService.show(LoginModalComponent, {});
     });
   }
 

@@ -25,13 +25,15 @@ export class ListComponent implements OnInit {
   testTypeSource: SelectSource[] = [];
   filter = new TestsFilter();
   tests: Tests[] = [];
+  query = {};
+  user = Helper.getUserInfo();
   constructor(private testsTransport: TestsTransport,
               private selectSourceTransport: SelectSourceTransport,
               private router: Router,
               private title: Title,
               private activatedRoute: ActivatedRoute) {
     this.title.setTitle('Thi online');
-    this.filter.Rows = 5;
+    this.filter.Rows = 10;
     this.filter.Page = 1;
     this.filter.Total = 10;
     this.filter.Count = true;
@@ -62,7 +64,16 @@ export class ListComponent implements OnInit {
       this.filter.TypeId = params['t'] ? params['t'] as number : 0;
       this.filter.SubjectId = params['s'] ? params['s'] as number : 0;
       this.filter.ClassId = params['c'] ? params['c'] as number : 0;
-      this.filter.uf = params['uf'] ? params['uf'] as string : '';
+      if (this.user) {
+        this.filter.uf = params['uf'] ? params['uf'] as string : '';
+      }
+      this.query = {
+        p: this.filter.Page,
+        c: this.filter.ClassId,
+        s: this.filter.SubjectId,
+        uf: this.filter.uf,
+        t: this.filter.TypeId
+      };
       this.getData();
     });
     // this.getData();
@@ -75,11 +86,6 @@ export class ListComponent implements OnInit {
       this.filter.Page = p;
     }
     this.changeRoute();
-    this.getData();
-  }
-  refresh() {
-    this.changeRoute();
-    this.getData();
   }
   changeUserAction(aFilter: string) {
     console.log(aFilter);
@@ -89,7 +95,6 @@ export class ListComponent implements OnInit {
     this.filter.uf = aFilter;
     this.filter.Page = 1;
     this.changeRoute();
-    this.getData();
   }
   changeRoute() {
     this.router.navigate(['/thi-online'], {queryParams: {
@@ -99,18 +104,24 @@ export class ListComponent implements OnInit {
       s: this.filter.SubjectId,
       t: this.filter.TypeId,
     }});
+    // this.getData();
   }
   getData() {
     this.tests = [];
     this.testsTransport.getList(this.filter)
       .then(_d => {
         this.tests = _d.models;
-        let f = JSON.parse(JSON.stringify(this.filter)) as TestsFilter;
+        const f = JSON.parse(JSON.stringify(this.filter)) as TestsFilter;
         f.Total = _d.p_info.Total;
         this.filter = f;
       })
       .catch(err => {
         console.log(err);
       });
+  }
+  refresh() {
+    setTimeout(() => {
+      this.changeRoute();
+    }, 10);
   }
 }

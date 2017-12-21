@@ -1,0 +1,54 @@
+<div class="cover-exams">
+  <img src="/public/frondtend/img/cover-doc.jpg" class="img-fluid">
+</div>
+<section class="section-topic">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-8">
+
+        <div class="faqs-title pt-3 pb-3">
+          <h2>Tài liệu</h2>
+        </div>
+        <!-- END title -->
+
+        <div class="alert alert-primary" role="alert">
+          <div class="row">
+            <div class="col-sm-16 col-md-4">
+              <select class="form-control" [(ngModel)]="filter.ClassId" (change)="refresh()">
+                <option value="0">Chọn lớp</option>
+                <option *ngFor="let source of classSource" [value]="source.ID">{{source.Value}}</option>
+              </select>
+            </div>
+            <div class="col-sm-16 col-md-4">
+              <select class="form-control" [(ngModel)]="filter.SubjectId" (change)="refresh()">
+                <option value="0">Chọn môn</option>
+                <option *ngFor="let source of subjectSource" [value]="source.ID">{{source.Value}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!--<ul class="nav nav-tabs faqs-tab">
+          <li class="nav-item">
+            <a class="nav-link active action">Tài liệu mới</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link action">Tất cả</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link action">Tải nhiều </a>
+          </li>
+        </ul>-->
+
+        <div class="wrap-doc-new">
+          <ul class="list-doc-new">
+            <li *ngFor="let doc of docs" docItem [docx]="doc"></li>
+          </ul>
+        </div>
+
+        <nav paging aria-label="navigation" [page]="filter" [max]="3" [query]="query"></nav>
+      </div>
+      <div class="col-sm-12 col-md-4" docTopUser></div>
+    </div>
+  </div>
+</section>

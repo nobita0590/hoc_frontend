@@ -33,8 +33,6 @@ export class TestsFrameFormComponent implements OnInit {
               private selectSourceTransport: SelectSourceTransport) {
     this.mainForm = this.fb.group({
       Title: ['', [Validators.required]],
-      ClassesId: ['', [ValidateHelper.numberRequired]],
-      SubjectId: ['', [ValidateHelper.numberRequired]],
       TypeId: ['', [ValidateHelper.numberRequired]],
       Description: [''],
       Total: ['', [ValidateHelper.numberRequired]],

@@ -9,3 +9,5 @@ export * from './tests-frame.transport';
 export * from './frond.transport';
 export * from './course.transport';
 export * from './exams.transport';
+export * from './fags.transport';
+export * from './fag_comments.transport';

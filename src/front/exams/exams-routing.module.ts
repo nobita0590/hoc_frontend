@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ListComponent } from './fixed-list/list.component';
 import { ExamComponent } from './exam/exam.component';
+import { GenerateComponent } from './generate/generate.component';
 
 const routes: Routes = [
   {
@@ -12,10 +13,16 @@ const routes: Routes = [
       title: 'Danh sách đề thi'
     }
   }, {
-    path: 'thi/:id',
+    path: ':url/:id',
     component: ExamComponent,
     data: {
       title: 'Thi'
+    }
+  }, {
+    path: 'tao-de',
+    component: GenerateComponent,
+    data: {
+      title: 'Tạo đề ngẫu nhiên'
     }
   }
   /*, {

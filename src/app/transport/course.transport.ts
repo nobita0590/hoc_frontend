@@ -9,8 +9,8 @@ export class CourseTransport {
   private apiUrl = HelperTransport.api('course');
   constructor(private http: Http) { }
   getA(filter: CourseFilter): Promise<Course> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
@@ -26,8 +26,8 @@ export class CourseTransport {
     course: Course,
     relate: Course[]
   }> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
@@ -46,8 +46,8 @@ export class CourseTransport {
     models: Course[],
     p_info: Page
   }> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
@@ -62,7 +62,7 @@ export class CourseTransport {
   }
   insert(course: Course): Promise<any> {
     // let data = HelperTransport.objectToFormData(news);
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       method : 'post',
       headers : HelperTransport.getJsonHeader(),
     };
@@ -75,7 +75,7 @@ export class CourseTransport {
   }
   update(course: Course): Promise<any> {
     // let data = HelperTransport.objectToFormData(news);
-    let options: RequestOptionsArgs = {
+    const options: RequestOptionsArgs = {
       method : 'put',
       headers : HelperTransport.getJsonHeader(),
     };
@@ -87,8 +87,8 @@ export class CourseTransport {
       .catch(HelperTransport.handleError);
   }
   delete(filter: CourseFilter): Promise<number> {
-    let data = HelperTransport.objectToFormData(filter);
-    let options: RequestOptionsArgs = {
+    const data = HelperTransport.objectToFormData(filter);
+    const options: RequestOptionsArgs = {
       headers : this.headers,
       body : data,
       search: data
@@ -97,6 +97,19 @@ export class CourseTransport {
       .toPromise()
       .then(response => {
         return response.json().data as number;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  regis(courseId): Promise<Course> {
+    const data = HelperTransport.objectToFormData({ID: courseId});
+    const options: RequestOptionsArgs = {
+      method : 'post',
+      headers : this.headers,
+    };
+    return this.http.post(HelperTransport.api('front/course/regis'), data, options)
+      .toPromise()
+      .then(res => {
+        return res.json().data;
       })
       .catch(HelperTransport.handleError);
   }

@@ -6,7 +6,7 @@ import { Page } from '../../app/type';
   selector: 'nav[paging][aria-label="navigation"]',
   template: `
     <ul class="pagination">
-      <li class="page-item" [ngClass]="{disabled:(1 == _page.Page)}">
+      <li *ngIf="1 != _page.Page" class="page-item">
         <a class="page-link" (click)="pageChange(1)" aria-label="Previous"
            [routerLink]="[link]" [queryParams]="getQuery(1)">
           <span class="fa fa-angle-double-left" aria-hidden="true"></span>
@@ -22,7 +22,7 @@ import { Page } from '../../app/type';
         <a class="page-link action" (click)="pageChange(p)"
            [routerLink]="[link]" [queryParams]="getQuery(p)">{{p}}</a>
       </li>
-      <li class="page-item" [ngClass]="{disabled:(total == _page.Page)}">
+      <li *ngIf="total != _page.Page" class="page-item">
         <a class="page-link" (click)="pageChange(total)"
            [routerLink]="[link]" [queryParams]="getQuery(total)" aria-label="Next">
           <span class="fa fa-angle-double-right" aria-hidden="true"></span>
@@ -82,25 +82,26 @@ export class PagingComponent implements OnInit {
   }
   pageChange(p: number) {
     if (p != this._page.Page) {
-      this.router.navigate([this.link], {queryParams: this.getQuery(p)});
-      this.onPageChange.emit(p);
+      // this.router.navigate([this.link], {queryParams: this.getQuery(p)});
+      // this.onPageChange.emit(p);
     }
   }
   private _bind() {
+    this._previous = [];
+    this._next = [];
     if (!this._page.Total || this._page.Total < 1 || !this._page.Rows || this._page.Rows < 1) {
       this.total = 1;
     } else {
       this.total = Math.ceil(this._page.Total / this._page.Rows);
     }
     if (!this._page.Page || this._page.Page > this.total) {
-      this._page.Page = this.total;
+      // this._page.Page = this.total;
+      return;
     }
     let i = this._page.Page - 1, j = 1, max = 1;
     if (this.max && this.max > max) {
       max = this.max;
     }
-    this._previous = [];
-    this._next = [];
     while (j < max && i > 1) {
       this._previous.push(i);
       i--; j++;
@@ -115,6 +116,6 @@ export class PagingComponent implements OnInit {
   }
   getQuery(p: number) {
     this.query.p = p;
-    return this.query;
+    return JSON.parse(JSON.stringify(this.query));
   }
 }

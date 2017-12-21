@@ -1,0 +1,56 @@
+<section fagsBanner class="section-get-question"></section>
+<section class="section-topic">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-2 order-1 order-md-0">
+        <ul class="block-wegit">
+          <li *ngFor="let source of subjectSource">
+            <a class="action" [ngClass]="{active: source.ID == filter.SubjectId}" (click)="changeSubject(source)">{{source.Value}}</a>
+          </li>
+        </ul>
+        <ul class="block-wegit list-class">
+          <li *ngFor="let source of classSource">
+            <a class="action" [ngClass]="{active: source.ID == filter.ClassId}" (click)="changeClass(source)">{{source.Value}}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-12 col-md-6 order-0 order-md-1">
+        <div class="wrap-topic faqs-list">
+          <div class="faqs-title">
+            <h2>Chuyên mục hỏi đáp</h2>
+          </div>
+          <!-- END title -->
+          <ul class="nav nav-tabs faqs-tab">
+            <li class="nav-item">
+              <a (click)="changeCategory('')" class="nav-link action"
+                 [ngClass]="{active: filter.Option ==''}">Mới nhất</a>
+            </li>
+            <li class="nav-item">
+              <a (click)="changeCategory('no_done')" class="nav-link action"
+                 [ngClass]="{active: filter.Option =='no_done'}">Chưa trả lời</a>
+            </li>
+            <li class="nav-item action">
+              <a (click)="changeCategory('my_fag')" class="nav-link action"
+                 [ngClass]="{active: filter.Option =='my_fag'}">Câu hỏi của tôi</a>
+            </li>
+            <li class="nav-item">
+              <a (click)="changeCategory('my_answer')" class="nav-link action"
+                 [ngClass]="{active: filter.Option =='my_answer'}">Câu trả lời của tôi</a>
+            </li>
+          </ul>
+
+
+          <div class="topic-cont">
+            <ul class="list-topic-style-1">
+              <li fagItem *ngFor="let fag of listFags" [fag]="fag"></li>
+            </ul>
+          </div>
+          <nav paging aria-label="navigation" style="margin-top: 30px"
+               [page]="filter" [max]="3" [query]="query" (onPageChange)="pageChange($event)"></nav>
+          <!-- END topic content -->
+        </div>
+      </div>
+      <div fagHotItem class="col-sm-12 col-md-4 order-2 order-md-2"></div>
+    </div>
+  </div>
+</section>

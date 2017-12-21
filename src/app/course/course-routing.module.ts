@@ -4,6 +4,7 @@ import { Routes,
 
 import { FormComponent } from './form/form.component';
 import { ListComponent } from './list/list.component';
+import { ViewComponent } from './view/view.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,12 @@ const routes: Routes = [
     component: FormComponent,
     data: {
       title: 'Sửa khóa học'
+    }
+  }, {
+    path: 'view/:id',
+    component: ViewComponent,
+    data: {
+      title: 'Xem khóa học'
     }
   }
 ];

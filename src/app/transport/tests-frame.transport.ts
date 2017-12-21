@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TestsFrame, TestsFrameFilter } from './../type/type';
+import { TestsFrame, TestsFrameFilter, Question } from './../type/type';
 import { HelperTransport } from './helper.transport';
 import { Http, RequestOptionsArgs } from '@angular/http';
 
@@ -77,6 +77,19 @@ export class TestsFrameTransport {
       .toPromise()
       .then(response => {
         return response.json().data as number;
+      })
+      .catch(HelperTransport.handleError);
+  }
+  generate(config: TestsFrameFilter): Promise<Question[]> {
+    let data = HelperTransport.objectToFormData(config);
+    let options: RequestOptionsArgs = {
+      method : 'post',
+      headers : this.headers,
+    };
+    return this.http.post(this.apiUrl + '/generate', data, options)
+      .toPromise()
+      .then(res => {
+        return res.json().data as number;
       })
       .catch(HelperTransport.handleError);
   }

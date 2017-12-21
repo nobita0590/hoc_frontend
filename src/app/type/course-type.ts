@@ -21,7 +21,8 @@ export class Course extends Model {
 
   StartDate: Date;
   EndDate: Date;
-
+  Resitered: any;
+  StudentsNumber: number;
   CreatorId: number;
   CreatorName: string;
 }
@@ -35,4 +36,20 @@ export class CourseStep {
 
 export class CourseFilter extends Page {
   ID:  number;
+}
+
+export class CourseRegister {
+  ID: number;
+  CourseId: number;
+  UserId: number;
+  CreatedAt: Date;
+  CourseName: string;
+  UserName: string;
+  UserPhone: string;
+}
+
+export class CourseRegisterFilter extends Page {
+  ID: number;
+  CourseId: number;
+  UserId: number;
 }

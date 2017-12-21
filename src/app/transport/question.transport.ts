@@ -42,6 +42,10 @@ export class QuestionTransport {
   }
   insert(question: Question): Promise<any> {
     // let data = HelperTransport.objectToFormData(question);
+    question.CategoryId = Math.floor(question.CategoryId);
+    question.SubjectId = Math.floor(question.SubjectId);
+    question.ClassId = Math.floor(question.ClassId);
+    question.DifficultId = Math.floor(question.DifficultId);
     let options: RequestOptionsArgs = {
       method : 'post',
       headers : HelperTransport.getJsonHeader(),

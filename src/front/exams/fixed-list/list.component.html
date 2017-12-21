@@ -8,7 +8,9 @@
         <div class="faqs-title pt-3 pb-3">
           <h2>Thi thử cùng 2Study
             <!-- link sang thi THPT Quoc Gia -->
-            <a class="btn btn-warning btn-sm pull-right"><i class="fa fa-hand-o-right"></i> Đề kiểm tra, thi  thử</a>
+            <a [routerLink]="['/thi-online/tao-de']" class="btn btn-warning btn-sm pull-right">
+              <i class="fa fa-hand-o-right"></i> Tạo đề ngẫu nhiên
+            </a>
           </h2>
         </div>
         <div class="alert alert-primary" role="alert">
@@ -40,13 +42,13 @@
           <li class="nav-item">
             <a class="nav-link" (click)="changeUserAction('')" [ngClass]="{active: !filter.uf}">Đề mới</a>
           </li>
-          <li class="nav-item">
+          <!--<li class="nav-item">
             <a class="nav-link" (click)="changeUserAction('doing')"
                [ngClass]="{active: filter.uf == 'doing'}">Đề đang làm <small>(2)</small></a>
-          </li>
+          </li>-->
           <li class="nav-item">
-            <a class="nav-link" (click)="changeUserAction('done')"
-               [ngClass]="{active: filter.uf == 'done'}">Đề đã làm <small>(16)</small></a>
+            <a *ngIf="user" class="nav-link" (click)="changeUserAction('done')"
+               [ngClass]="{active: filter.uf == 'done'}">Đề đã làm </a>
           </li>
         </ul>
         <div class="wrap-doc-new">
@@ -55,15 +57,15 @@
               <div class="row">
                 <div class="col-sm-auto"><img src="/public/frondtend/img/clipboard.svg"></div>
                 <div class="col-sm px-0">
-                  <h3><a [routerLink]="['/thi-online/thi',test.ID]">{{test.Title}}</a></h3>
+                  <h3><a [routerLink]="['/thi-online/',test.PrettyUrl,test.ID]">{{test.Title}}</a></h3>
                   <p class="mb-0 mt-1">
-                    <a href="" class="text-success">- {{test.SubjectName}}</a>
+                    <a class="text-success">- {{test.SubjectName}}</a>
                     <span class="ml-3 text-primary">{{test.ClassName}}</span>
                     <span class="ml-3 text-warning"><i class="fa fa-clock-o"></i> {{test.TypeName}}</span>
                   </p>
                 </div>
                 <div class="col-sm-auto text-center">
-                  <a [routerLink]="['/thi-online/thi',test.ID]" class="btn btn-sm btn-primary btn-block">Vào thi</a>
+                  <a [routerLink]="['/thi-online/',test.PrettyUrl,test.ID]" class="btn btn-sm btn-primary btn-block">Vào thi</a>
                   <small class="text-secondary">{{exampNumber(test.Time)}} lượt thi</small>
                 </div>
               </div>
@@ -72,9 +74,9 @@
 
           </ul>
         </div>
-        <nav paging aria-label="navigation" [page]="filter" [max]="3" [query]="{}" (onPageChange)="pageChange($event)"></nav>
+        <nav paging aria-label="navigation" [page]="filter" [max]="3" [query]="query" (onPageChange)="pageChange($event)"></nav>
       </div>
-      <div class="col-sm-12 col-md-4"></div>
+      <div class="col-sm-12 col-md-4" topExam></div>
     </div>
   </div>
 </section>
